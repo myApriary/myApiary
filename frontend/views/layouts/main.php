@@ -10,6 +10,8 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 use kartik\sidenav\SideNav;
+use kartik\icons\Icon;
+Icon::map($this);
 
 AppAsset::register($this);
 ?>
@@ -20,6 +22,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
+     <link rel="shortcut icon" href="<?php echo Yii::$app->request->baseUrl; ?>/images/favicon.ico" type="image/x-icon" /> 
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
@@ -29,7 +32,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('@web/images/logo.png', ['alt'=>'myApriary']),
+        'brandLabel' => Html::img('@web/images/logo.png', ['alt'=>'myApiary']),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -42,7 +45,7 @@ AppAsset::register($this);
 			['label' => 'Home', 'url' => ['/site/index']],
 		];
         $menuItems[] = [
-            'label' => 'Wyloguj (' . Yii::$app->user->identity->username . ')', 
+            'label' => 'Logout (' . Yii::$app->user->identity->username . ')', 
             'url' => ['/user/security/logout'],
             'linkOptions' => ['data-method' => 'post']
         ];
@@ -75,16 +78,58 @@ AppAsset::register($this);
                         ],
                         [
                             'url' => Url::to(['/pasieki/index']),
-                            'label' => 'Pasieki',
-                            'icon' => 'glyphicon glyphicon-globe',
+                            'label' => Icon::show('cubes') . 'Apiaries',
+                            //'icon' => 'glyphicon glyphicon-globe',
                             'active' => Yii::$app->controller->id==='pasieki',
                         ],
                         [
                             'url' => Url::to(['/pnie/index']),
-                            'label' => 'Pnie',
-                            'icon' => 'glyphicon glyphicon-book',
+                            'label' => Icon::show('archive') . 'Beehives',
+                            //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='pnie',
                         ],
+                        [
+                            'url' => Url::to(['/dokarmiania/index']),
+                            'label' => Icon::show('cutlery') . 'Feeding',
+                            //'icon' => 'glyphicon glyphicon-book',
+                            'active' => Yii::$app->controller->id==='dokarmiania',
+                        ],
+                        [
+                            'url' => Url::to(['/miodobrania/index']),
+                            'label' => Icon::show('battery-half') . 'Honey harvests',
+                            //'icon' => 'glyphicon glyphicon-book',
+                            'active' => Yii::$app->controller->id==='miodobrania',
+                        ],
+                        [
+                            'url' => Url::to(['/matki/index']),
+                            'label' => Icon::show('venus-double') . 'Queen bees',
+                            //'icon' => 'glyphicon glyphicon-book',
+                            'active' => Yii::$app->controller->id==='matki',
+                        ],
+                        [
+                            'url' => Url::to(['/czujniki/index']),
+                            'label' => Icon::show('thermometer') . 'Sensors',
+                            //'icon' => 'glyphicon glyphicon-book',
+                            'active' => Yii::$app->controller->id==='Czujniki',
+                        ],
+                        [
+                            'url' => Url::to(['/koszty/index']),
+                            'label' => Icon::show('usd') . 'Costs',
+                            //'icon' => 'glyphicon glyphicon-book',
+                            'active' => Yii::$app->controller->id==='koszty',
+                        ],
+                        [
+                            'url' => Url::to(['/leczenia/index']),
+                            'label' => Icon::show('medkit') . 'Treatments',
+                            //'icon' => ,
+                            'active' => Yii::$app->controller->id==='Leczenia',
+                        ],     
+                        [
+                            'url' => Url::to(['/ulikiweselne/index']),
+                            'label' => Icon::show('venus-mars') . 'Mating boxes',
+                            //'icon' => 'glyphicon glyphicon-book',
+                            'active' => Yii::$app->controller->id==='Ulikiweselne',
+                        ],                           
                     ],
                 ]);}; ?>             
             </div>
@@ -108,7 +153,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; myApriary <?= date('Y') ?></p>
+        <p class="pull-left">&copy; myApiary <?= date('Y') ?></p>
 
     </div>
 </footer>

@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Pasieki */
 
-$this->title = 'Create Pasieki';
-$this->params['breadcrumbs'][] = ['label' => 'Pasiekis', 'url' => ['index']];
+$this->title = 'create new apiary';
+$this->params['breadcrumbs'][] = ['label' => 'apriaries', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pasieki-create">

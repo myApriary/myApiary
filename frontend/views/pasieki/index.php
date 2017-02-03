@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel frontend\models\PasiekiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Pasiekis';
+$this->title = 'Apiaries';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pasieki-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Pasieki', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create new apiary', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
