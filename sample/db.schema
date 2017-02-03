@@ -1,7 +1,3 @@
---
--- Host: localhost    Database: myapriary
--- ------------------------------------------------------
--- Server version       5.5.52-0+deb8u1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -13,11 +9,27 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `auth_assignment`
---
-
+DROP TABLE IF EXISTS `Message`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Message` (
+  `id` int(11) NOT NULL DEFAULT '0',
+  `language` varchar(16) NOT NULL DEFAULT '',
+  `translation` text,
+  PRIMARY KEY (`id`,`language`),
+  CONSTRAINT `FK_Message_SourceMessage` FOREIGN KEY (`id`) REFERENCES `SourceMessage` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `SourceMessage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `SourceMessage` (
+  `id` int(11) NOT NULL,
+  `category` varchar(32) DEFAULT NULL,
+  `message` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `auth_assignment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -29,20 +41,6 @@ CREATE TABLE `auth_assignment` (
   CONSTRAINT `auth_assignment_ibfk_1` FOREIGN KEY (`item_name`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `auth_assignment`
---
-
-LOCK TABLES `auth_assignment` WRITE;
-/*!40000 ALTER TABLE `auth_assignment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `auth_assignment` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `auth_item`
---
-
 DROP TABLE IF EXISTS `auth_item`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -60,20 +58,6 @@ CREATE TABLE `auth_item` (
   CONSTRAINT `auth_item_ibfk_1` FOREIGN KEY (`rule_name`) REFERENCES `auth_rule` (`name`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `auth_item`
---
-
-LOCK TABLES `auth_item` WRITE;
-/*!40000 ALTER TABLE `auth_item` DISABLE KEYS */;
-/*!40000 ALTER TABLE `auth_item` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `auth_item_child`
---
-
 DROP TABLE IF EXISTS `auth_item_child`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -86,20 +70,6 @@ CREATE TABLE `auth_item_child` (
   CONSTRAINT `auth_item_child_ibfk_2` FOREIGN KEY (`child`) REFERENCES `auth_item` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `auth_item_child`
---
-
-LOCK TABLES `auth_item_child` WRITE;
-/*!40000 ALTER TABLE `auth_item_child` DISABLE KEYS */;
-/*!40000 ALTER TABLE `auth_item_child` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `auth_rule`
---
-
 DROP TABLE IF EXISTS `auth_rule`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -111,20 +81,6 @@ CREATE TABLE `auth_rule` (
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `auth_rule`
---
-
-LOCK TABLES `auth_rule` WRITE;
-/*!40000 ALTER TABLE `auth_rule` DISABLE KEYS */;
-/*!40000 ALTER TABLE `auth_rule` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `czujniki`
---
-
 DROP TABLE IF EXISTS `czujniki`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -139,20 +95,6 @@ CREATE TABLE `czujniki` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `czujniki`
---
-
-LOCK TABLES `czujniki` WRITE;
-/*!40000 ALTER TABLE `czujniki` DISABLE KEYS */;
-/*!40000 ALTER TABLE `czujniki` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `dokarmiania`
---
-
 DROP TABLE IF EXISTS `dokarmiania`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -166,20 +108,6 @@ CREATE TABLE `dokarmiania` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `dokarmiania`
---
-
-LOCK TABLES `dokarmiania` WRITE;
-/*!40000 ALTER TABLE `dokarmiania` DISABLE KEYS */;
-/*!40000 ALTER TABLE `dokarmiania` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `koszty`
---
-
 DROP TABLE IF EXISTS `koszty`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -192,20 +120,6 @@ CREATE TABLE `koszty` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `koszty`
---
-
-LOCK TABLES `koszty` WRITE;
-/*!40000 ALTER TABLE `koszty` DISABLE KEYS */;
-/*!40000 ALTER TABLE `koszty` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `leczenia`
---
-
 DROP TABLE IF EXISTS `leczenia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -219,20 +133,6 @@ CREATE TABLE `leczenia` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `leczenia`
---
-
-LOCK TABLES `leczenia` WRITE;
-/*!40000 ALTER TABLE `leczenia` DISABLE KEYS */;
-/*!40000 ALTER TABLE `leczenia` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `matki`
---
-
 DROP TABLE IF EXISTS `matki`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -248,20 +148,6 @@ CREATE TABLE `matki` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `matki`
---
-
-LOCK TABLES `matki` WRITE;
-/*!40000 ALTER TABLE `matki` DISABLE KEYS */;
-/*!40000 ALTER TABLE `matki` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `migration`
---
-
 DROP TABLE IF EXISTS `migration`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -271,21 +157,6 @@ CREATE TABLE `migration` (
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `migration`
---
-
-LOCK TABLES `migration` WRITE;
-/*!40000 ALTER TABLE `migration` DISABLE KEYS */;
-INSERT INTO `migration` VALUES ('m000000_000000_base',1478119726),('m130524_201442_init',1478119733),('m140209_132017_init',1478152993),('m140403_174025_create_account_table',1478152994),('m140504_113157_update_tables',1478152995),('m140504_130429_create_token_table',1478152995),('m140506_102106_rbac_init',1478163204),('m140830_171933_fix_ip_field',1478152995),('m140830_172703_change_account_table_name',1478152995),('m141222_110026_update_ip_field',1478152995),('m141222_135246_alter_username_length',1478152995),('m150614_103145_update_social_account_table',1478152996),('m150623_212711_fix_username_notnull',1478152996),('m151218_234654_add_timezone_to_profile',1478152996);
-/*!40000 ALTER TABLE `migration` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `miodobrania`
---
-
 DROP TABLE IF EXISTS `miodobrania`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -298,50 +169,26 @@ CREATE TABLE `miodobrania` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `miodobrania`
---
-
-LOCK TABLES `miodobrania` WRITE;
-/*!40000 ALTER TABLE `miodobrania` DISABLE KEYS */;
-/*!40000 ALTER TABLE `miodobrania` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pasieki`
---
-
 DROP TABLE IF EXISTS `pasieki`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pasieki` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int(11) DEFAULT NULL,
   `nazwa` varchar(60) NOT NULL,
   `lokalizacja` varchar(30) NOT NULL,
   `status` int(11) NOT NULL,
-  `emailuzytkownika` varchar(100) NOT NULL,
-  PRIMARY KEY (`nazwa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `id_user` (`id_user`),
+  CONSTRAINT `pasieki_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pasieki`
---
-
-LOCK TABLES `pasieki` WRITE;
-/*!40000 ALTER TABLE `pasieki` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pasieki` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pnie`
---
-
 DROP TABLE IF EXISTS `pnie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pnie` (
-  `id` varchar(6) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pasieki` int(11) DEFAULT NULL,
   `typ` varchar(30) NOT NULL,
   `rodzaj_ramki` varchar(30) NOT NULL,
   `pojemnosc` int(11) NOT NULL,
@@ -349,24 +196,11 @@ CREATE TABLE `pnie` (
   `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `nazwa` varchar(30) NOT NULL,
   `sila_rodziny` int(11) NOT NULL,
-  `nazwapasieki` varchar(60) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `id_pasieki` (`id_pasieki`),
+  CONSTRAINT `pnie_ibfk_1` FOREIGN KEY (`id_pasieki`) REFERENCES `pasieki` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pnie`
---
-
-LOCK TABLES `pnie` WRITE;
-/*!40000 ALTER TABLE `pnie` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pnie` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `profile`
---
-
 DROP TABLE IF EXISTS `profile`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -384,21 +218,6 @@ CREATE TABLE `profile` (
   CONSTRAINT `fk_user_profile` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `profile`
---
-
-LOCK TABLES `profile` WRITE;
-/*!40000 ALTER TABLE `profile` DISABLE KEYS */;
-INSERT INTO `profile` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-/*!40000 ALTER TABLE `profile` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `social_account`
---
-
 DROP TABLE IF EXISTS `social_account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -419,20 +238,6 @@ CREATE TABLE `social_account` (
   CONSTRAINT `fk_user_account` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `social_account`
---
-
-LOCK TABLES `social_account` WRITE;
-/*!40000 ALTER TABLE `social_account` DISABLE KEYS */;
-/*!40000 ALTER TABLE `social_account` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `token`
---
-
 DROP TABLE IF EXISTS `token`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -445,20 +250,6 @@ CREATE TABLE `token` (
   CONSTRAINT `fk_user_token` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `token`
---
-
-LOCK TABLES `token` WRITE;
-/*!40000 ALTER TABLE `token` DISABLE KEYS */;
-/*!40000 ALTER TABLE `token` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `ulikiweselne`
---
-
 DROP TABLE IF EXISTS `ulikiweselne`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -473,20 +264,6 @@ CREATE TABLE `ulikiweselne` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `ulikiweselne`
---
-
-LOCK TABLES `ulikiweselne` WRITE;
-/*!40000 ALTER TABLE `ulikiweselne` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ulikiweselne` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `user`
---
-
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -503,25 +280,12 @@ CREATE TABLE `user` (
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
   `flags` int(11) NOT NULL DEFAULT '0',
+  `last_login_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_unique_email` (`email`),
   UNIQUE KEY `user_unique_username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `uzytkownicy`
---
-
 DROP TABLE IF EXISTS `uzytkownicy`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -533,19 +297,6 @@ CREATE TABLE `uzytkownicy` (
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `uzytkownicy`
---
-
-LOCK TABLES `uzytkownicy` WRITE;
-/*!40000 ALTER TABLE `uzytkownicy` DISABLE KEYS */;
-/*!40000 ALTER TABLE `uzytkownicy` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping routines for database 'myapriary'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -555,6 +306,4 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2016-11-13  3:30:01
 

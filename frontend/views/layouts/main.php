@@ -77,7 +77,7 @@ AppAsset::register($this);
                             'active' => Yii::$app->controller->id==='site',
                         ],
                         [
-                            'url' => Url::to(['/pasieki/index']),
+                            'url' => Url::to(['/pasieki/view?id=1']),
                             'label' => Icon::show('cubes') . 'Apiaries',
                             //'icon' => 'glyphicon glyphicon-globe',
                             'active' => Yii::$app->controller->id==='pasieki',

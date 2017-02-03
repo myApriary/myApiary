@@ -44,11 +44,11 @@ class Pasieki extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'id' => 'id',
             'id_user' => 'Id User',
-            'nazwa' => 'Nazwa',
-            'lokalizacja' => 'Lokalizacja',
-            'status' => 'Status',
+            'nazwa' => 'name',
+            'lokalizacja' => 'location',
+            'status' => 'status',
         ];
     }
     

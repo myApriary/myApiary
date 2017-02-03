@@ -4,26 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Pasieki */
+/* @var $model frontend\models\Leczenia */
 
-$this->title = 'Apiary ' . $model->nazwa;
-$this->params['breadcrumbs'][] = ['label' => 'Apiaries', 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Leczenias', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pasieki-view">
+<div class="leczenia-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'nazwa',
-            'lokalizacja',
-            'status',
-            
-        ],
-    ]) ?>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -35,5 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'cel',
+            'rodzaj_leku',
+            'ilosc_leku',
+            'idpnia',
+            'czas',
+        ],
+    ]) ?>
 
 </div>
