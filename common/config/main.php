@@ -14,6 +14,17 @@ return [
             'class' => 'yii\caching\FileCache',
         ],
         */
+
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => 'yii\i18n\DbMessageSource',
+                    'messageTable' => 'Message',
+                    'sourceMessageTable' => 'SourceMessage',
+                    //'sourceLanguage' => 'en',
+                ],
+            ],
+        ],
     ],
     'modules' => [
         'user' => [

@@ -55,14 +55,6 @@ return [
             'rules' => [
             ],
         ],
-        'i18n' => [
-        'translations' => [
-            '*' => [
-                'class' => 'yii\i18n\DbMessageSource',
-                'forceTranslation'=>true,
-            ]
-        ],
-    ],
     ],
     'modules' => [
         'user' => [

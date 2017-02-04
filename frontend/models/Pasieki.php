@@ -45,10 +45,10 @@ class Pasieki extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'id',
-            'id_user' => 'Id User',
-            'nazwa' => 'name',
-            'lokalizacja' => 'location',
-            'status' => 'status',
+            'id_user' => 'user id',
+            'nazwa' => Yii::t('app_frontend','name'),
+            'lokalizacja' => Yii::t('app_frontend','location'),
+            'status' => Yii::t('app_frontend','status'),
         ];
     }
     
