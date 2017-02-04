@@ -6,8 +6,11 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\PasiekiSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+\Yii::$app->language = 'pl-PL';
+//\Yii::$app->language = 'de-DE';
+//\Yii::$app->language = 'en-EN';
 
-$this->title = 'Apiaries';
+$this->title = ucwords(Yii::t('app_frontend','apiaries'));
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pasieki-index">

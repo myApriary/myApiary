@@ -45,7 +45,7 @@ AppAsset::register($this);
 			['label' => 'Home', 'url' => ['/site/index']],
 		];
         $menuItems[] = [
-            'label' => 'Logout (' . Yii::$app->user->identity->username . ')', 
+            'label' => Yii::t('app_frontend', 'Logout') . ' (' . Yii::$app->user->identity->username . ')', 
             'url' => ['/user/security/logout'],
             'linkOptions' => ['data-method' => 'post']
         ];
@@ -78,55 +78,55 @@ AppAsset::register($this);
                         ],
                         [
                             'url' => Url::to(['/pasieki/view?id=1']),
-                            'label' => Icon::show('cubes') . 'Apiaries',
+                            'label' => Icon::show('cubes') . ucwords(Yii::t('app_frontend','apiaries')),
                             //'icon' => 'glyphicon glyphicon-globe',
                             'active' => Yii::$app->controller->id==='pasieki',
                         ],
                         [
                             'url' => Url::to(['/pnie/index']),
-                            'label' => Icon::show('archive') . 'Beehives',
+                            'label' => Icon::show('archive') . ucwords(Yii::t('app_frontend','beehives')),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='pnie',
                         ],
                         [
                             'url' => Url::to(['/dokarmiania/index']),
-                            'label' => Icon::show('cutlery') . 'Feeding',
+                            'label' => Icon::show('cutlery') . ucwords(Yii::t('app_frontend','feeding')),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='dokarmiania',
                         ],
                         [
                             'url' => Url::to(['/miodobrania/index']),
-                            'label' => Icon::show('battery-half') . 'Honey harvests',
+                            'label' => Icon::show('battery-half') . Yii::t('app_frontend','Honey harvests'),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='miodobrania',
                         ],
                         [
                             'url' => Url::to(['/matki/index']),
-                            'label' => Icon::show('venus-double') . 'Queen bees',
+                            'label' => Icon::show('venus-double') . Yii::t('app_frontend','Queen bees'),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='matki',
                         ],
                         [
                             'url' => Url::to(['/czujniki/index']),
-                            'label' => Icon::show('thermometer') . 'Sensors',
+                            'label' => Icon::show('thermometer') . Yii::t('app_frontend','Sensors'),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='Czujniki',
                         ],
                         [
                             'url' => Url::to(['/koszty/index']),
-                            'label' => Icon::show('usd') . 'Costs',
+                            'label' => Icon::show('usd') . Yii::t('app_frontend','Costs'),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='koszty',
                         ],
                         [
                             'url' => Url::to(['/leczenia/index']),
-                            'label' => Icon::show('medkit') . 'Treatments',
+                            'label' => Icon::show('medkit') . Yii::t('app_frontend','Treatments'),
                             //'icon' => ,
                             'active' => Yii::$app->controller->id==='Leczenia',
                         ],     
                         [
                             'url' => Url::to(['/ulikiweselne/index']),
-                            'label' => Icon::show('venus-mars') . 'Mating boxes',
+                            'label' => Icon::show('venus-mars') . Yii::t('app_frontend','Mating boxes'),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='Ulikiweselne',
                         ],                           
