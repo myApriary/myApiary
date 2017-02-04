@@ -6,8 +6,8 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Pasieki */
 
-$this->title = 'Apiary ' . $model->nazwa;
-$this->params['breadcrumbs'][] = ['label' => 'Apiaries', 'url' => ['index']];
+$this->title = Yii::t('app_frontend','Apiary') . ' ' . $model->nazwa;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app_frontend','Apiaries'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pasieki-view">
