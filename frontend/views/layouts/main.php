@@ -72,64 +72,66 @@ AppAsset::register($this);
                     'items' => [
                         [
                             'url' => '/',
-                            'label' => 'Home',
-                            'icon' => 'home',
+                            'label' => Icon::show('home',['style'=>'width:25px']) . 'Home',
+                            //'icon' => 'home',
                             'active' => Yii::$app->controller->id==='site',
                         ],
                         [
                             'url' => Url::to(['/pasieki/view?id=1']),
-                            'label' => Icon::show('cubes') . ucwords(Yii::t('app_frontend','apiaries')),
+                            'label' => Icon::show('cubes',['style'=>'width:25px']) . ucwords(Yii::t('app_frontend','apiaries')),
                             //'icon' => 'glyphicon glyphicon-globe',
                             'active' => Yii::$app->controller->id==='pasieki',
                         ],
                         [
                             'url' => Url::to(['/pnie/index']),
-                            'label' => Icon::show('archive') . ucwords(Yii::t('app_frontend','beehives')),
+                            'label' => Icon::show('archive',['style'=>'width:25px']) . ucwords(Yii::t('app_frontend','beehives')),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='pnie',
                         ],
                         [
-                            'url' => Url::to(['/dokarmiania/index']),
-                            'label' => Icon::show('cutlery') . ucwords(Yii::t('app_frontend','feeding')),
-                            //'icon' => 'glyphicon glyphicon-book',
-                            'active' => Yii::$app->controller->id==='dokarmiania',
-                        ],
-                        [
-                            'url' => Url::to(['/miodobrania/index']),
-                            'label' => Icon::show('battery-half') . Yii::t('app_frontend','Honey harvests'),
-                            //'icon' => 'glyphicon glyphicon-book',
-                            'active' => Yii::$app->controller->id==='miodobrania',
-                        ],
-                        [
                             'url' => Url::to(['/matki/index']),
-                            'label' => Icon::show('venus-double') . Yii::t('app_frontend','Queen bees'),
+                            'label' => Icon::show('venus-double',['style'=>'width:25px']) . Yii::t('app_frontend','Queen bees'),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='matki',
                         ],
                         [
+                            'url' => Url::to(['/ulikiweselne/index']),
+                            'label' => Icon::show('venus-mars',['style'=>'width:25px']) . Yii::t('app_frontend','Mating boxes'),
+                            //'icon' => 'glyphicon glyphicon-book',
+                            'active' => Yii::$app->controller->id==='Ulikiweselne',
+                        ],     
+                        [
+                            'url' => Url::to(['/miodobrania/index']),
+                            'label' => Icon::show('battery-half',['style'=>'width:25px']) . Yii::t('app_frontend','Honey harvests'),
+                            //'icon' => 'glyphicon glyphicon-book',
+                            'active' => Yii::$app->controller->id==='miodobrania',
+                        ],
+                        [
+                            'url' => Url::to(['/dokarmiania/index']),
+                            'label' => Icon::show('cutlery',['style'=>'width:25px']) . ucwords(Yii::t('app_frontend','feeding')),
+                            //'icon' => 'glyphicon glyphicon-book',
+                            'active' => Yii::$app->controller->id==='dokarmiania',
+                        ],
+                        [
+                            'url' => Url::to(['/leczenia/index']),
+                            'label' => Icon::show('medkit',['style'=>'width:25px']) . Yii::t('app_frontend','Treatments'),
+                            //'icon' => ,
+                            'active' => Yii::$app->controller->id==='Leczenia',
+                        ],   
+                        [
                             'url' => Url::to(['/czujniki/index']),
-                            'label' => Icon::show('thermometer') . Yii::t('app_frontend','Sensors'),
+                            'label' => Icon::show('thermometer',['style'=>'width:25px']) . Yii::t('app_frontend','Sensors'),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='Czujniki',
                         ],
                         [
                             'url' => Url::to(['/koszty/index']),
-                            'label' => Icon::show('usd') . Yii::t('app_frontend','Costs'),
+                            'label' => Icon::show('usd',['style'=>'width:25px']) . Yii::t('app_frontend','Costs'),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='koszty',
                         ],
-                        [
-                            'url' => Url::to(['/leczenia/index']),
-                            'label' => Icon::show('medkit') . Yii::t('app_frontend','Treatments'),
-                            //'icon' => ,
-                            'active' => Yii::$app->controller->id==='Leczenia',
-                        ],     
-                        [
-                            'url' => Url::to(['/ulikiweselne/index']),
-                            'label' => Icon::show('venus-mars') . Yii::t('app_frontend','Mating boxes'),
-                            //'icon' => 'glyphicon glyphicon-book',
-                            'active' => Yii::$app->controller->id==='Ulikiweselne',
-                        ],                           
+  
+                      
                     ],
                 ]);}; ?>             
             </div>
