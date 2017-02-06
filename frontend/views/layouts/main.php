@@ -90,7 +90,7 @@ AppAsset::register($this);
                         ],
                         [
                             'url' => Url::to(['/matki/index']),
-                            'label' => Icon::show('venus-double',['style'=>'width:25px']) . Yii::t('app_frontend','Queen bees'),
+                            'label' => Icon::show('venus',['style'=>'width:25px']) . Yii::t('app_frontend','Queen bees'),
                             //'icon' => 'glyphicon glyphicon-book',
                             'active' => Yii::$app->controller->id==='matki',
                         ],

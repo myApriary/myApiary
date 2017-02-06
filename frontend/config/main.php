@@ -51,8 +51,11 @@ return [
         ],
         
         'urlManager' => [
+            'class' => 'codemix\localeurls\UrlManager',
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'languages' => ['en'=>'en-US', 'de'=>'de-DE', 'pl'=>'pl-PL'],
+            'enableDefaultLanguageUrlCode' => True,
             'rules' => [
             ],
         ],

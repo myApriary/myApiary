@@ -21,7 +21,8 @@
         "dektrium/yii2-user": "0.9.*@dev",
         "dektrium/yii2-rbac": "@dev",
         "kartik-v/yii2-widget-sidenav": "*",
-        "kartik-v/yii2-icons": "@dev"
+        "kartik-v/yii2-icons": "@dev",
+        "codemix/yii2-localeurls": "^1.4"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
