@@ -50,6 +50,9 @@ AppAsset::register($this);
             'linkOptions' => ['data-method' => 'post']
         ];
     }
+	$menuItems[] = ['label' => 'EN', 'url' => [substr(\yii\helpers\Url::current(), 3), 'language' => 'en']];
+    $menuItems[] = ['label' => 'PL', 'url' => [substr(\yii\helpers\Url::current(), 3), 'language' => 'pl']];
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
@@ -63,6 +66,7 @@ AppAsset::register($this);
         <div class="row">
             <div class="col-md-2">
                 <?php 
+                
                 if (!Yii::$app->user->isGuest) {
                  echo SideNav::widget([
                     'type' => SideNav::TYPE_DEFAULT,
