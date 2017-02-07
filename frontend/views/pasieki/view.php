@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-    <p>
+
        <?php
            echo Map::widget([
             'zoom' => 9,
@@ -43,9 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ]
            ]);
         ?>
-   </p>
 
-    <p>
+    <br>
+    <div class="row">
+        <div class="col-md-12">
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -55,6 +56,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
         <?= Html::a('Create new apiary', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <?= Html::a(Yii::t('app_fontend_bttn','Previous'), ['view', 'id' => $model->previousId], ['class' => 'btn btn-default'.(empty($model->previousId)?' disabled':'')]); ?>
+        </div>
+        <div class="col-md-6 text-right">
+            <?= Html::a(Yii::t('app_fontend_bttn','Next'), ['view', 'id' => $model->nextId], ['class' => 'btn btn-default'.(empty($model->nextId)?' disabled':'')]); ?>
+        </div>
+    </div>
+
 
 </div>
+<!-- http://getbootstrap.com/css -->

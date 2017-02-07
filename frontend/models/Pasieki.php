@@ -17,10 +17,8 @@ use dektrium\user\models\User;
 class Pasieki extends \yii\db\ActiveRecord
 {
 
-
-    public $address;
-    public $longitude;
-    public $latitude;
+  //  public $nextId;
+  //  public $previousId;
     
     /**
      * @inheritdoc
@@ -67,5 +65,19 @@ class Pasieki extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Pnie::className(), ['id_pasieki' => 'id']);
     }
+
+    public function getNextId() {
+        $prev = $this->find()->where(['>', 'id', $this->id])->orderBy('id asc')->one();
+        if($prev!==null)
+            return $prev->id;
+        return null;
+    }
+    public function getPreviousId() {
+        $prev = $this->find()->where(['<', 'id', $this->id])->orderBy('id desc')->one();
+        if($prev!==null)
+            return $prev->id;
+        return null;
+    }
+  
   
 }
