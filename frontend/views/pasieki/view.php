@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use voime\GoogleMaps\Map;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Pasieki */
@@ -12,18 +13,37 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pasieki-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
             'nazwa',
-            'lokalizacja',
             'status',
             
         ],
     ]) ?>
+
+    <p>
+       <?php
+           echo Map::widget([
+            'zoom' => 9,
+            'center' => [explode(",", $model->lokalizacja, 2)[0],explode(",", $model->lokalizacja, 2)[1]],
+            'width' => '100%',
+            'height' => '240px',
+             'mapType' => Map::MAP_TYPE_HYBRID,
+            'apiKey'=> 'AIzaSyCDNigM5ah2vT2IxRNUsyHh0m-3W3qtZYQ',
+            'markers' => [
+                [
+                    'position' => [explode(",", $model->lokalizacja, 2)[0],explode(",", $model->lokalizacja, 2)[1]],
+                    'title' => $model->nazwa,
+                    'content' => $model->nazwa,
+                ],
+
+            ]
+           ]);
+        ?>
+   </p>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -34,6 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'method' => 'post',
             ],
         ]) ?>
+        <?= Html::a('Create new apiary', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
 </div>

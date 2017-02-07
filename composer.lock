@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "20cb135cda13db93d39c4b3b8206491c",
+    "content-hash": "b7e7e87bc0d92249dcda24f8f9fa7ce1",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -763,6 +763,51 @@
             "time": "2015-04-21 15:38:40"
         },
         {
+            "name": "kolyunya/yii2-map-input-widget",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kolyunya/yii2-map-input-widget.git",
+                "reference": "8ebde833307e630446aa6a482d244cdea5e4cf98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kolyunya/yii2-map-input-widget/zipball/8ebde833307e630446aa6a482d244cdea5e4cf98",
+                "reference": "8ebde833307e630446aa6a482d244cdea5e4cf98",
+                "shasum": ""
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "kolyunya\\yii2\\": "sources"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU GPL v3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Oleynikov Nikolay",
+                    "email": "OleynikovNY@mail.ru",
+                    "homepage": "http://github.com/Kolyunya/"
+                }
+            ],
+            "description": "Yii2 map input widget. Allows you to select geographcal coordinates via a human-friendly inteface.",
+            "homepage": "https://github.com/Kolyunya/yii2-map-input-widget",
+            "keywords": [
+                "coordinates",
+                "extension",
+                "geo-coordinates",
+                "geocoding",
+                "input",
+                "map",
+                "widget",
+                "yii2"
+            ],
+            "time": "2016-01-12T21:45:32+00:00"
+        },
+        {
             "name": "swiftmailer/swiftmailer",
             "version": "5.x-dev",
             "source": {
@@ -815,6 +860,46 @@
                 "mailer"
             ],
             "time": "2016-12-29 10:10:06"
+        },
+        {
+            "name": "voime/yii2-google-maps",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/voime/yii2-google-maps.git",
+                "reference": "55771f64fb8ff82419ff4ee13ab7d8a3e67b24f4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/voime/yii2-google-maps/zipball/55771f64fb8ff82419ff4ee13ab7d8a3e67b24f4",
+                "reference": "55771f64fb8ff82419ff4ee13ab7d8a3e67b24f4",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "voime\\GoogleMaps\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Arvi Võime",
+                    "email": "avoime@gmail.com"
+                }
+            ],
+            "description": "Google Maps Yii2 wrapper",
+            "keywords": [
+                "extension",
+                "yii2"
+            ],
+            "time": "2016-04-13T12:58:11+00:00"
         },
         {
             "name": "yiisoft/yii2",
@@ -1595,6 +1680,106 @@
             "time": "2016-11-02 14:11:11"
         },
         {
+            "name": "ibrarturi/yii2-latlng-finder",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ibrarturi/yii2-latlon-finder.git",
+                "reference": "7c6b0bafdf16d42bbdf294a83eb3df1d5f1ca134"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ibrarturi/yii2-latlon-finder/zipball/7c6b0bafdf16d42bbdf294a83eb3df1d5f1ca134",
+                "reference": "7c6b0bafdf16d42bbdf294a83eb3df1d5f1ca134",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "ibrarturi\\latlngfinder\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ibrar Turi",
+                    "email": "ibrarturi@gmail.com"
+                }
+            ],
+            "description": "Find Latitude and Longitude using google maps",
+            "keywords": [
+                "coordinates",
+                "extension",
+                "finder",
+                "google map",
+                "latitude",
+                "longitude",
+                "picker",
+                "yii2"
+            ],
+            "time": "2015-12-17T10:25:24+00:00"
+        },
+        {
+            "name": "kalyabin/yii2-select-google-map-location",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kalyabin/yii2-select-google-map-location.git",
+                "reference": "cf1611224606397aaeb416e84e0d7a08550c6b87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kalyabin/yii2-select-google-map-location/zipball/cf1611224606397aaeb416e84e0d7a08550c6b87",
+                "reference": "cf1611224606397aaeb416e84e0d7a08550c6b87",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "yiisoft/yii2": "2.*"
+            },
+            "type": "package",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "kalyabin\\maplocation\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Max Kalyabin",
+                    "email": "maksim@kalyabin.ru"
+                },
+                {
+                    "name": "Kirill Arutyunov",
+                    "email": "kirill@arutyunov.me"
+                }
+            ],
+            "description": "Yii2 widget to select location at map and choose map coordinates",
+            "keywords": [
+                "framework",
+                "input widget",
+                "location",
+                "map",
+                "widgets",
+                "yii2"
+            ],
+            "time": "2016-10-14 12:52:38"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.6.0",
             "source": {
@@ -1635,6 +1820,57 @@
                 "object graph"
             ],
             "time": "2017-01-26T22:05:40+00:00"
+        },
+        {
+            "name": "nkizza/yii2-map-pick",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nkizza/yii2-map-pick.git",
+                "reference": "4bf49d47e63af80f84a5ba3101d321daec3a2700"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nkizza/yii2-map-pick/zipball/4bf49d47e63af80f84a5ba3101d321daec3a2700",
+                "reference": "4bf49d47e63af80f84a5ba3101d321daec3a2700",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "nkizza\\mappick\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "nkizza",
+                    "email": "gotnomail@yandex.ru",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Coordinates picker widget for Yii2.",
+            "homepage": "https://github.com/nkizza/yii2-map-pick",
+            "keywords": [
+                "extension",
+                "latitude",
+                "longtitude",
+                "map",
+                "maps",
+                "nkizza",
+                "widget",
+                "yandex maps",
+                "yii",
+                "yii 2",
+                "yii2"
+            ],
+            "time": "2016-10-22T01:07:45+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
