@@ -16,6 +16,12 @@ use dektrium\user\models\User;
  */
 class Pasieki extends \yii\db\ActiveRecord
 {
+
+
+    public $address;
+    public $longitude;
+    public $latitude;
+    
     /**
      * @inheritdoc
      */
@@ -33,7 +39,7 @@ class Pasieki extends \yii\db\ActiveRecord
             [['id_user', 'status'], 'integer'],
             [['nazwa', 'lokalizacja', 'status'], 'required'],
             [['nazwa'], 'string', 'max' => 60],
-            [['lokalizacja'], 'string', 'max' => 30],
+            [['lokalizacja'], 'string', 'max' => 38],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
         ];
     }
