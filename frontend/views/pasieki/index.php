@@ -30,7 +30,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_user',
             'nazwa',
             'lokalizacja',
             'status',
@@ -38,7 +37,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
-    
     <?php Pjax::end(); ?>
 </div>
