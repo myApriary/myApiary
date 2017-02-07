@@ -39,7 +39,7 @@ AppAsset::register($this);
         ],
     ]);
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Zaloguj', 'url' => ['/user/security/login']];
+        $menuItems[] = ['label' => Yii::t('app_frontend','Sign in'), 'url' => ['/user/security/login']];
     } else {
 		$menuItems = [
 			['label' => 'Home', 'url' => ['/site/index']],
@@ -50,9 +50,8 @@ AppAsset::register($this);
             'linkOptions' => ['data-method' => 'post']
         ];
     }
-	$menuItems[] = ['label' => 'EN', 'url' => [substr(\yii\helpers\Url::current(), 3), 'language' => 'en']];
-    $menuItems[] = ['label' => 'PL', 'url' => [substr(\yii\helpers\Url::current(), 3), 'language' => 'pl']];
-
+    $menuItems[] = ['label' => 'EN', 'url' => [substr(\yii\helpers\Url::current(), 3), 'language' => 'en'], 'active'=>Yii::$app->language==='en-US',];
+    $menuItems[] = ['label' => 'PL', 'url' => [substr(\yii\helpers\Url::current(), 3), 'language' => 'pl'], 'active'=>Yii::$app->language==='pl-PL',];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
