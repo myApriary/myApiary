@@ -28,7 +28,7 @@ CREATE TABLE `SourceMessage` (
   `category` varchar(32) DEFAULT 'app_frontend',
   `message` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `auth_assignment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -174,14 +174,20 @@ DROP TABLE IF EXISTS `pasieki`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pasieki` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ts_insert` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ts_update` datetime DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
   `nazwa` varchar(60) NOT NULL,
   `lokalizacja` varchar(30) NOT NULL,
-  `status` int(11) NOT NULL,
+  `type` int(11) NOT NULL DEFAULT '1',
+  `status` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`),
+  KEY `type` (`type`),
   CONSTRAINT `pasieki_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `pnie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -237,6 +243,20 @@ CREATE TABLE `social_account` (
   KEY `fk_user_account` (`user_id`),
   CONSTRAINT `fk_user_account` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `status`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `status` (
+  `id` int(11) NOT NULL,
+  `table_name` varchar(32) NOT NULL,
+  `column_name` varchar(32) NOT NULL,
+  `group_name` varchar(32) DEFAULT NULL,
+  `order_int` int(11) NOT NULL DEFAULT '1',
+  `label` varchar(64) NOT NULL,
+  `icon` varchar(128) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `token`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
