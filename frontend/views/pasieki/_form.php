@@ -1,8 +1,9 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
-
+//use yii\widgets\ActiveForm;
+use kartik\form\ActiveForm;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Pasieki */
@@ -15,7 +16,23 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_user')->textInput() ?>
+
+    
+    <?=$form->field($model, 'start_date')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => ''],
+        'pluginOptions' => [
+            'autoclose'=>true,
+            'format'=>'yyyy-MM-dd',
+        ]
+    ]); ?>
+    
+    <?=$form->field($model, 'end_date')->widget(DatePicker::classname(), [
+        'options' => ['placeholder' => ''],
+        'pluginOptions' => [
+            'autoclose'=>true,
+            'format'=>'yyyy-MM-dd',
+        ]
+    ]); ?>
 
     <?= $form->field($model, 'nazwa')->textInput(['maxlength' => true]) ?>
 
@@ -35,11 +52,15 @@ use yii\widgets\ActiveForm;
     ]
     ); ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'type')->textInput() ?>
 
+    <?= $form->field($model, 'status')->textInput() ?>
+    
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
+    
+
 </div>

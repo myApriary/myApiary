@@ -18,9 +18,14 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
+            'start_date',
+            [
+                'attribute' => 'end_date',
+                'visible' => (empty($model->end_date)? false : true)
+            ],
             'nazwa',
-            'status',
-            
+            'typeLabel',
+            'statusLabel',
         ],
     ]) ?>
 

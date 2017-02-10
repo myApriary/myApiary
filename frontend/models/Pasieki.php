@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use Yii;
 use dektrium\user\models\User;
+use frontend\models\Status;
 
 /**
  * This is the model class for table "pasieki".
@@ -34,11 +35,16 @@ class Pasieki extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'status'], 'integer'],
-            [['nazwa', 'lokalizacja', 'status'], 'required'],
+            [['id_user', 'type', 'status'], 'integer'],
+            [['nazwa', 'lokalizacja', 'type', 'status', 'start_date'], 'required'],
             [['nazwa'], 'string', 'max' => 60],
+            //[['start_date', 'end_date'], 'date'],
+            //['start_date', 'compare', 'compareValue'=>'end_date', 'operator' => '<', 'type' => 'date'],
             [['lokalizacja'], 'string', 'max' => 38],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
+            [['type'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['type' => 'id']],
+            [['status'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['status' => 'id']],
+    
         ];
     }
 
@@ -49,10 +55,16 @@ class Pasieki extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'id',
+            'ts_insert' => Yii::t('app_frontend','inserted'),
+            'ts_update' => Yii::t('app_frontend','updated'),
+            'start_date' => Yii::t('app_frontend_apiary','started'),
+            'end_date' => Yii::t('app_frontend_apiary','ended'),
             'id_user' => 'user id',
             'nazwa' => Yii::t('app_frontend','name'),
             'lokalizacja' => Yii::t('app_frontend','location'),
             'status' => Yii::t('app_frontend','status'),
+            'statusLabel' => Yii::t('app_frontend','status'),
+            'typeLabel' => Yii::t('app_frontend','type'),
         ];
     }
     
@@ -78,6 +90,47 @@ class Pasieki extends \yii\db\ActiveRecord
             return $prev->id;
         return null;
     }
-  
-  
+    
+    public function getStatus0() {
+        return $this->hasOne(Status::className(), ['id' => 'status']);
+    }
+    
+     public function getType0() {
+        return $this->hasOne(Status::className(), ['id' => 'type']);
+    }
+    
+     public function getTypeLabel() {
+        return Yii::t('app_frontend_apiary', $this->type0->label);
+        
+    }
+     public function getStatusLabel() {
+        return Yii::t('app_frontend_apiary', $this->status0->label);
+        
+    }
+    
+public function beforeSave($insert)
+{
+    if (parent::beforeSave($insert)) {
+        $this->id_user = \Yii::$app->user->getId();
+        return true;
+    } else {
+        return false;
+    }
 }
+/*
+    public function beforeDelete()
+    {
+        if (parent::beforeDelete()) {
+                if ($this->id > 0) {
+                    $this->status = -100;
+                    $this->update(false, ['status']);
+                }
+            return false;
+        } else {
+            return false;
+        }
+    }
+*/
+}
+//ALTER TABLE pasieki ADD CHECK (end_date >= start_date);
+//ALTER TABLE pasieki ADD CONSTRAINT CK_end_date_vs_start_date CHECK CHECK (end_date >= start_date);
