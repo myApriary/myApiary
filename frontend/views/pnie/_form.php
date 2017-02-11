@@ -14,22 +14,28 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_pasieki')->textInput() ?>
 
-    <?= $form->field($model, 'typ')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'type')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'rodzaj_ramki')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'kind_of_frame')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'pojemnosc')->textInput() ?>
+    <?= $form->field($model, 'capacity')->textInput() ?>
 
-    <?= $form->field($model, 'ilosc_ramek')->textInput() ?>
+    <?= $form->field($model, 'number_of_frames')->textInput() ?>
 
-    <?= $form->field($model, 'data')->textInput() ?>
+    <?= $form->field($model, 'start_data')->textInput() ?>
 
-    <?= $form->field($model, 'nazwa')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'end_date')->textInput() ?>
 
-    <?= $form->field($model, 'sila_rodziny')->textInput() ?>
+    <?= $form->field($model, 'ts_insert')->textInput() ?>
+
+    <?= $form->field($model, 'ts_update')->textInput() ?>
+
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'family_condition')->textInput() ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton(Yii::t('app_frontend', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

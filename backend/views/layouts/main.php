@@ -5,10 +5,13 @@
 
 use backend\assets\AppAsset;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
+use kartik\sidenav\SideNav;
+use kartik\icons\Icon;
 
 AppAsset::register($this);
 ?>
@@ -28,7 +31,7 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'myApiary',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -54,22 +57,63 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
-        <?= Breadcrumbs::widget([
-            'homeLink' => [
-                'label' => '<i class="glyphicon glyphicon-home"></i>',
-                'url' => Yii::$app->homeUrl,
-                'encode' => false// Requested feature
-            ],
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= Alert::widget() ?>
-        <?= $content ?>
+		<?php if(!Yii::$app->user->isGuest): ?>
+		<?= Alert::widget() ?>
+        <div class="row">
+            <div class="col-md-2">
+                <?php 
+                
+                if (!Yii::$app->user->isGuest) {
+                 echo SideNav::widget([
+                    'type' => SideNav::TYPE_DEFAULT,
+                    'encodeLabels' => false,
+                    'activateItems' => true,
+                    'heading' => false,
+                    'items' => [
+                        [
+                            'url' => Url::to(['/source-message/']),
+                            'label' => 'sources',
+                            'icon' => 'glyphicon glyphicon-file',
+                            'active' => Yii::$app->controller->id==='source-message',
+                        ],
+                        [
+                            'url' => Url::to(['/message/']),
+                            'label' => 'messages' ,
+                            'icon' => 'glyphicon glyphicon-envelope',
+                            'active' => Yii::$app->controller->id==='message',
+                        ],
+                        [
+                            'url' => Url::to(['/source-message/']),
+                            'label' => 'new translation',
+                            'icon' => 'glyphicon glyphicon-plus',
+                            'active' => Yii::$app->controller->id==='new-translation',
+                        ],
+  
+                      
+                    ],
+                ]);}; ?>             
+            </div>
+            <div class="col-md-10">
+                <?php echo Breadcrumbs::widget([
+                        'homeLink' => [
+                            'label' => '<i class=" glyphicon glyphicon-home"></i>',
+                            'url' => Yii::$app->homeUrl,
+                            'encode' => false// Requested feature
+                        ],
+                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                ]); ?>
+                <?= $content ?>
+            </div>
+        </div>
+		<?php else: ?>
+			<?= $content ?>
+		<?php endif ?>
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; myApiary <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

@@ -28,7 +28,7 @@ CREATE TABLE `SourceMessage` (
   `category` varchar(32) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT 'app_frontend',
   `message` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `auth_assignment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -190,7 +190,7 @@ CREATE TABLE `pasieki` (
   CONSTRAINT `pasieki_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
   CONSTRAINT `pasieki_ibfk_2` FOREIGN KEY (`status`) REFERENCES `status` (`id`),
   CONSTRAINT `pasieki_ibfk_3` FOREIGN KEY (`type`) REFERENCES `status` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `pnie`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -198,13 +198,16 @@ DROP TABLE IF EXISTS `pnie`;
 CREATE TABLE `pnie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pasieki` int(11) DEFAULT NULL,
-  `typ` varchar(30) NOT NULL,
-  `rodzaj_ramki` varchar(30) NOT NULL,
-  `pojemnosc` int(11) NOT NULL,
-  `ilosc_ramek` int(11) NOT NULL,
-  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `nazwa` varchar(30) NOT NULL,
-  `sila_rodziny` int(11) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `kind_of_frame` varchar(30) NOT NULL,
+  `capacity` int(11) NOT NULL,
+  `number_of_frames` int(11) NOT NULL,
+  `start_data` date DEFAULT '0000-00-00',
+  `end_date` date DEFAULT '0000-00-00',
+  `ts_insert` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(30) NOT NULL,
+  `family_condition` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_pasieki` (`id_pasieki`),
   CONSTRAINT `pnie_ibfk_1` FOREIGN KEY (`id_pasieki`) REFERENCES `pasieki` (`id`)

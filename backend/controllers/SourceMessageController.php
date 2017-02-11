@@ -10,9 +10,9 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SourceController implements the CRUD actions for SourceMessage model.
+ * SourceMessageController implements the CRUD actions for SourceMessage model.
  */
-class SourceController extends Controller
+class SourceMessageController extends Controller
 {
     /**
      * @inheritdoc

@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel frontend\models\PnieSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = ucfirst(Yii::t('app_frontend','beehives'));
+$this->title = ucfirst(Yii::t('app_frontend', 'beehives'));
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pnie-index">
@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(ucfirst(Yii::t('app_frontend_bttn','create')) . ' ' . Yii::t('app_frontend','beehive'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(ucfirst(Yii::t('app_frontend_bttn', 'create')) . ' ' . Yii::t('app_frontend', 'beehive')  , ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -28,13 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'id_pasieki',
-            'typ',
-            'rodzaj_ramki',
-            'pojemnosc',
-            // 'ilosc_ramek',
-            // 'data',
-            // 'nazwa',
-            // 'sila_rodziny',
+            'type',
+            'kind_of_frame',
+            'capacity',
+            // 'number_of_frames',
+            // 'start_data',
+            // 'end_date',
+            // 'ts_insert',
+            // 'ts_update',
+            // 'name',
+            // 'family_condition',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

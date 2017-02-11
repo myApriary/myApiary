@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b30748fc037593b70d422bca12b91cd",
+    "content-hash": "87200222dbfc57ab957f0a94378244e6",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -162,6 +162,48 @@
                 "jquery",
                 "mask",
                 "plugins"
+            ]
+        },
+        {
+            "name": "bower-asset/moment",
+            "version": "2.17.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/moment/moment.git",
+                "reference": "b8a297c1f99b3918f44dd9e3d7bd59379a876ba6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/moment/moment/zipball/b8a297c1f99b3918f44dd9e3d7bd59379a876ba6",
+                "reference": "b8a297c1f99b3918f44dd9e3d7bd59379a876ba6",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "moment.js",
+                "bower-asset-ignore": [
+                    "**/.*",
+                    "benchmarks",
+                    "bower_components",
+                    "meteor",
+                    "node_modules",
+                    "scripts",
+                    "tasks",
+                    "test",
+                    "component.json",
+                    "composer.json",
+                    "CONTRIBUTING.md",
+                    "ender.js",
+                    "Gruntfile.js",
+                    "Moment.js.nuspec",
+                    "package.js",
+                    "package.json",
+                    "ISSUE_TEMPLATE.md",
+                    "typing-tests"
+                ]
+            },
+            "license": [
+                "MIT"
             ]
         },
         {
@@ -779,12 +821,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-widget-select2.git",
-                "reference": "e135c25d7b367e4b63613f7c03f884535f1072f5"
+                "reference": "168bc215c9b18f571c5c533f5b8d79d2a189eb5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/e135c25d7b367e4b63613f7c03f884535f1072f5",
-                "reference": "e135c25d7b367e4b63613f7c03f884535f1072f5",
+                "url": "https://api.github.com/repos/kartik-v/yii2-widget-select2/zipball/168bc215c9b18f571c5c533f5b8d79d2a189eb5b",
+                "reference": "168bc215c9b18f571c5c533f5b8d79d2a189eb5b",
                 "shasum": ""
             },
             "require": {
@@ -824,7 +866,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-12-30 03:26:33"
+            "time": "2017-02-11 11:04:12"
         },
         {
             "name": "kartik-v/yii2-widget-sidenav",
@@ -919,6 +961,53 @@
                 "yii2"
             ],
             "time": "2016-01-12T21:45:32+00:00"
+        },
+        {
+            "name": "nepstor/yii2-datetime-compare-validator",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nepstor/yii2-datetime-compare-validator.git",
+                "reference": "8c136302e390e0a017ad0ffcce6cb9c910394f98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nepstor/yii2-datetime-compare-validator/zipball/8c136302e390e0a017ad0ffcce6cb9c910394f98",
+                "reference": "8c136302e390e0a017ad0ffcce6cb9c910394f98",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/moment": "^2.14",
+                "yiisoft/yii2": "*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.0.*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "nepstor\\validators\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Krytskiy"
+                }
+            ],
+            "description": "Yii2 validator for compare datetime.",
+            "homepage": "https://github.com/nepstor/yii2-datetime-compare-validator",
+            "keywords": [
+                "datetime",
+                "datetime compare",
+                "extension",
+                "validator",
+                "yii2"
+            ],
+            "time": "2016-09-14T08:55:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1020,12 +1109,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "5c58feab4c2d967c347f983685f54bfb8506951e"
+                "reference": "55cbe844b641f712bfe5c9bb8ef675e6ef287b4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/5c58feab4c2d967c347f983685f54bfb8506951e",
-                "reference": "5c58feab4c2d967c347f983685f54bfb8506951e",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/55cbe844b641f712bfe5c9bb8ef675e6ef287b4c",
+                "reference": "55cbe844b641f712bfe5c9bb8ef675e6ef287b4c",
                 "shasum": ""
             },
             "require": {
@@ -1112,7 +1201,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-02-09 10:30:53"
+            "time": "2017-02-11 20:19:06"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -3367,12 +3456,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "7bfe34392a176ad1c60f6f4c033263612251fa3d"
+                "reference": "87afa5c4c495efba011e48710d3b9356542a43d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/7bfe34392a176ad1c60f6f4c033263612251fa3d",
-                "reference": "7bfe34392a176ad1c60f6f4c033263612251fa3d",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/87afa5c4c495efba011e48710d3b9356542a43d0",
+                "reference": "87afa5c4c495efba011e48710d3b9356542a43d0",
                 "shasum": ""
             },
             "require": {
@@ -3406,7 +3495,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2017-02-08 09:02:13"
+            "time": "2017-02-11 20:23:46"
         },
         {
             "name": "yiisoft/yii2-faker",
@@ -3414,12 +3503,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-faker.git",
-                "reference": "fbe20dabcfa75a755dcf271c34f4414d43418fbe"
+                "reference": "9c8e4be23d854f3a3aa4e120499eb67b6b024951"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-faker/zipball/fbe20dabcfa75a755dcf271c34f4414d43418fbe",
-                "reference": "fbe20dabcfa75a755dcf271c34f4414d43418fbe",
+                "url": "https://api.github.com/repos/yiisoft/yii2-faker/zipball/9c8e4be23d854f3a3aa4e120499eb67b6b024951",
+                "reference": "9c8e4be23d854f3a3aa4e120499eb67b6b024951",
                 "shasum": ""
             },
             "require": {
@@ -3453,7 +3542,7 @@
                 "faker",
                 "yii2"
             ],
-            "time": "2017-02-02 18:01:25"
+            "time": "2017-02-11 20:27:55"
         },
         {
             "name": "yiisoft/yii2-gii",
@@ -3516,7 +3605,8 @@
         "dektrium/yii2-rbac": 20,
         "kartik-v/yii2-icons": 20,
         "kartik-v/yii2-widget-activeform": 20,
-        "kartik-v/yii2-widget-datepicker": 20
+        "kartik-v/yii2-widget-datepicker": 20,
+        "kartik-v/yii2-widget-select2": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -3,6 +3,8 @@
 namespace backend\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
+
 
 /**
  * This is the model class for table "Message".
@@ -43,9 +45,9 @@ class Message extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'language' => 'Language',
-            'translation' => 'Translation',
+            'id' => 'id',
+            'language' => 'language',
+            'translation' => 'translation',
         ];
     }
 
@@ -53,6 +55,16 @@ class Message extends \yii\db\ActiveRecord
      * @return \yii\db\ActiveQuery
      */
     public function getId0()
+    {
+        return $this->hasOne(SourceMessage::className(), ['id' => 'id']);
+    }
+
+    public function sourceList(){
+
+        return ArrayHelper::map(SourceMessage::find()->all(),'id', 'message');
+    }
+
+    public function getSource()
     {
         return $this->hasOne(SourceMessage::className(), ['id' => 'id']);
     }

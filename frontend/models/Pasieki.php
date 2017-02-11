@@ -5,6 +5,7 @@ namespace frontend\models;
 use Yii;
 use dektrium\user\models\User;
 use frontend\models\Status;
+//use nepstor\validators\DateTimeCompareValidator;
 
 /**
  * This is the model class for table "pasieki".
@@ -38,8 +39,9 @@ class Pasieki extends \yii\db\ActiveRecord
             [['id_user', 'type', 'status'], 'integer'],
             [['nazwa', 'lokalizacja', 'type', 'status', 'start_date'], 'required'],
             [['nazwa'], 'string', 'max' => 60],
-            [['start_date', 'end_date'], 'date', 'format'=>'yyyy-MM-dd'],
-            ['end_date', 'compare', 'compareValue'=>'start_date', 'operator' => '>', 'type' => 'date', 'message'=>Yii::t('app_frontend','"ended" must be greater than "started"')],
+            [['start_date', 'end_date'], 'date', 'format'=>'YYYY-mm-dd'],
+            //['end_date', 'compareDate', 'compareAttribute'=>'start_date', 'operator' => '>', 'type' => 'date', 'message'=>Yii::t('app_frontend','"ended" must be greater than "started"')],
+            ['end_date', \nepstor\validators\DateTimeCompareValidator::className(), 'compareAttribute' => 'start_date', 'format' => 'Y-m-d', 'operator' => '>'],
             [['lokalizacja'], 'string', 'max' => 38],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
             [['type'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['type' => 'id']],
@@ -99,9 +101,12 @@ class Pasieki extends \yii\db\ActiveRecord
         return $this->hasOne(Status::className(), ['id' => 'type']);
     }
     
-    public function beforeSave($insert){
+    public function beforeSave($inster){
         if (parent::beforeSave($insert)) {
             $this->id_user = \Yii::$app->user->getId();
+            if(!$insert) {
+                $this->ts_update = date('Y-m-d H:i:s');
+            };
             return true;
         } else {
             return false;

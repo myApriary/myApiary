@@ -66,7 +66,6 @@ class Status extends \yii\db\ActiveRecord
     
     public function dropDown($tableName,$columnName){
         return ArrayHelper::map(Status::find()->where(['table_name' => $tableName, 'column_name'=>$columnName])->all(), 'id', 'labelT');
-        //return Array(['Tomala', 'Ola']);
     }
 
 

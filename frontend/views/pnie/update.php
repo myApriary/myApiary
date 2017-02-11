@@ -5,10 +5,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Pnie */
 
-$this->title = 'Update Pnie: ' . $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Pnies', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = Yii::t('app_frontend', 'Update {modelClass}: ', [
+    'modelClass' => 'Pnie',
+]) . $model->name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app_frontend', 'Pnies'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = Yii::t('app_frontend', 'Update');
 ?>
 <div class="pnie-update">
 

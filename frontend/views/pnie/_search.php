@@ -22,23 +22,29 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_pasieki') ?>
 
-    <?= $form->field($model, 'typ') ?>
+    <?= $form->field($model, 'type') ?>
 
-    <?= $form->field($model, 'rodzaj_ramki') ?>
+    <?= $form->field($model, 'kind_of_frame') ?>
 
-    <?= $form->field($model, 'pojemnosc') ?>
+    <?= $form->field($model, 'capacity') ?>
 
-    <?php // echo $form->field($model, 'ilosc_ramek') ?>
+    <?php // echo $form->field($model, 'number_of_frames') ?>
 
-    <?php // echo $form->field($model, 'data') ?>
+    <?php // echo $form->field($model, 'start_data') ?>
 
-    <?php // echo $form->field($model, 'nazwa') ?>
+    <?php // echo $form->field($model, 'end_date') ?>
 
-    <?php // echo $form->field($model, 'sila_rodziny') ?>
+    <?php // echo $form->field($model, 'ts_insert') ?>
+
+    <?php // echo $form->field($model, 'ts_update') ?>
+
+    <?php // echo $form->field($model, 'name') ?>
+
+    <?php // echo $form->field($model, 'family_condition') ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('app_frontend', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('app_frontend', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -1,16 +1,16 @@
 <?php
 
-namespace frontend\models;
+namespace backend\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\Pnie;
+use backend\models\Message;
 
 /**
- * PnieSearch represents the model behind the search form of `frontend\models\Pnie`.
+ * MessageSearch represents the model behind the search form of `backend\models\Message`.
  */
-class PnieSearch extends Pnie
+class MessageSearch extends Message
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class PnieSearch extends Pnie
     public function rules()
     {
         return [
-            [['id', 'id_pasieki', 'capacity', 'number_of_frames', 'family_condition'], 'integer'],
-            [['type', 'kind_of_frame', 'start_data', 'end_date', 'ts_insert', 'ts_update', 'name'], 'safe'],
+            [['id'], 'integer'],
+            [['language', 'translation'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class PnieSearch extends Pnie
      */
     public function search($params)
     {
-        $query = Pnie::find();
+        $query = Message::find();
 
         // add conditions that should always apply here
 
@@ -60,19 +60,10 @@ class PnieSearch extends Pnie
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_pasieki' => $this->id_pasieki,
-            'capacity' => $this->capacity,
-            'number_of_frames' => $this->number_of_frames,
-            'start_data' => $this->start_data,
-            'end_date' => $this->end_date,
-            'ts_insert' => $this->ts_insert,
-            'ts_update' => $this->ts_update,
-            'family_condition' => $this->family_condition,
         ]);
 
-        $query->andFilterWhere(['like', 'type', $this->type])
-            ->andFilterWhere(['like', 'kind_of_frame', $this->kind_of_frame])
-            ->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'language', $this->language])
+            ->andFilterWhere(['like', 'translation', $this->translation]);
 
         return $dataProvider;
     }

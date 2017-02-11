@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Pnie */
+/* @var $model backend\models\Message */
 
-$this->title = Yii::t('app_frontend', 'Create Pnie');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app_frontend', 'Pnies'), 'url' => ['index']];
+$this->title = 'Create Message';
+$this->params['breadcrumbs'][] = ['label' => 'Messages', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pnie-create">
+<div class="message-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
