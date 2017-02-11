@@ -9,7 +9,7 @@ use voime\GoogleMaps\Map;
 
 $this->title = Yii::t('app_frontend','Apiary') . ' ' . $model->nazwa;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app_frontend','Apiaries'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][] = $this->title; 
 ?>
 <div class="pasieki-view">
 
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <br>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-xs-12">
         <?= Html::a(ucfirst(Yii::t('app_frontend_bttn','update')), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a(ucfirst(Yii::t('app_frontend_bttn','delete')), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
@@ -65,10 +65,10 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <br>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-xs-6">
             <?= Html::a(ucfirst(Yii::t('app_frontend_female','previous')), ['view', 'id' => $model->previousId], ['class' => 'btn btn-default'.(empty($model->previousId)?' disabled':'')]); ?>
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-xs-6 text-right">
             <?= Html::a(ucfirst(Yii::t('app_frontend_female','next')), ['view', 'id' => $model->nextId], ['class' => 'btn btn-default'.(empty($model->nextId)?' disabled':'')]); ?>
         </div>
     </div>
