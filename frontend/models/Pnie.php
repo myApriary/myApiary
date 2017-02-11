@@ -47,15 +47,15 @@ class Pnie extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'id_pasieki' => 'Id Pasieki',
-            'typ' => 'Typ',
-            'rodzaj_ramki' => 'Rodzaj Ramki',
-            'pojemnosc' => 'Pojemnosc',
-            'ilosc_ramek' => 'Ilosc Ramek',
-            'data' => 'Data',
-            'nazwa' => 'Nazwa',
-            'sila_rodziny' => 'Sila Rodziny',
+            'id' => 'id',
+            'id_pasieki' => 'apiary id',
+            'typ' => Yii::t('app_frontend','type'),
+            'rodzaj_ramki' => Yii::t('app_frontend','kind of frame'),
+            'pojemnosc' => Yii::t('app_frontend','capacity'),
+            'ilosc_ramek' => Yii::t('app_frontend','number of frames'),
+            'data' => Yii::t('app_frontend','date'),
+            'nazwa' => Yii::t('app_frontend','name'),
+            'sila_rodziny' => Yii::t('app_frontend','family condition'),
         ];
     }
     

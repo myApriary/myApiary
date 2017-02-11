@@ -39,7 +39,7 @@ class Pasieki extends \yii\db\ActiveRecord
             [['nazwa', 'lokalizacja', 'type', 'status', 'start_date'], 'required'],
             [['nazwa'], 'string', 'max' => 60],
             [['start_date', 'end_date'], 'date', 'format'=>'yyyy-MM-dd'],
-            //['start_date', 'compare', 'compareValue'=>'end_date', 'operator' => '<', 'type' => 'date'],
+            ['end_date', 'compare', 'compareValue'=>'start_date', 'operator' => '>', 'type' => 'date', 'message'=>Yii::t('app_frontend','"ended" must be greater than "started"')],
             [['lokalizacja'], 'string', 'max' => 38],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
             [['type'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['type' => 'id']],
@@ -62,6 +62,7 @@ class Pasieki extends \yii\db\ActiveRecord
             'nazwa' => Yii::t('app_frontend','name'),
             'lokalizacja' => Yii::t('app_frontend','location'),
             'status' => Yii::t('app_frontend','status'),
+            'type' => Yii::t('app_frontend','type'),
             'status0.labelT' => Yii::t('app_frontend','status'),
             'type0.labelT' => Yii::t('app_frontend','type'),
         ];
@@ -98,16 +99,16 @@ class Pasieki extends \yii\db\ActiveRecord
         return $this->hasOne(Status::className(), ['id' => 'type']);
     }
     
-public function beforeSave($insert)
-{
-    if (parent::beforeSave($insert)) {
-        $this->id_user = \Yii::$app->user->getId();
-        return true;
-    } else {
-        return false;
+    public function beforeSave($insert){
+        if (parent::beforeSave($insert)) {
+            $this->id_user = \Yii::$app->user->getId();
+            return true;
+        } else {
+            return false;
+        }
     }
-}
-/*
+    
+    /*
     public function beforeDelete()
     {
         if (parent::beforeDelete()) {

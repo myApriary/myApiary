@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "status".
@@ -62,6 +63,12 @@ class Status extends \yii\db\ActiveRecord
         return Yii::t('app_frontend_apiary', $this->label);
         
     }
+    
+    public function dropDown($tableName,$columnName){
+        return ArrayHelper::map(Status::find()->where(['table_name' => $tableName, 'column_name'=>$columnName])->all(), 'id', 'labelT');
+        //return Array(['Tomala', 'Ola']);
+    }
+
 
     /**
      * @return \yii\db\ActiveQuery

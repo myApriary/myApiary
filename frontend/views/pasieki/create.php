@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Pasieki */
 
-$this->title = 'create new apiary';
-$this->params['breadcrumbs'][] = ['label' => 'apriaries', 'url' => ['index']];
+$this->title = ucfirst(Yii::t('app_frontend_bttn','create new apiary'));
+$this->params['breadcrumbs'][] = ['label' => ucfirst(Yii::t('app_frontend','apiaries')), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pasieki-create">

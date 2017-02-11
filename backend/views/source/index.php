@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\PnieSearch */
+/* @var $searchModel backend\models\SourceMessageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = ucfirst(Yii::t('app_frontend','beehives'));
+$this->title = 'Source Messages';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pnie-index">
+<div class="source-message-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(ucfirst(Yii::t('app_frontend_bttn','create')) . ' ' . Yii::t('app_frontend','beehive'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Source Message', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,14 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'id_pasieki',
-            'typ',
-            'rodzaj_ramki',
-            'pojemnosc',
-            // 'ilosc_ramek',
-            // 'data',
-            // 'nazwa',
-            // 'sila_rodziny',
+            'category',
+            'message:ntext',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
