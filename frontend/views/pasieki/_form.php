@@ -54,9 +54,9 @@ use kartik\date\DatePicker;
     ); ?>
 
     
-    <?= $form->field($model, 'type')->dropDownList(ArrayHelper::map(frontend\models\Status::find()->where(['table_name' => $model->tableName(), 'column_name'=>'type'])->all(), 'id', 'labelT'), ['maxlength' => true, 'prompt'=>'']) ?>
+    <?= $form->field($model, 'type')->dropDownList(ArrayHelper::map(frontend\models\Status::find()->where(['table_name' => $model->tableName(), 'column_name'=>'type'])->all(), 'id', 'labelT'), ['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'status')->dropDownList(ArrayHelper::map(frontend\models\Status::find()->where(['table_name' => $model->tableName(), 'column_name'=>'status'])->all(), 'id', 'labelT'), ['maxlength' => true, 'prompt'=>'']) ?>
+    <?= $form->field($model, 'status')->dropDownList(ArrayHelper::map(frontend\models\Status::find()->where(['table_name' => $model->tableName(), 'column_name'=>'status'])->all(), 'id', 'labelT'), ['maxlength' => true]) ?>
     
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? ucfirst(Yii::t('app_frontend_bttn','create')) : ucfirst(Yii::t('app_frontend_bttn','save')), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
