@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\ArrayHelper;
 //use yii\widgets\ActiveForm;
 use kartik\form\ActiveForm;
 use kartik\date\DatePicker;
@@ -22,7 +23,7 @@ use kartik\date\DatePicker;
         'options' => ['placeholder' => ''],
         'pluginOptions' => [
             'autoclose'=>true,
-            'format'=>'yyyy-MM-dd',
+            'format'=>'yyyy-mm-dd',
         ]
     ]); ?>
     
@@ -52,9 +53,10 @@ use kartik\date\DatePicker;
     ]
     ); ?>
 
-    <?= $form->field($model, 'type')->textInput() ?>
+    
+    <?= $form->field($model, 'type')->dropDownList(ArrayHelper::map(frontend\models\Status::find()->where(['table_name' => $model->tableName(), 'column_name'=>'type'])->all(), 'id', 'labelT'), ['maxlength' => true, 'prompt'=>'']) ?>
 
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'status')->dropDownList(ArrayHelper::map(frontend\models\Status::find()->where(['table_name' => $model->tableName(), 'column_name'=>'status'])->all(), 'id', 'labelT'), ['maxlength' => true, 'prompt'=>'']) ?>
     
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

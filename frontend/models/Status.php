@@ -57,6 +57,11 @@ class Status extends \yii\db\ActiveRecord
             'icon' => Yii::t('app_frontend', 'Icon'),
         ];
     }
+    
+     public function getLabelT() {
+        return Yii::t('app_frontend_apiary', $this->label);
+        
+    }
 
     /**
      * @return \yii\db\ActiveQuery

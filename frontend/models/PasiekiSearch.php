@@ -19,7 +19,7 @@ class PasiekiSearch extends Pasieki
     {
         return [
             [['id', 'id_user', 'status'], 'integer'],
-            [['nazwa', 'lokalizacja'], 'safe'],
+            [['nazwa', 'lokalizacja', 'status0.labelT', 'type0.labelT'], 'safe'],
         ];
     }
 
@@ -42,6 +42,9 @@ class PasiekiSearch extends Pasieki
     public function search($params)
     {
         $query = Pasieki::find();
+        
+        $query->joinWith(['status0' => function($query) { $query->from(['status' => 'status']); }]);
+        $query->joinWith(['type0' => function($query) { $query->from(['type' => 'status']); }]);
 
         // add conditions that should always apply here
 
@@ -50,6 +53,16 @@ class PasiekiSearch extends Pasieki
         ]);
 
         $this->load($params);
+        
+        $dataProvider->sort->attributes['status0.labelT'] = [
+            'asc' => ['status.label' => SORT_ASC],
+            'desc' => ['status.label' => SORT_DESC],
+        ];
+        
+        $dataProvider->sort->attributes['type0.labelT'] = [
+            'asc' => ['status.label' => SORT_ASC],
+            'desc' => ['status.label' => SORT_DESC],
+        ];
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -66,7 +79,16 @@ class PasiekiSearch extends Pasieki
 
         $query->andFilterWhere(['like', 'nazwa', $this->nazwa])
             ->andFilterWhere(['like', 'lokalizacja', $this->lokalizacja]);
+            
+        $query->andFilterWhere(['like', 'status.label',  $this->getAttribute('status0.labelT')]);
+        $query->andFilterWhere(['like', 'status.label',  $this->getAttribute('type0.labelT')]);
 
         return $dataProvider;
+    }
+
+    public function attributes()
+    {
+        // add related fields to searchable attributes
+        return array_merge(parent::attributes(), ['status0.labelT', 'type0.labelT']);
     }
 }

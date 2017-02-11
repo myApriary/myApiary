@@ -38,13 +38,12 @@ class Pasieki extends \yii\db\ActiveRecord
             [['id_user', 'type', 'status'], 'integer'],
             [['nazwa', 'lokalizacja', 'type', 'status', 'start_date'], 'required'],
             [['nazwa'], 'string', 'max' => 60],
-            //[['start_date', 'end_date'], 'date'],
+            [['start_date', 'end_date'], 'date', 'format'=>'yyyy-MM-dd'],
             //['start_date', 'compare', 'compareValue'=>'end_date', 'operator' => '<', 'type' => 'date'],
             [['lokalizacja'], 'string', 'max' => 38],
             [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
             [['type'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['type' => 'id']],
             [['status'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['status' => 'id']],
-    
         ];
     }
 
@@ -63,8 +62,8 @@ class Pasieki extends \yii\db\ActiveRecord
             'nazwa' => Yii::t('app_frontend','name'),
             'lokalizacja' => Yii::t('app_frontend','location'),
             'status' => Yii::t('app_frontend','status'),
-            'statusLabel' => Yii::t('app_frontend','status'),
-            'typeLabel' => Yii::t('app_frontend','type'),
+            'status0.labelT' => Yii::t('app_frontend','status'),
+            'type0.labelT' => Yii::t('app_frontend','type'),
         ];
     }
     
@@ -97,15 +96,6 @@ class Pasieki extends \yii\db\ActiveRecord
     
      public function getType0() {
         return $this->hasOne(Status::className(), ['id' => 'type']);
-    }
-    
-     public function getTypeLabel() {
-        return Yii::t('app_frontend_apiary', $this->type0->label);
-        
-    }
-     public function getStatusLabel() {
-        return Yii::t('app_frontend_apiary', $this->status0->label);
-        
     }
     
 public function beforeSave($insert)
