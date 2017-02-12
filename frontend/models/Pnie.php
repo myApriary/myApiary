@@ -61,10 +61,12 @@ class Pnie extends \yii\db\ActiveRecord
             'number_of_frames' => Yii::t('app_frontend', 'number of frames'),
             'start_data' => Yii::t('app_frontend', 'started'),
             'end_date' => Yii::t('app_frontend', 'ended'),
-            'ts_insert',
+            'ts_insert' => '',
             'ts_update' => Yii::t('app_frontend', 'updated'),
             'name' => Yii::t('app_frontend', 'name'),
             'family_condition' => Yii::t('app_frontend', 'family condition'),
+            'type0.labelT' => Yii::t('app_frontend', 'type'),
+            'kindOfFrame0.labelT' => Yii::t('app_frontend', 'kind of frame'),
         ];
     }
 
@@ -79,5 +81,15 @@ class Pnie extends \yii\db\ActiveRecord
     public function apiaryList()
     {
          return ArrayHelper::map(Pasieki::find()->all(),'id', 'nazwa');
+    }
+    
+    public function getType0() 
+    {
+        return $this->hasOne(Status::className(), ['id' => 'type']);
+    }
+    
+    public function getKindOfFrame0() 
+    {
+        return $this->hasOne(Status::className(), ['id' => 'kind_of_frame']);
     }
 }

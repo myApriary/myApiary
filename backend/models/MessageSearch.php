@@ -42,10 +42,11 @@ class MessageSearch extends Message
     public function search($params)
     {
         $query = Message::find();
-        
-        $query->joinWith(['source' => function($query) { $query->from(['source' => 'SourceMessage']); }]);
+        //$query->rightJoin(['source' => function($query) { $query->from(['source' => 'SourceMessage']); }, 'SourceMessage.id = Message.id']);
+        $query->rightJoin('SourceMessage', 'SourceMessage.id = Message.id');
+       
         //$query->joinWith(['source' => function($query) { $query->from(['source' => 'SourceMessage']); }]);
-
+        
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

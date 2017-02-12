@@ -15,8 +15,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Yii::t('app_frontend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app_frontend', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(ucfirst(Yii::t('app_frontend_bttn', 'update')), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(ucfirst(Yii::t('app_frontend_bttn', 'delete')), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => Yii::t('app_frontend', 'Are you sure you want to delete this item?'),
@@ -29,15 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'id_pasieki',
-            'type',
-            'kind_of_frame',
+            'pasieka.nazwa',
+            'type0.labelT',
+            'kindOfFrame0.labelT',
             'capacity',
             'number_of_frames',
             'start_data',
             'end_date',
-            'ts_insert',
-            'ts_update',
             'name',
             'family_condition',
         ],

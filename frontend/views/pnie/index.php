@@ -27,9 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'pasieka',
-            'type',
-            'kind_of_frame',
+            'pasieka.nazwa',
+            'type0.labelT',
+            'kindOfFrame0.labelT',
             'capacity',
             // 'number_of_frames',
             // 'start_data',
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'ts_insert',
             // 'ts_update',
             // 'name',
-            // 'family_condition',
+            'family_condition',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
