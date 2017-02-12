@@ -12,7 +12,7 @@ use yii\widgets\Breadcrumbs;
 use common\widgets\Alert;
 use kartik\sidenav\SideNav;
 use kartik\icons\Icon;
-
+Icon::map($this);
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -72,21 +72,21 @@ AppAsset::register($this);
                     'items' => [
                         [
                             'url' => Url::to(['/source-message/']),
-                            'label' => 'sources',
-                            'icon' => 'glyphicon glyphicon-file',
+                            'label' => Icon::show('envelope-o',['style'=>'width:25px']) . 'sources',
+                            //'icon' => 'glyphicon glyphicon-file',
                             'active' => Yii::$app->controller->id==='source-message',
                         ],
                         [
                             'url' => Url::to(['/message/']),
-                            'label' => 'messages' ,
-                            'icon' => 'glyphicon glyphicon-envelope',
-                            'active' => Yii::$app->controller->id==='message',
+                            'label' => Icon::show('envelope',['style'=>'width:25px']) . 'messages' ,
+                            //'icon' => 'glyphicon glyphicon-envelope',
+                            'active' => Yii::$app->controller->id==='message' && !(Yii::$app->controller->action->id==='translate'),
                         ],
                         [
-                            'url' => Url::to(['/source-message/']),
-                            'label' => 'new translation',
-                            'icon' => 'glyphicon glyphicon-plus',
-                            'active' => Yii::$app->controller->id==='new-translation',
+                            'url' => Url::to(['/message/translate']),
+                            'label' => Icon::show('flag',['style'=>'width:25px']) . 'new translation',
+                            //'icon' => 'glyphicon glyphicon-plus',
+                            'active' => Yii::$app->controller->action->id==='translate' && Yii::$app->controller->id==='message',
                         ],
   
                       

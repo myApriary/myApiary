@@ -19,7 +19,7 @@ class MessageSearch extends Message
     {
         return [
             [['id'], 'integer'],
-            [['language', 'translation'], 'safe'],
+            [['language', 'translation', 'source.category', 'source.message'], 'safe'],
         ];
     }
 
@@ -42,6 +42,9 @@ class MessageSearch extends Message
     public function search($params)
     {
         $query = Message::find();
+        
+        $query->joinWith(['source' => function($query) { $query->from(['source' => 'SourceMessage']); }]);
+        //$query->joinWith(['source' => function($query) { $query->from(['source' => 'SourceMessage']); }]);
 
         // add conditions that should always apply here
 
@@ -50,6 +53,16 @@ class MessageSearch extends Message
         ]);
 
         $this->load($params);
+        
+        $dataProvider->sort->attributes['source.category'] = [
+            'asc' => ['source.category' => SORT_ASC],
+            'desc' => ['source.category' => SORT_DESC],
+        ];
+        
+        $dataProvider->sort->attributes['source.message'] = [
+            'asc' => ['source.message' => SORT_ASC],
+            'desc' => ['source.message' => SORT_DESC],
+        ];
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -64,7 +77,16 @@ class MessageSearch extends Message
 
         $query->andFilterWhere(['like', 'language', $this->language])
             ->andFilterWhere(['like', 'translation', $this->translation]);
+            
+        $query->andFilterWhere(['like', 'source.category',  $this->getAttribute('source.category')]);
+        $query->andFilterWhere(['like', 'source.message',  $this->getAttribute('source.message')]);
 
         return $dataProvider;
+    }
+    
+    public function attributes()
+    {
+        // add related fields to searchable attributes
+        return array_merge(parent::attributes(), ['source.category','source.message']);
     }
 }
