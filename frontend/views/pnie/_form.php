@@ -19,7 +19,7 @@ use kartik\date\DatePicker;
 
     <div class="row">
      <div class="col-xs-4">
-            <?= $form->field($model, 'pasieka')->dropDownList($model->apiaryList()) ?>
+            <?= $form->field($model, 'pasieka')->dropDownList($model->apiaryList())->label(Yii::t('app_frontend','apiary')) ?>
         </div>
         <div class="col-xs-4">
             <?= $form->field($model, 'type')->dropDownList(frontend\models\Status::dropDown($model->tableName(),'type'),['maxlength' => true]) ?>
@@ -65,7 +65,7 @@ use kartik\date\DatePicker;
             ]); ?>
         </div>
     </div>
-    
+
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app_frontend', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
