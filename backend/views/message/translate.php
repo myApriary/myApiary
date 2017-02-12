@@ -8,7 +8,7 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\MessageSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-
+print_r($dataProvider->models);exit;
 $this->title = 'Messages';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -24,12 +24,19 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'pjax'=>true,
+        'pjax'=>false,
         'columns' => [
-            
-            
-            'source.category',
-            'source.message',
+
+            [
+                'class'=>'kartik\grid\EditableColumn',
+                'attribute'=>'message',
+                'pageSummary'=>false,
+            ],
+            [
+                'class'=>'kartik\grid\EditableColumn',
+                'attribute'=>'category',
+                'pageSummary'=>false,
+            ],
             [
                 'class'=>'kartik\grid\EditableColumn',
                 'attribute'=>'language',
@@ -43,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
 
             ['class' => 'yii\grid\ActionColumn'],
+
         ],
         
     ]); ?>

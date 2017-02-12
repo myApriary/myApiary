@@ -31,7 +31,7 @@ class Message extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id', 'language'], 'required'],
+            [['id', 'language',], 'required'],
             [['id'], 'integer'],
             [['translation'], 'string'],
             [['language'], 'string', 'max' => 16],
@@ -67,5 +67,20 @@ class Message extends \yii\db\ActiveRecord
     public function getSource()
     {
         return $this->hasOne(SourceMessage::className(), ['id' => 'id']);
+    }
+
+    public function getCategory()
+    {
+        return $this->source->category;
+    }
+
+    public function getMessage()
+    {
+        return $this->source->message;
+    }
+
+    public static function primaryKey()
+    {
+        return array('index0');
     }
 }

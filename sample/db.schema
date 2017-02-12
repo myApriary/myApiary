@@ -14,12 +14,30 @@ DROP TABLE IF EXISTS `Message`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Message` (
   `id` int(11) NOT NULL DEFAULT '0',
+  `index0` int(11) NOT NULL DEFAULT '0',
   `language` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL DEFAULT 'pl-PL',
   `translation` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
   PRIMARY KEY (`id`,`language`),
+  UNIQUE KEY `index0` (`index0`),
   CONSTRAINT `FK_Message_SourceMessage` FOREIGN KEY (`id`) REFERENCES `SourceMessage` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = '' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER Message_ins_tr BEFORE INSERT ON Message
+FOR EACH ROW SET NEW.index0 = (select max(index0)+1 from Message) */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 DROP TABLE IF EXISTS `SourceMessage`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -28,7 +46,7 @@ CREATE TABLE `SourceMessage` (
   `category` varchar(32) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT 'app_frontend',
   `message` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `auth_assignment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;

@@ -51,10 +51,10 @@ class MessageController extends Controller
      * @param string $language
      * @return mixed
      */
-    public function actionView($id, $language)
+    public function actionView($index0)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $language),
+            'model' => $this->findModel($index0),
         ]);
     }
 
@@ -68,7 +68,7 @@ class MessageController extends Controller
         $model = new Message();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'language' => $model->language]);
+            return $this->redirect(['view', 'index0' => $model->index0]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -83,12 +83,12 @@ class MessageController extends Controller
      * @param string $language
      * @return mixed
      */
-    public function actionUpdate($id, $language)
+    public function actionUpdate($index0)
     {
-        $model = $this->findModel($id, $language);
+        $model = $this->findModel($index0);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'language' => $model->language]);
+            return $this->redirect(['view', 'index0' => $model->index0]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -103,9 +103,9 @@ class MessageController extends Controller
      * @param string $language
      * @return mixed
      */
-    public function actionDelete($id, $language)
+    public function actionDelete($index0)
     {
-        $this->findModel($id, $language)->delete();
+        $this->findModel($index0)->delete();
 
         return $this->redirect(['index']);
     }
@@ -118,9 +118,9 @@ class MessageController extends Controller
      * @return Message the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $language)
+    protected function findModel($index0)
     {
-        if (($model = Message::findOne(['id' => $id, 'language' => $language])) !== null) {
+        if (($model = Message::findOne(['index0' => $index0])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

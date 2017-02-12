@@ -19,7 +19,7 @@ class MessageSearch extends Message
     {
         return [
             [['id'], 'integer'],
-            [['language', 'translation', 'source.category', 'source.message'], 'safe'],
+            [['language', 'translation', 'category', 'message'], 'safe'],
         ];
     }
 
@@ -54,14 +54,14 @@ class MessageSearch extends Message
 
         $this->load($params);
         
-        $dataProvider->sort->attributes['source.category'] = [
-            'asc' => ['source.category' => SORT_ASC],
-            'desc' => ['source.category' => SORT_DESC],
+        $dataProvider->sort->attributes['category'] = [
+            'asc' => ['category' => SORT_ASC],
+            'desc' => ['category' => SORT_DESC],
         ];
         
-        $dataProvider->sort->attributes['source.message'] = [
-            'asc' => ['source.message' => SORT_ASC],
-            'desc' => ['source.message' => SORT_DESC],
+        $dataProvider->sort->attributes['message'] = [
+            'asc' => ['message' => SORT_ASC],
+            'desc' => ['message' => SORT_DESC],
         ];
 
         if (!$this->validate()) {
@@ -78,8 +78,8 @@ class MessageSearch extends Message
         $query->andFilterWhere(['like', 'language', $this->language])
             ->andFilterWhere(['like', 'translation', $this->translation]);
             
-        $query->andFilterWhere(['like', 'source.category',  $this->getAttribute('source.category')]);
-        $query->andFilterWhere(['like', 'source.message',  $this->getAttribute('source.message')]);
+        $query->andFilterWhere(['like', 'category',  $this->getAttribute('category')]);
+        $query->andFilterWhere(['like', 'message',  $this->getAttribute('message')]);
 
         return $dataProvider;
     }
@@ -87,6 +87,6 @@ class MessageSearch extends Message
     public function attributes()
     {
         // add related fields to searchable attributes
-        return array_merge(parent::attributes(), ['source.category','source.message']);
+        return array_merge(parent::attributes(), ['category','message']);
     }
 }
