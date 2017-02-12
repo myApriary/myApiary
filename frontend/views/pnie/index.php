@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel frontend\models\PnieSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -26,8 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'id_pasieki',
+            'pasieka',
             'type',
             'kind_of_frame',
             'capacity',

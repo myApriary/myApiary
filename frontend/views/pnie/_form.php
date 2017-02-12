@@ -1,7 +1,10 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+#use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use kartik\form\ActiveForm;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Pnie */
@@ -12,28 +15,57 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'id_pasieki')->textInput() ?>
+    
 
-    <?= $form->field($model, 'type')->textInput(['maxlength' => true]) ?>
+    <div class="row">
+     <div class="col-xs-4">
+            <?= $form->field($model, 'pasieka')->dropDownList($model->apiaryList()) ?>
+        </div>
+        <div class="col-xs-4">
+            <?= $form->field($model, 'type')->dropDownList(frontend\models\Status::dropDown($model->tableName(),'type'),['maxlength' => true]) ?>
+        </div>
+        <div class="col-xs-4">
+            <?= $form->field($model, 'kind_of_frame')->dropDownList(frontend\models\Status::dropDown($model->tableName(),'kind_of_frame'),['maxlength' => true]) ?>         
+        </div>
+    </div> 
+    <br/>
+    <div class="row">
+     <div class="col-xs-3">
+            <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-xs-3">
+            <?= $form->field($model, 'capacity')->textInput() ?>
+        </div>
+        <div class="col-xs-3">
+            <?= $form->field($model, 'number_of_frames')->textInput() ?>
+        </div>
+        <div class="col-xs-3">
+            <?= $form->field($model, 'family_condition')->textInput() ?>
+        </div>
+    </div> 
 
-    <?= $form->field($model, 'kind_of_frame')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'capacity')->textInput() ?>
-
-    <?= $form->field($model, 'number_of_frames')->textInput() ?>
-
-    <?= $form->field($model, 'start_data')->textInput() ?>
-
-    <?= $form->field($model, 'end_date')->textInput() ?>
-
-    <?= $form->field($model, 'ts_insert')->textInput() ?>
-
-    <?= $form->field($model, 'ts_update')->textInput() ?>
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'family_condition')->textInput() ?>
-
+    
+    <div class="row">
+     <div class="col-xs-6">
+          <?=$form->field($model, 'start_data')->widget(DatePicker::classname(), [
+                'options' => ['placeholder' => ''],
+                'pluginOptions' => [
+                    'autoclose'=>true,
+                    'format'=>'yyyy-mm-dd',
+                ]
+            ]); ?>
+        </div>
+        <div class="col-xs-6">
+            <?=$form->field($model, 'end_date')->widget(DatePicker::classname(), [
+                'options' => ['placeholder' => ''],
+                'pluginOptions' => [
+                    'autoclose'=>true,
+                    'format'=>'yyyy-mm-dd',
+                ]
+            ]); ?>
+        </div>
+    </div>
+    
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app_frontend', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>

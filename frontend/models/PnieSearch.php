@@ -59,6 +59,7 @@ class PnieSearch extends Pnie
 
         // grid filtering conditions
         $query->andFilterWhere([
+            'pasieka'=>$this->pasieka,
             'id' => $this->id,
             'id_pasieki' => $this->id_pasieki,
             'capacity' => $this->capacity,
@@ -72,7 +73,8 @@ class PnieSearch extends Pnie
 
         $query->andFilterWhere(['like', 'type', $this->type])
             ->andFilterWhere(['like', 'kind_of_frame', $this->kind_of_frame])
-            ->andFilterWhere(['like', 'name', $this->name]);
+            ->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'apiary', $this->pasieka]);
 
         return $dataProvider;
     }

@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "pnie".
@@ -58,7 +59,7 @@ class Pnie extends \yii\db\ActiveRecord
             'kind_of_frame' => Yii::t('app_frontend', 'kind of frame'),
             'capacity' => Yii::t('app_frontend', 'capacity'),
             'number_of_frames' => Yii::t('app_frontend', 'number of frames'),
-            'start_data' => Yii::t('app_frontend', 'start data'),
+            'start_data' => Yii::t('app_frontend', 'start date'),
             'end_date' => Yii::t('app_frontend', 'end date'),
             'ts_insert',
             'ts_update' => Yii::t('app_frontend', 'updated'),
@@ -70,8 +71,13 @@ class Pnie extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getPasieki()
+    public function getPasieka()
     {
         return $this->hasOne(Pasieki::className(), ['id' => 'id_pasieki']);
+    }
+
+    public function apiaryList()
+    {
+         return ArrayHelper::map(Pasieki::find()->all(),'id', 'nazwa');
     }
 }
