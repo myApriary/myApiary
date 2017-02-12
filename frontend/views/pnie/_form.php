@@ -63,7 +63,7 @@ use kartik\slider\Slider;
                             return "'.ucfirst(Yii::t('app_frontend_female','excellent')).'";
                         }
                          if (val == 5) {
-                            return "'.ucfirst(Yii::t('app_frontend_female','brilliant')).'";
+                            return "'.ucfirst(Yii::t('app_frontend_female','Brilliant')).'";
                         }
                     }')
                 ]
