@@ -1,3 +1,10 @@
+@font-size-base() {
+    font-size: 10px;
+}
+@line-height-base() {
+    line-height: 1.428;
+}
+
 html,
 body {
     height: 100%;

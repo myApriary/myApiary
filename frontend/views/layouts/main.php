@@ -9,7 +9,8 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
-use kartik\sidenav\SideNav;
+//use kartik\sidenav\SideNav;
+use kartik\widgets\SideNav;
 use kartik\icons\Icon;
 Icon::map($this);
 
@@ -112,7 +113,6 @@ AppAsset::register($this);
                             'label' => Icon::show('cubes',['style'=>'width:25px']) . ucwords(Yii::t('app_frontend','apiaries')),
                             //'icon' => 'glyphicon glyphicon-globe',
                             'active' => Yii::$app->controller->id==='pasieki',
-                            'type' => $type,
                         ],
                         [
                             'url' => Url::to(['/pnie/index']),
