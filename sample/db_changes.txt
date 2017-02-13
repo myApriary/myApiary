@@ -14,3 +14,6 @@ SET sql_mode = '';
 ALTER TABLE `pnie` ADD number int(11) NOT NULL DEFAULT 0;
 SET sql_mode = '';
 ALTER TABLE `pnie` CHANGE `start_data` `start_date` DATE NULL DEFAULT '0000-00-00';
+UPDATE status set label='wielkopolska' where id=10;
+UPDATE status set label='warszawska' where id=11;
+
