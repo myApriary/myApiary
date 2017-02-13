@@ -30,7 +30,8 @@
         "nepstor/yii2-datetime-compare-validator": "^2.0",
         "kartik-v/yii2-widget-select2": "@dev",
         "kartik-v/yii2-grid": "@dev",
-        "kartik-v/yii2-editable": "*"
+        "kartik-v/yii2-editable": "*",
+        "kartik-v/yii2-slider": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",

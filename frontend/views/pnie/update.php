@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Pnie */
 
-$this->title = Yii::t('app_frontend', 'Update {modelClass}: ', [
-    'modelClass' => 'Pnie',
-]) . $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app_frontend', 'Pnies'), 'url' => ['index']];
+$this->title = ucfirst(Yii::t('app_frontend', 'Update {modelClass}: ', [
+    'modelClass' => Yii::t('app_frontend', 'beehive'),
+])) . $model->name;
+$this->params['breadcrumbs'][] = ['label' => ucfirst(Yii::t('app_frontend', 'beehives')), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app_frontend', 'Update');
 ?>

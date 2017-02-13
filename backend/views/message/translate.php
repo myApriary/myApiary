@@ -44,11 +44,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'pageSummary'=>false,
             ],
             //'translation:ntext',
+           
             [
                 'class'=>'kartik\grid\EditableColumn',
                 'attribute'=>'translation',
                 'pageSummary'=>false,
-            ],
+            ], 
 
             ['class' => 'yii\grid\ActionColumn'],
 

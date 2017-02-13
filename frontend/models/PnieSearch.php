@@ -19,7 +19,7 @@ class PnieSearch extends Pnie
     {
         return [
             [['id', 'id_pasieki', 'capacity', 'number_of_frames', 'family_condition'], 'integer'],
-            [['type', 'kind_of_frame', 'start_data', 'end_date', 'ts_insert', 'ts_update', 'name'], 'safe'],
+            [['type', 'kind_of_frame', 'start_date', 'end_date', 'ts_insert', 'ts_update', 'name'], 'safe'],
         ];
     }
 
@@ -64,7 +64,7 @@ class PnieSearch extends Pnie
             'id_pasieki' => $this->id_pasieki,
             'capacity' => $this->capacity,
             'number_of_frames' => $this->number_of_frames,
-            'start_data' => $this->start_data,
+            'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'ts_insert' => $this->ts_insert,
             'ts_update' => $this->ts_update,
