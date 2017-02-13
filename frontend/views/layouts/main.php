@@ -49,11 +49,37 @@ AppAsset::register($this);
             'url' => ['/user/security/logout'],
             'linkOptions' => ['data-method' => 'post']
         ];
+        $menuItems[] = [
+            'label' => Yii::t('app_frontend', 'My Account'),
+            'items' => [
+                [
+                    'label' => Yii::t('app_frontend', 'Password reset'),
+                    'url' => ['/user/recovery/reset'],
+                    //'linkOptions' => ['data-method' => 'post'],
+                ],
+                [
+                    'label' => Yii::t('app_frontend', 'Profile settings'),
+                    'url' => ['/user/settings/profile'],
+                    //'linkOptions' => ['data-method' => 'post'],
+                ],
+                [
+                    'label' => Yii::t('app_frontend', 'Account settings'),
+                    'url' => ['/user/settings/account'],
+                    //'linkOptions' => ['data-method' => 'post'],
+                ],
+                [
+                    'label' => Yii::t('app_frontend', 'Social network accounts settings'),
+                    'url' => ['/user/settings/networks'],
+                    //'linkOptions' => ['data-method' => 'post'],
+                ],
+            ],
+        ];
     }
     $menuItems[] = ['label' => 'EN', 'url' => [substr(\yii\helpers\Url::current(), 3), 'language' => 'en'], 'active'=>Yii::$app->language==='en-US',];
     $menuItems[] = ['label' => 'PL', 'url' => [substr(\yii\helpers\Url::current(), 3), 'language' => 'pl'], 'active'=>Yii::$app->language==='pl-PL',];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
+        
         'items' => $menuItems,
     ]);
     NavBar::end();
@@ -67,8 +93,9 @@ AppAsset::register($this);
                 <?php 
                 
                 if (!Yii::$app->user->isGuest) {
+                 $type = SideNav::TYPE_DEFAULT;
                  echo SideNav::widget([
-                    'type' => SideNav::TYPE_DEFAULT,
+                    'type' => $type, 
                     'encodeLabels' => false,
                     'activateItems' => true,
                     'heading' => false,
@@ -78,12 +105,14 @@ AppAsset::register($this);
                             'label' => Icon::show('home',['style'=>'width:25px']) . 'Home',
                             //'icon' => 'home',
                             'active' => Yii::$app->controller->id==='site',
+                            'type' => $type,
                         ],
                         [
                             'url' => Url::to(['/pasieki/view?id=1']),
                             'label' => Icon::show('cubes',['style'=>'width:25px']) . ucwords(Yii::t('app_frontend','apiaries')),
                             //'icon' => 'glyphicon glyphicon-globe',
                             'active' => Yii::$app->controller->id==='pasieki',
+                            'type' => $type,
                         ],
                         [
                             'url' => Url::to(['/pnie/index']),
