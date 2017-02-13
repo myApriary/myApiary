@@ -22,6 +22,9 @@ Thumbs.db
 # composer vendor dir
 /vendor
 
+#yii app - TEST!!!
+/yii-application
+
 # composer itself is not needed
 composer.phar
 

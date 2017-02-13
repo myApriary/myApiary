@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'visible' => (empty($model->end_date)? false : true)
             ],
             
-            
+
             'family_condition',
         ],
     ]) ?>
