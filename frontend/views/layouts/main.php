@@ -93,7 +93,7 @@ AppAsset::register($this);
                 <?php 
                 
                 if (!Yii::$app->user->isGuest) {
-                 $type = SideNav::TYPE_DEFAULT;
+                 $type = SideNav::TYPE_WARNING;
                  echo SideNav::widget([
                     'type' => $type, 
                     'encodeLabels' => false,
