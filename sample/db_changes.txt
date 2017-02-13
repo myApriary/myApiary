@@ -1,0 +1,14 @@
+#changes in dbschema:
+
+#date: 2017-02-13 12:56
+CREATE TABLE `info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(60), 
+  `value` varchar(60),
+  `ts_update` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+INSERT INTO info (`key`,`value`) VALUES('dbversion', '201702131256');
+
+
