@@ -27,12 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'pasieka.nazwa',
+            'pasieka.nazwa' => [
+                'label' => Yii::t('app_frontend', 'apiary'),
+                'value' => 'pasieka.nazwa',
+            ],
             'type0.labelT',
             'kindOfFrame0.labelT',
+            'number',
+            'name',
             'capacity',
-            // 'number_of_frames',
-            // 'start_data',
+            'number_of_frames',
+            // 'start_date',
             // 'end_date',
             // 'ts_insert',
             // 'ts_update',

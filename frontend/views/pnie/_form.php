@@ -15,9 +15,7 @@ use kartik\slider\Slider;
 <div class="pnie-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
     
-
     <div class="row">
      <div class="col-xs-4">
             <?= $form->field($model, 'id_pasieki')->dropDownList($model->apiaryList())->label(Yii::t('app_frontend','apiary')) ?>
@@ -31,16 +29,19 @@ use kartik\slider\Slider;
     </div> 
     <br/>
     <div class="row">
-     <div class="col-xs-3">
+        <div class="col-xs-2">
+            <?= $form->field($model, 'number')->textInput(['maxlength' => true]) ?>
+        </div>
+        <div class="col-xs-3">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-2">
             <?= $form->field($model, 'capacity')->textInput() ?>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-2">
             <?= $form->field($model, 'number_of_frames')->textInput() ?>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-2">
            <?= $form->field($model, 'family_condition')->widget(Slider::classname(), [
                 'name'=>'family_condition',
                 //'value'=>3,
@@ -75,7 +76,7 @@ use kartik\slider\Slider;
     
     <div class="row">
      <div class="col-xs-6">
-          <?=$form->field($model, 'start_data')->widget(DatePicker::classname(), [
+          <?=$form->field($model, 'start_date')->widget(DatePicker::classname(), [
                 'options' => ['placeholder' => ''],
                 'pluginOptions' => [
                     'autoclose'=>true,
@@ -95,7 +96,7 @@ use kartik\slider\Slider;
     </div>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('app_frontend', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(ucfirst(Yii::t('app_frontend_bttn', 'save')), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

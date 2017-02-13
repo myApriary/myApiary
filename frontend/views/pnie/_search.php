@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'number_of_frames') ?>
 
-    <?php // echo $form->field($model, 'start_data') ?>
+    <?php // echo $form->field($model, 'start_date') ?>
 
     <?php // echo $form->field($model, 'end_date') ?>
 
