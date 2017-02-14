@@ -29,17 +29,39 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class'=>'kartik\grid\EditableColumn',
+                
                 'attribute'=>'message',
                 'pageSummary'=>false,
 
             ],
             [
                 'class'=>'kartik\grid\EditableColumn',
-                'attribute'=>'category',
+
+                'editableOptions' => function ($model, $key, $index, $widget) {
+                   // print_r($column);
+                    return [
+                        //'inputType'=>\kartik\editable\Editable::INPUT_TEXT,
+                        
+                        'inputFieldConfig' => [
+                            //'model' => $model->source,
+                            //'attribute' => 'category',
+                            'inputOptions' => ['name' => $model->source->formName().'['.$model->id.']['.$widget->attribute.']'],
+                        ],
+                        
+                        //'model' => $model->source,
+                        //'attribute' => 'category',
+                        'name'=>'sdfsdfs',
+                        'formOptions'=>['action' => ['source-message/edittranslation']],
+                    ];
+                },
+                'attribute' => 'category',
                 'pageSummary'=>false,
             ],
             [
                 'class'=>'kartik\grid\EditableColumn',
+                'editableOptions' => [
+                    'formOptions'=>['action' => ['/message/edittranslation']],
+                ],
                 'attribute'=>'language',
                 'pageSummary'=>false,
             ],
@@ -47,6 +69,9 @@ $this->params['breadcrumbs'][] = $this->title;
            
             [
                 'class'=>'kartik\grid\EditableColumn',
+                'editableOptions' => [
+                    'formOptions'=>['action' => ['/message/edittranslation']],
+                ],
                 'attribute'=>'translation',
                 'pageSummary'=>false,
             ], 

@@ -10,6 +10,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\helpers\Json;
+use yii\helpers\ArrayHelper;
 
 /**
  * MessageController implements the CRUD actions for Message model.
@@ -29,6 +30,17 @@ class MessageController extends Controller
                 ],
             ],
         ];
+    }
+    
+    public function actions()
+    {
+        return ArrayHelper::merge(parent::actions(), [
+            'edittranslation' => [                                       // identifier for your editable action
+                
+                'class' => \kartik\grid\EditableColumnAction::className(),     // action class name
+                'modelClass' => Message::className(),                // the update model class
+            ]
+        ]);
     }
 
     /**

@@ -100,6 +100,7 @@ AppAsset::register($this);
                     'encodeLabels' => false,
                     'activateItems' => true,
                     'heading' => false,
+                    'itemOptions' => [],
                     'items' => [
                         [
                             'url' => '/',
