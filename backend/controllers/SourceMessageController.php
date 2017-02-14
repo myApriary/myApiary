@@ -8,6 +8,7 @@ use backend\models\SourceMessageSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * SourceMessageController implements the CRUD actions for SourceMessage model.
@@ -27,6 +28,16 @@ class SourceMessageController extends Controller
                 ],
             ],
         ];
+    }
+
+    public function actions()
+    {
+        return ArrayHelper::merge(parent::actions(), [
+            'edittranslation' => [                               // identifier for your editable action
+                'class' => \kartik\grid\EditableColumnAction::className(),     // action class name
+                'modelClass' => SourceMessage::className(),                // the update model class
+            ]
+        ]);
     }
 
     /**
