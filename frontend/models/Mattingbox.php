@@ -17,7 +17,7 @@ use Yii;
  * @property string $ts_insert
  * @property string $ts_update
  */
-class MattingBox extends \yii\db\ActiveRecord
+class Mattingbox extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc

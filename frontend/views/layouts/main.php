@@ -128,10 +128,10 @@ AppAsset::register($this);
                             'active' => Yii::$app->controller->id==='queen',
                         ],
                         [
-                            'url' => Url::to(['/ulikiweselne/index']),
+                            'url' => Url::to(['/mattingbox/index']),
                             'label' => Icon::show('venus-mars',['style'=>'width:25px']) . Yii::t('app_frontend','Mating boxes'),
                             //'icon' => 'glyphicon glyphicon-book',
-                            'active' => Yii::$app->controller->id==='Ulikiweselne',
+                            'active' => Yii::$app->controller->id==='mattingbox',
                         ],     
                         [
                             'url' => Url::to(['/miodobrania/index']),
