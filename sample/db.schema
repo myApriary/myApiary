@@ -46,7 +46,30 @@ CREATE TABLE `SourceMessage` (
   `category` varchar(32) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT 'app_frontend',
   `message` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `apiary`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `apiary` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ts_insert` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ts_update` datetime DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `name` varchar(60) NOT NULL,
+  `location` varchar(30) NOT NULL,
+  `type` int(11) NOT NULL DEFAULT '1',
+  `status` int(11) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `id_user` (`user_id`),
+  KEY `type` (`type`),
+  KEY `status` (`status`),
+  CONSTRAINT `apiary_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
+  CONSTRAINT `apiary_ibfk_2` FOREIGN KEY (`status`) REFERENCES `status` (`id`),
+  CONSTRAINT `apiary_ibfk_3` FOREIGN KEY (`type`) REFERENCES `status` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `auth_assignment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -99,70 +122,94 @@ CREATE TABLE `auth_rule` (
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `czujniki`;
+DROP TABLE IF EXISTS `cost`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `czujniki` (
+CREATE TABLE `cost` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `sn` varchar(60) NOT NULL,
-  `nazwa` varchar(30) NOT NULL,
-  `opis` varchar(300) NOT NULL,
-  `wartosc` decimal(10,3) NOT NULL,
-  `idpnia` varchar(6) DEFAULT NULL,
-  `czas` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `amount` decimal(7,2) NOT NULL,
+  `description` varchar(300) NOT NULL,
+  `comment` varchar(300) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `ts_insert` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `dokarmiania`;
+DROP TABLE IF EXISTS `feeding`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `dokarmiania` (
+CREATE TABLE `feeding` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cel` varchar(60) NOT NULL,
-  `rodzaj_pokarmu` varchar(30) NOT NULL,
-  `ilosc_cukru` decimal(5,2) NOT NULL,
-  `idpnia` varchar(6) NOT NULL,
-  `czas` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `purspose` varchar(60) NOT NULL,
+  `type_of_food` varchar(30) NOT NULL,
+  `sugar_amount` decimal(5,2) NOT NULL,
+  `hive_id` int(11) NOT NULL,
+  `ts_insert` int(11) DEFAULT NULL,
+  `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `koszty`;
+DROP TABLE IF EXISTS `hive`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `koszty` (
+CREATE TABLE `hive` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kwota` decimal(7,2) NOT NULL,
-  `opis` varchar(300) NOT NULL,
-  `komentarz` varchar(300) NOT NULL,
-  `emailuzytkownika` varchar(100) NOT NULL,
+  `apiary_id` int(11) DEFAULT NULL,
+  `type` varchar(30) NOT NULL,
+  `kind_of_frame` varchar(30) NOT NULL,
+  `capacity` int(11) NOT NULL,
+  `number_of_frames` int(11) NOT NULL,
+  `start_date` date DEFAULT '0000-00-00',
+  `end_date` date DEFAULT '0000-00-00',
+  `ts_insert` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `name` varchar(30) NOT NULL,
+  `family_condition` int(11) NOT NULL,
+  `number` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `id_pasieki` (`apiary_id`),
+  CONSTRAINT `hive_ibfk_1` FOREIGN KEY (`apiary_id`) REFERENCES `apiary` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `honeyharvest`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `honeyharvest` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `honey_amount` decimal(6,2) NOT NULL,
+  `kind_of_honey` varchar(60) NOT NULL,
+  `hive_id` varchar(6) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `ts_insert` timestamp NULL DEFAULT NULL,
+  `ts_update` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `leczenia`;
+DROP TABLE IF EXISTS `info`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `leczenia` (
+CREATE TABLE `info` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cel` varchar(30) NOT NULL,
-  `rodzaj_leku` varchar(60) NOT NULL,
-  `ilosc_leku` decimal(5,2) NOT NULL,
-  `idpnia` varchar(6) NOT NULL,
-  `czas` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `key` varchar(60) DEFAULT NULL,
+  `value` varchar(60) DEFAULT NULL,
+  `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `matki`;
+DROP TABLE IF EXISTS `matting_box`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `matki` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `kolor_opalitki` enum('0','1','2','3','4') NOT NULL,
-  `rasa` varchar(45) NOT NULL,
-  `ul_zarodowy` int(11) DEFAULT NULL,
-  `idpnia` varchar(6) DEFAULT NULL,
-  `pienczas` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `idulikaweselnego` varchar(6) NOT NULL,
-  `czasulikaweselnego` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+CREATE TABLE `matting_box` (
+  `id` varchar(6) NOT NULL,
+  `type` varchar(30) NOT NULL,
+  `kind_of_frame` varchar(30) NOT NULL,
+  `capacity` int(11) NOT NULL,
+  `number_of_frames` int(11) NOT NULL,
+  `time` timestamp NULL DEFAULT NULL,
+  `apiary_id` int(11) NOT NULL,
+  `ts_insert` timestamp NULL DEFAULT NULL,
+  `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -173,62 +220,6 @@ CREATE TABLE `migration` (
   `version` varchar(180) NOT NULL,
   `apply_time` int(11) DEFAULT NULL,
   PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `miodobrania`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `miodobrania` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ilosc_miodu` decimal(6,2) NOT NULL,
-  `rodzaj_miodu` varchar(60) NOT NULL,
-  `idpnia` varchar(6) NOT NULL,
-  `czas` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `pasieki`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pasieki` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ts_insert` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ts_update` datetime DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  `start_date` date DEFAULT NULL,
-  `end_date` date DEFAULT NULL,
-  `nazwa` varchar(60) NOT NULL,
-  `lokalizacja` varchar(30) NOT NULL,
-  `type` int(11) NOT NULL DEFAULT '1',
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
-  KEY `id_user` (`id_user`),
-  KEY `type` (`type`),
-  KEY `status` (`status`),
-  CONSTRAINT `pasieki_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`),
-  CONSTRAINT `pasieki_ibfk_2` FOREIGN KEY (`status`) REFERENCES `status` (`id`),
-  CONSTRAINT `pasieki_ibfk_3` FOREIGN KEY (`type`) REFERENCES `status` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `pnie`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pnie` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_pasieki` int(11) DEFAULT NULL,
-  `type` varchar(30) NOT NULL,
-  `kind_of_frame` varchar(30) NOT NULL,
-  `capacity` int(11) NOT NULL,
-  `number_of_frames` int(11) NOT NULL,
-  `start_data` date DEFAULT '0000-00-00',
-  `end_date` date DEFAULT '0000-00-00',
-  `ts_insert` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `name` varchar(30) NOT NULL,
-  `family_condition` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_pasieki` (`id_pasieki`),
-  CONSTRAINT `pnie_ibfk_1` FOREIGN KEY (`id_pasieki`) REFERENCES `pasieki` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `profile`;
@@ -247,6 +238,39 @@ CREATE TABLE `profile` (
   PRIMARY KEY (`user_id`),
   CONSTRAINT `fk_user_profile` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `queen`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `queen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mark_disk_color` enum('0','1','2','3','4') NOT NULL,
+  `marking_disk_number` int(11) DEFAULT NULL,
+  `variety` varchar(45) NOT NULL,
+  `reproductive_hive_id` int(11) DEFAULT NULL,
+  `hive_id` int(11) DEFAULT NULL,
+  `hive_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `matting_box_id` varchar(6) NOT NULL,
+  `matting_box_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ts_insert` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `sensor`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sensor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sn` varchar(60) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `description` varchar(300) NOT NULL,
+  `value` decimal(10,3) NOT NULL,
+  `hive_id` int(11) DEFAULT NULL,
+  `ts_insert` timestamp NULL DEFAULT NULL,
+  `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `social_account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -294,17 +318,18 @@ CREATE TABLE `token` (
   CONSTRAINT `fk_user_token` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `ulikiweselne`;
+DROP TABLE IF EXISTS `treatment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ulikiweselne` (
-  `id` varchar(6) NOT NULL,
-  `typ` varchar(30) NOT NULL,
-  `rodzaj_ramki` varchar(30) NOT NULL,
-  `pojemnosc` int(11) NOT NULL,
-  `ilosc_ramek` int(11) NOT NULL,
-  `data` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `nazwapasieki` varchar(60) NOT NULL,
+CREATE TABLE `treatment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `purpose` varchar(30) NOT NULL,
+  `type_of_medicine` varchar(60) NOT NULL,
+  `amount_of_medicine` decimal(5,2) NOT NULL,
+  `hive_id` varchar(6) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ts_insert` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -329,17 +354,6 @@ CREATE TABLE `user` (
   UNIQUE KEY `user_unique_email` (`email`),
   UNIQUE KEY `user_unique_username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `uzytkownicy`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `uzytkownicy` (
-  `email` varchar(100) NOT NULL,
-  `imie` varchar(60) NOT NULL,
-  `nazwisko` varchar(60) NOT NULL,
-  `haslo` varchar(32) NOT NULL,
-  PRIMARY KEY (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
