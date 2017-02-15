@@ -7,13 +7,13 @@ use kartik\form\ActiveForm;
 use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Pasieki */
+/* @var $model frontend\models\Apiaries */
 /* @var $form yii\widgets\ActiveForm */
 // google api key: AIzaSyCDNigM5ah2vT2IxRNUsyHh0m-3W3qtZYQ
 ?>
 
 
-<div class="pasieki-form">
+<div class="apiaries-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -35,9 +35,9 @@ use kartik\date\DatePicker;
         ]
     ]); ?>
 
-    <?= $form->field($model, 'nazwa')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'lokalizacja')->widget('kolyunya\yii2\widgets\MapInputWidget',
+    <?= $form->field($model, 'location')->widget('kolyunya\yii2\widgets\MapInputWidget',
     [
    		'key' => 'AIzaSyCDNigM5ah2vT2IxRNUsyHh0m-3W3qtZYQ',
    		'latitude' => '51.0945308',

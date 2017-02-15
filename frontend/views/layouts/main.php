@@ -110,16 +110,16 @@ AppAsset::register($this);
                             'type' => $type,
                         ],
                         [
-                            'url' => Url::to(['/pasieki/view?id=1']),
+                            'url' => Url::to(['/apiaries/view?id=1']),
                             'label' => Icon::show('cubes',['style'=>'width:25px']) . ucwords(Yii::t('app_frontend','apiaries')),
                             //'icon' => 'glyphicon glyphicon-globe',
-                            'active' => Yii::$app->controller->id==='pasieki',
+                            'active' => Yii::$app->controller->id==='apiaries',
                         ],
                         [
-                            'url' => Url::to(['/pnie/index']),
+                            'url' => Url::to(['/hives/index']),
                             'label' => Icon::show('archive',['style'=>'width:25px']) . ucwords(Yii::t('app_frontend','beehives')),
                             //'icon' => 'glyphicon glyphicon-book',
-                            'active' => Yii::$app->controller->id==='pnie',
+                            'active' => Yii::$app->controller->id==='hives',
                         ],
                         [
                             'url' => Url::to(['/matki/index']),

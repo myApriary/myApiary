@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\PasiekiSearch */
+/* @var $model frontend\models\ApiariesSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="pasieki-search">
+<div class="apiaries-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -22,9 +22,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id_user') ?>
 
-    <?= $form->field($model, 'nazwa') ?>
+    <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'lokalizacja') ?>
+    <?= $form->field($model, 'location') ?>
 
     <?= $form->field($model, 'status') ?>
 

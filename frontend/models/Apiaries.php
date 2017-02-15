@@ -8,15 +8,15 @@ use frontend\models\Status;
 //use nepstor\validators\DateTimeCompareValidator;
 
 /**
- * This is the model class for table "pasieki".
+ * This is the model class for table "apiaries".
  *
  * @property integer $id
- * @property integer $id_user
- * @property string $nazwa
- * @property string $lokalizacja
+ * @property integer $user_id
+ * @property string $name
+ * @property string $location
  * @property integer $status
  */
-class Pasieki extends \yii\db\ActiveRecord
+class Apiaries extends \yii\db\ActiveRecord
 {
 
   //  public $nextId;
@@ -27,7 +27,7 @@ class Pasieki extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'pasieki';
+        return 'apiary';
     }
 
     /**
@@ -36,14 +36,14 @@ class Pasieki extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_user', 'type', 'status'], 'integer'],
-            [['nazwa', 'lokalizacja', 'type', 'status', 'start_date'], 'required'],
-            [['nazwa'], 'string', 'max' => 60],
-            [['start_date', 'end_date'], 'date', 'format'=>'YYYY-mm-dd'],
+            [['user_id', 'type', 'status'], 'integer'],
+            [['name', 'location', 'type', 'status', 'start_date'], 'required'],
+            [['name'], 'string', 'max' => 60],
+            [['start_date', 'end_date'], 'date', 'format'=>'yyyy-mm-dd'],
             //['end_date', 'compareDate', 'compareAttribute'=>'start_date', 'operator' => '>', 'type' => 'date', 'message'=>Yii::t('app_frontend','"ended" must be greater than "started"')],
             ['end_date', \nepstor\validators\DateTimeCompareValidator::className(), 'compareAttribute' => 'start_date', 'format' => 'Y-m-d', 'operator' => '>', 'message'=>Yii::t('app_frontend','"ended" must be greater than "started"')],
-            [['lokalizacja'], 'string', 'max' => 38],
-            [['id_user'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id_user' => 'id']],
+            [['location'], 'string', 'max' => 38],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['type'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['type' => 'id']],
             [['status'], 'exist', 'skipOnError' => true, 'targetClass' => Status::className(), 'targetAttribute' => ['status' => 'id']],
         ];
@@ -60,9 +60,9 @@ class Pasieki extends \yii\db\ActiveRecord
             'ts_update' => Yii::t('app_frontend','updated'),
             'start_date' => Yii::t('app_frontend','started'),
             'end_date' => Yii::t('app_frontend','ended'),
-            'id_user' => 'user id',
-            'nazwa' => Yii::t('app_frontend','name'),
-            'lokalizacja' => Yii::t('app_frontend','location'),
+            'user_id' => 'user id',
+            'name' => Yii::t('app_frontend','name'),
+            'location' => Yii::t('app_frontend','location'),
             'status' => Yii::t('app_frontend','status'),
             'type' => Yii::t('app_frontend','type'),
             'status0.labelT' => Yii::t('app_frontend','status'),
@@ -72,12 +72,12 @@ class Pasieki extends \yii\db\ActiveRecord
     
     public function getUser()
     {
-        return $this->hasOne(User::className(), ['id' => 'id_user']);
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
     
     public function getPnie()
     {
-        return $this->hasMany(Pnie::className(), ['id_pasieki' => 'id']);
+        return $this->hasMany(Pnie::className(), ['id_apiaries' => 'id']);
     }
 
     public function getNextId() {
@@ -101,9 +101,9 @@ class Pasieki extends \yii\db\ActiveRecord
         return $this->hasOne(Status::className(), ['id' => 'type']);
     }
     
-    public function beforeSave($inster){
+    public function beforeSave($insert){
         if (parent::beforeSave($insert)) {
-            $this->id_user = \Yii::$app->user->getId();
+            $this->user_id = \Yii::$app->user->getId();
             if(!$insert) {
                 $this->ts_update = date('Y-m-d H:i:s');
             };
@@ -128,5 +128,5 @@ class Pasieki extends \yii\db\ActiveRecord
     }
 */
 }
-//ALTER TABLE pasieki ADD CHECK (end_date >= start_date);
-//ALTER TABLE pasieki ADD CONSTRAINT CK_end_date_vs_start_date CHECK CHECK (end_date >= start_date);
+//ALTER TABLE apiaries ADD CHECK (end_date >= start_date);
+//ALTER TABLE apiaries ADD CONSTRAINT CK_end_date_vs_start_date CHECK CHECK (end_date >= start_date);

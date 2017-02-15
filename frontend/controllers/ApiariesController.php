@@ -3,16 +3,16 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\Pasieki;
-use frontend\models\PasiekiSearch;
+use frontend\models\Apiaries;
+use frontend\models\ApiariesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PasiekiController implements the CRUD actions for Pasieki model.
+ * ApiariesController implements the CRUD actions for Apiaries model.
  */
-class PasiekiController extends Controller
+class ApiariesController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class PasiekiController extends Controller
     }
 
     /**
-     * Lists all Pasieki models.
+     * Lists all Apiaries models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PasiekiSearch();
+        $searchModel = new ApiariesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class PasiekiController extends Controller
     }
 
     /**
-     * Displays a single Pasieki model.
+     * Displays a single Apiaries model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class PasiekiController extends Controller
     }
 
     /**
-     * Creates a new Pasieki model.
+     * Creates a new Apiaries model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Pasieki();
+        $model = new Apiaries();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class PasiekiController extends Controller
     }
 
     /**
-     * Updates an existing Pasieki model.
+     * Updates an existing Apiaries model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class PasiekiController extends Controller
     }
 
     /**
-     * Deletes an existing Pasieki model.
+     * Deletes an existing Apiaries model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class PasiekiController extends Controller
     }
 
     /**
-     * Finds the Pasieki model based on its primary key value.
+     * Finds the Apiaries model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Pasieki the loaded model
+     * @return Apiaries the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Pasieki::findOne($id)) !== null) {
+        if (($model = Apiaries::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

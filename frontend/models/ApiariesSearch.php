@@ -5,12 +5,12 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\Pasieki;
+use frontend\models\Apiaries;
 
 /**
- * PasiekiSearch represents the model behind the search form of `frontend\models\Pasieki`.
+ * ApiariesSearch represents the model behind the search form of `frontend\models\Apiaries`.
  */
-class PasiekiSearch extends Pasieki
+class ApiariesSearch extends Apiaries
 {
     /**
      * @inheritdoc
@@ -18,8 +18,8 @@ class PasiekiSearch extends Pasieki
     public function rules()
     {
         return [
-            [['id', 'id_user', 'status'], 'integer'],
-            [['nazwa', 'lokalizacja', 'status0.labelT', 'type0.labelT'], 'safe'],
+            [['id', 'user_id', 'status'], 'integer'],
+            [['name', 'location', 'status0.labelT', 'type0.labelT'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class PasiekiSearch extends Pasieki
      */
     public function search($params)
     {
-        $query = Pasieki::find();
+        $query = Apiaries::find();
         
         $query->joinWith(['status0' => function($query) { $query->from(['status' => 'status']); }]);
         $query->joinWith(['type0' => function($query) { $query->from(['type' => 'status']); }]);
@@ -73,12 +73,12 @@ class PasiekiSearch extends Pasieki
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'id_user' => $this->id_user,
+            'user_id' => $this->user_id,
             'status' => $this->status,
         ]);
 
-        $query->andFilterWhere(['like', 'nazwa', $this->nazwa])
-            ->andFilterWhere(['like', 'lokalizacja', $this->lokalizacja]);
+        $query->andFilterWhere(['like', 'name', $this->name])
+            ->andFilterWhere(['like', 'location', $this->location]);
             
         $query->andFilterWhere(['like', 'status.label',  $this->getAttribute('status0.labelT')]);
         $query->andFilterWhere(['like', 'status.label',  $this->getAttribute('type0.labelT')]);

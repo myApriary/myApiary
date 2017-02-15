@@ -16,8 +16,8 @@ use yii\helpers\ArrayHelper;
  * @property string $label
  * @property string $icon
  *
- * @property Pasieki[] $pasiekis
- * @property Pasieki[] $pasiekis0
+ * @property Apiaries[] $apiariess
+ * @property Apiaries[] $apiariess0
  */
 class Status extends \yii\db\ActiveRecord
 {
@@ -68,20 +68,4 @@ class Status extends \yii\db\ActiveRecord
         return ArrayHelper::map(Status::find()->where(['table_name' => $tableName, 'column_name'=>$columnName])->all(), 'id', 'labelT');
     }
 
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    //public function getPasiekis()
-    //{
-    //    return $this->hasMany(Pasieki::className(), ['type' => 'id']);
-    //}
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    //public function getPasiekis0()
-    //{
-    //    return $this->hasMany(Pasieki::className(), ['status' => 'id']);
-    //}
 }

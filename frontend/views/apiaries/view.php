@@ -5,13 +5,13 @@ use yii\widgets\DetailView;
 use voime\GoogleMaps\Map;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Pasieki */
+/* @var $model frontend\models\Apiaries */
 
-$this->title = Yii::t('app_frontend','Apiary') . ' ' . $model->nazwa;
+$this->title = Yii::t('app_frontend','Apiary') . ' ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app_frontend','Apiaries'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title; 
 ?>
-<div class="pasieki-view">
+<div class="apiaries-view">
 
     
 
@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'end_date',
                 'visible' => (empty($model->end_date)? false : true)
             ],
-            'nazwa',
+            'name',
             'type0.labelT',
             'status0.labelT',
         ],
@@ -33,16 +33,16 @@ $this->params['breadcrumbs'][] = $this->title;
        <?php
            echo Map::widget([
             'zoom' => 9,
-            'center' => [explode(",", $model->lokalizacja, 2)[0],explode(",", $model->lokalizacja, 2)[1]],
+            'center' => [explode(",", $model->location, 2)[0],explode(",", $model->location, 2)[1]],
             'width' => '100%',
             'height' => '240px',
              'mapType' => Map::MAP_TYPE_HYBRID,
             'apiKey'=> 'AIzaSyCDNigM5ah2vT2IxRNUsyHh0m-3W3qtZYQ',
             'markers' => [
                 [
-                    'position' => [explode(",", $model->lokalizacja, 2)[0],explode(",", $model->lokalizacja, 2)[1]],
-                    'title' => $model->nazwa,
-                    'content' => $model->nazwa,
+                    'position' => [explode(",", $model->location, 2)[0],explode(",", $model->location, 2)[1]],
+                    'title' => $model->name,
+                    'content' => $model->name,
                 ],
 
             ]

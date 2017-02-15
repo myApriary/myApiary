@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\PasiekiSearch */
+/* @var $searchModel frontend\models\ApiariesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 //\Yii::$app->language = 'pl-PL';
 //\Yii::$app->language = 'de-DE';
@@ -13,7 +13,7 @@ use yii\widgets\Pjax;
 $this->title = ucwords(Yii::t('app_frontend','apiaries'));
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pasieki-index">
+<div class="apiaries-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
@@ -30,8 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'nazwa',
-            'lokalizacja',
+            'name',
+            'location',
             'type0.labelT',
             'status0.labelT',
 
