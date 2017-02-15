@@ -51,14 +51,14 @@ class Queen extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app_frontend', 'ID'),
-            'mark_disk_color' => Yii::t('app_frontend', 'Mark Disk Color'),
-            'marking_disk_number' => Yii::t('app_frontend', 'Marking Disk Number'),
+            'mark_disk_color' => Yii::t('app_frontend', 'Mark disk color'),
+            'marking_disk_number' => Yii::t('app_frontend', 'Marking disk number'),
             'variety' => Yii::t('app_frontend', 'Variety'),
-            'reproductive_hive_id' => Yii::t('app_frontend', 'Reproductive Hive ID'),
-            'hive_id' => Yii::t('app_frontend', 'Hive ID'),
-            'hive_time' => Yii::t('app_frontend', 'Hive Time'),
-            'matting_box_id' => Yii::t('app_frontend', 'Matting Box ID'),
-            'matting_box_time' => Yii::t('app_frontend', 'Matting Box Time'),
+            'reproductive_hive_id' => Yii::t('app_frontend', 'Reproductive hive'),
+            'hive_id' => Yii::t('app_frontend', 'Hive'),
+            'hive_time' => Yii::t('app_frontend', 'Time'),
+            'matting_box_id' => Yii::t('app_frontend', 'Matting Box'),
+            'matting_box_time' => Yii::t('app_frontend', 'Matting Box'),
             'ts_insert' => Yii::t('app_frontend', 'Ts Insert'),
             'ts_update' => Yii::t('app_frontend', 'Ts Update'),
         ];

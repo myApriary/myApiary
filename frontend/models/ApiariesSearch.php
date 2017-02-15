@@ -78,7 +78,7 @@ class ApiariesSearch extends Apiaries
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'location', $this->location]);
+              ->andFilterWhere(['like', 'location', $this->location]);
             
         $query->andFilterWhere(['like', 'status.label',  $this->getAttribute('status0.labelT')]);
         $query->andFilterWhere(['like', 'status.label',  $this->getAttribute('type0.labelT')]);

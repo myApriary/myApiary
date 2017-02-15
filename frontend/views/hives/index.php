@@ -15,7 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a(ucfirst(Yii::t('app_frontend_bttn', 'create')) . ' ' . Yii::t('app_frontend', 'beehive')  , ['create'], ['class' => 'btn btn-success']) ?>
@@ -33,10 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'type0.labelT',
             'kindOfFrame0.labelT',
-            'number',
             'name',
             'capacity',
-            'number_of_frames',
+            'number_of_frames' => [
+                'attribute' => 'number_of_frames',
+                'label' => Yii::t('app_frontend', 'frames'),
+            ],
+
             // 'start_date',
             // 'end_date',
             // 'ts_insert',

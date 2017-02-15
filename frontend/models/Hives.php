@@ -46,7 +46,7 @@ class Hives extends \yii\db\ActiveRecord
             [['apiary_id'], 'exist', 'skipOnError' => true, 'targetClass' => Apiaries::className(), 'targetAttribute' => ['apiary_id' => 'id']],
             [['start_date', 'end_date'], 'date', 'format'=>'yyyy-mm-dd'],
             ['end_date', \nepstor\validators\DateTimeCompareValidator::className(), 'compareAttribute' => 'start_date', 'format' => 'Y-m-d', 'operator' => '>', 'message'=>Yii::t('app_frontend','"ended" must be greater than "started"')],
-            ['number_of_frames', 'compare', 'compareValue' => $this->capacity, 'operator' => '<=', 'type' => 'number',  'message'=> Yii::t('app_frontend','number of frames must be less or equal to "capacity"')],//'message' => 'ulala'
+            ['number_of_frames', 'compare', 'compareAttribute' => 'capacity', 'operator' => '<=', 'type' => 'number',  'message'=> Yii::t('app_frontend','number of frames must be less or equal to "capacity"')],
 
         ];
     }

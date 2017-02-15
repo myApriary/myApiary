@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'type') ?>
 
-    <?= $form->field($model, 'kind_of_frame') ?>
+    <?= $form->field($model, 'kindOfFrame0.labelT') ?>
 
     <?= $form->field($model, 'capacity') ?>
 
