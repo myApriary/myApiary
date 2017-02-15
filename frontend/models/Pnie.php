@@ -46,7 +46,7 @@ class Pnie extends \yii\db\ActiveRecord
             [['id_pasieki'], 'exist', 'skipOnError' => true, 'targetClass' => Pasieki::className(), 'targetAttribute' => ['id_pasieki' => 'id']],
             [['start_date', 'end_date'], 'date', 'format'=>'yyyy-mm-dd'],
             ['end_date', \nepstor\validators\DateTimeCompareValidator::className(), 'compareAttribute' => 'start_date', 'format' => 'Y-m-d', 'operator' => '>', 'message'=>Yii::t('app_frontend','"ended" must be greater than "started"')],
-            ['number_of_frames', 'compare', 'compareValue' => $this->capacity, 'operator' => '<=', 'type' => 'number',  ],//'message' => 'ulala'
+            ['number_of_frames', 'compare', 'compareValue' => $this->capacity, 'operator' => '<=', 'type' => 'number',  'message'=> Yii::t('app_frontend','number of frames must be less or equal to "capacity"')],//'message' => 'ulala'
 
         ];
     }
@@ -62,7 +62,7 @@ class Pnie extends \yii\db\ActiveRecord
             'type' => Yii::t('app_frontend', 'type'),
             'kind_of_frame' => Yii::t('app_frontend', 'kind of frame'),
             'capacity' => Yii::t('app_frontend', 'capacity'),
-            'number_of_frames' => Yii::t('app_frontend', 'frames'),
+            'number_of_frames' => Yii::t('app_frontend', 'no. of frames'),
             'start_date' => Yii::t('app_frontend', 'started'),
             'end_date' => Yii::t('app_frontend', 'ended'),
             'ts_insert' => '',
