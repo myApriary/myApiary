@@ -34,8 +34,22 @@ class SourceMessageController extends Controller
     {
         return ArrayHelper::merge(parent::actions(), [
             'edittranslation' => [                               // identifier for your editable action
+                print_r('jhgjhg'); exit;
                 'class' => \kartik\grid\EditableColumnAction::className(),     // action class name
                 'modelClass' => SourceMessage::className(),                // the update model class
+                
+                'outputValue' => function ($model, $attribute, $key, $index) {
+                    return 'bbb';                                   // empty is same as $value
+               },
+               'outputMessage' => function($model, $attribute, $key, $index) {
+                     return 'aaa';                                  // any custom error after model save
+               },
+               // 'showModelErrors' => true,                     // show model errors after save
+               // 'errorOptions' => ['header' => '']             // error summary HTML options
+               // 'postOnly' => true,
+               // 'ajaxOnly' => true,
+               // 'findModel' => function($id, $action) {},
+               // 'checkAccess' => function($action, $model) {}
             ]
         ]);
     }

@@ -51,7 +51,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         //'model' => $model->source,
                         //'attribute' => 'category',
                         'name'=>'sdfsdfs',
-                        'formOptions'=>['action' => ['source-message/edittranslation']],
+
+                        'formOptions'=>['action' => ['/source-message/edittranslation']],
                     ];
                 },
                 'attribute' => 'category',
