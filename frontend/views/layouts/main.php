@@ -152,10 +152,10 @@ AppAsset::register($this);
                             'active' => Yii::$app->controller->id==='treatment',
                         ],   
                         [
-                            'url' => Url::to(['/czujniki/index']),
+                            'url' => Url::to(['/sensor/index']),
                             'label' => Icon::show('thermometer',['style'=>'width:25px']) . Yii::t('app_frontend','Sensors'),
                             //'icon' => 'glyphicon glyphicon-book',
-                            'active' => Yii::$app->controller->id==='Czujniki',
+                            'active' => Yii::$app->controller->id==='sensor',
                         ],
                         [
                             'url' => Url::to(['/koszty/index']),
