@@ -134,10 +134,10 @@ AppAsset::register($this);
                             'active' => Yii::$app->controller->id==='mattingbox',
                         ],     
                         [
-                            'url' => Url::to(['/miodobrania/index']),
+                            'url' => Url::to(['/honeyharvest/index']),
                             'label' => Icon::show('battery-half',['style'=>'width:25px']) . Yii::t('app_frontend','Honey harvests'),
                             //'icon' => 'glyphicon glyphicon-book',
-                            'active' => Yii::$app->controller->id==='miodobrania',
+                            'active' => Yii::$app->controller->id==='honeyharvest',
                         ],
                         [
                             'url' => Url::to(['/dokarmiania/index']),
