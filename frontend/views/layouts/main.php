@@ -146,10 +146,10 @@ AppAsset::register($this);
                             'active' => Yii::$app->controller->id==='feeding',
                         ],
                         [
-                            'url' => Url::to(['/leczenia/index']),
+                            'url' => Url::to(['/treatment/index']),
                             'label' => Icon::show('medkit',['style'=>'width:25px']) . Yii::t('app_frontend','Treatments'),
                             //'icon' => ,
-                            'active' => Yii::$app->controller->id==='Leczenia',
+                            'active' => Yii::$app->controller->id==='treatment',
                         ],   
                         [
                             'url' => Url::to(['/czujniki/index']),
