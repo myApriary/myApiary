@@ -158,10 +158,10 @@ AppAsset::register($this);
                             'active' => Yii::$app->controller->id==='sensor',
                         ],
                         [
-                            'url' => Url::to(['/koszty/index']),
+                            'url' => Url::to(['/cost/index']),
                             'label' => Icon::show('usd',['style'=>'width:25px']) . Yii::t('app_frontend','Costs'),
                             //'icon' => 'glyphicon glyphicon-book',
-                            'active' => Yii::$app->controller->id==='koszty',
+                            'active' => Yii::$app->controller->id==='cost',
                         ],
   
                       
