@@ -5,22 +5,22 @@ use yii\widgets\DetailView;
 
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Pnie */
+/* @var $model frontend\models\Hives */
 
 //$this->title = $model->number;
 $this->params['breadcrumbs'][] = ['label' => ucfirst(Yii::t('app_frontend', 'beehives')), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pnie-view">
+<div class="hives-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'pasieka.nazwa' => [
+            'apiary.name' => [
                 'label' => Yii::t('app_frontend', 'apiary'),
-                'attribute' => 'pasieka.nazwa',
+                'attribute' => 'apiary.name',
             ],
             'number',
             'name',

@@ -3,16 +3,16 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\Pnie;
-use frontend\models\PnieSearch;
+use frontend\models\Hives;
+use frontend\models\HivesSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * PnieController implements the CRUD actions for Pnie model.
+ * HivesController implements the CRUD actions for Hives model.
  */
-class PnieController extends Controller
+class HivesController extends Controller
 {
     /**
      * @inheritdoc
@@ -30,12 +30,12 @@ class PnieController extends Controller
     }
 
     /**
-     * Lists all Pnie models.
+     * Lists all Hives models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PnieSearch();
+        $searchModel = new HivesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -45,7 +45,7 @@ class PnieController extends Controller
     }
 
     /**
-     * Displays a single Pnie model.
+     * Displays a single Hives model.
      * @param integer $id
      * @return mixed
      */
@@ -57,13 +57,13 @@ class PnieController extends Controller
     }
 
     /**
-     * Creates a new Pnie model.
+     * Creates a new Hives model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Pnie();
+        $model = new Hives();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -75,7 +75,7 @@ class PnieController extends Controller
     }
 
     /**
-     * Updates an existing Pnie model.
+     * Updates an existing Hives model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -94,7 +94,7 @@ class PnieController extends Controller
     }
 
     /**
-     * Deletes an existing Pnie model.
+     * Deletes an existing Hives model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -107,15 +107,15 @@ class PnieController extends Controller
     }
 
     /**
-     * Finds the Pnie model based on its primary key value.
+     * Finds the Hives model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Pnie the loaded model
+     * @return Hives the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Pnie::findOne($id)) !== null) {
+        if (($model = Hives::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

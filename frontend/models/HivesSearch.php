@@ -5,12 +5,12 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\Pnie;
+use frontend\models\Hives;
 
 /**
- * PnieSearch represents the model behind the search form of `frontend\models\Pnie`.
+ * HivesSearch represents the model behind the search form of `frontend\models\Hives`.
  */
-class PnieSearch extends Pnie
+class HivesSearch extends Hives
 {
     /**
      * @inheritdoc
@@ -18,7 +18,7 @@ class PnieSearch extends Pnie
     public function rules()
     {
         return [
-            [['id', 'id_pasieki', 'capacity', 'number_of_frames', 'family_condition'], 'integer'],
+            [['id', 'apiary_id', 'capacity', 'number_of_frames', 'family_condition'], 'integer'],
             [['type', 'kind_of_frame', 'start_date', 'end_date', 'ts_insert', 'ts_update', 'name'], 'safe'],
         ];
     }
@@ -41,7 +41,7 @@ class PnieSearch extends Pnie
      */
     public function search($params)
     {
-        $query = Pnie::find();
+        $query = Hives::find();
 
         // add conditions that should always apply here
 
@@ -59,9 +59,9 @@ class PnieSearch extends Pnie
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'pasieka'=>$this->pasieka,
+            'apiary'=>$this->apiary,
             'id' => $this->id,
-            'id_pasieki' => $this->id_pasieki,
+            'apiary_id' => $this->apiary_id,
             'capacity' => $this->capacity,
             'number_of_frames' => $this->number_of_frames,
             'start_date' => $this->start_date,
@@ -74,7 +74,7 @@ class PnieSearch extends Pnie
         $query->andFilterWhere(['like', 'type', $this->type])
             ->andFilterWhere(['like', 'kind_of_frame', $this->kind_of_frame])
             ->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'apiary', $this->pasieka]);
+            ->andFilterWhere(['like', 'apiary', $this->apiary]);
 
         return $dataProvider;
     }

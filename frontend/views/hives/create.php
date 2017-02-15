@@ -4,13 +4,13 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Pnie */
+/* @var $model frontend\models\Hives */
 
 $this->title = ucfirst(Yii::t('app_frontend_bttn','create')) . ' ' . Yii::t('app_frontend','beehive');
 $this->params['breadcrumbs'][] = ['label' => ucfirst(Yii::t('app_frontend', 'beehives')), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pnie-create">
+<div class="hives-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

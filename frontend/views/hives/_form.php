@@ -8,17 +8,17 @@ use kartik\date\DatePicker;
 use kartik\slider\Slider;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Pnie */
+/* @var $model frontend\models\Hives */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="pnie-form">
+<div class="hives-form">
 
     <?php $form = ActiveForm::begin(); ?>
     
     <div class="row">
      <div class="col-xs-4">
-            <?= $form->field($model, 'id_pasieki')->dropDownList($model->apiaryList())->label(Yii::t('app_frontend','apiary')) ?>
+            <?= $form->field($model, 'apiary_id')->dropDownList($model->apiaryList())->label(Yii::t('app_frontend','apiary')) ?>
         </div>
         <div class="col-xs-4">
             <?= $form->field($model, 'type')->dropDownList(frontend\models\Status::dropDown($model->tableName(),'type'),['maxlength' => true]) ?>

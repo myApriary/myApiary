@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\PnieSearch */
+/* @var $model frontend\models\HivesSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="pnie-search">
+<div class="hives-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -20,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'id_pasieki') ?>
+    <?= $form->field($model, 'apiary_id') ?>
 
     <?= $form->field($model, 'type') ?>
 

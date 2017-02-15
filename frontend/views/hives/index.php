@@ -5,13 +5,13 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\PnieSearch */
+/* @var $searchModel frontend\models\HivesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = ucfirst(Yii::t('app_frontend', 'beehives'));
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pnie-index">
+<div class="hives-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
@@ -27,9 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'pasieka.nazwa' => [
+            'apiary.name' => [
                 'label' => Yii::t('app_frontend', 'apiary'),
-                'value' => 'pasieka.nazwa',
+                'value' => 'apiary.name',
             ],
             'type0.labelT',
             'kindOfFrame0.labelT',
