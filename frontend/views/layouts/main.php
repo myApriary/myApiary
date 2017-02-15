@@ -140,10 +140,10 @@ AppAsset::register($this);
                             'active' => Yii::$app->controller->id==='honeyharvest',
                         ],
                         [
-                            'url' => Url::to(['/dokarmiania/index']),
+                            'url' => Url::to(['/feeding/index']),
                             'label' => Icon::show('cutlery',['style'=>'width:25px']) . ucwords(Yii::t('app_frontend','feeding')),
                             //'icon' => 'glyphicon glyphicon-book',
-                            'active' => Yii::$app->controller->id==='dokarmiania',
+                            'active' => Yii::$app->controller->id==='feeding',
                         ],
                         [
                             'url' => Url::to(['/leczenia/index']),
