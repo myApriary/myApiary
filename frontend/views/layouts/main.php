@@ -122,10 +122,10 @@ AppAsset::register($this);
                             'active' => Yii::$app->controller->id==='hives',
                         ],
                         [
-                            'url' => Url::to(['/matki/index']),
+                            'url' => Url::to(['/queen/index']),
                             'label' => Icon::show('venus',['style'=>'width:25px']) . Yii::t('app_frontend','Queen bees'),
                             //'icon' => 'glyphicon glyphicon-book',
-                            'active' => Yii::$app->controller->id==='matki',
+                            'active' => Yii::$app->controller->id==='queen',
                         ],
                         [
                             'url' => Url::to(['/ulikiweselne/index']),
