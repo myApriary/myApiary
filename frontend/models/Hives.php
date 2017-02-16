@@ -41,7 +41,7 @@ class Hives extends \yii\db\ActiveRecord
         return [
             [['apiary_id', 'capacity', 'number_of_frames', 'family_condition', 'number'], 'integer'],
             [['type', 'kind_of_frame', 'capacity', 'number_of_frames', 'family_condition', 'number'], 'required'],
-            [['start_date', 'end_date',], 'safe'],
+            [['start_date', 'end_date', 'type0', 'kindOfFrame0'], 'safe'],
             [['type', 'kind_of_frame', 'name'], 'string', 'max' => 30],
             [['apiary_id'], 'exist', 'skipOnError' => true, 'targetClass' => Apiaries::className(), 'targetAttribute' => ['apiary_id' => 'id']],
             [['start_date', 'end_date'], 'date', 'format'=>'yyyy-mm-dd'],
