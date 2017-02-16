@@ -25,8 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'apiary.name' => [
+            [
+                'attribute' => 'apiary',
                 'label' => Yii::t('app_frontend', 'apiary'),
                 'value' => 'apiary.name',
             ],
