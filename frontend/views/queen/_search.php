@@ -22,7 +22,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'mark_disk_color') ?>
 
-    <?= $form->field($model, 'marking_disk_number') ?>
+    <?= $form->field($model, 'mark_disk_number') ?>
 
     <?= $form->field($model, 'variety') ?>
 

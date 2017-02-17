@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'mark_disk_color',
-            'marking_disk_number',
+            'mark_disk_number',
             'variety',
             'reproductive_hive_id',
             'hive_id',

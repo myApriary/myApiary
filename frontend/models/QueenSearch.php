@@ -18,7 +18,7 @@ class QueenSearch extends Queen
     public function rules()
     {
         return [
-            [['id', 'marking_disk_number', 'reproductive_hive_id', 'hive_id'], 'integer'],
+            [['id', 'mark_disk_number', 'reproductive_hive_id', 'hive_id'], 'integer'],
             [['mark_disk_color', 'variety', 'hive_time', 'matting_box_id', 'matting_box_time', 'ts_insert', 'ts_update'], 'safe'],
         ];
     }
@@ -60,7 +60,7 @@ class QueenSearch extends Queen
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'marking_disk_number' => $this->marking_disk_number,
+            'mark_disk_number' => $this->mark_disk_number,
             'reproductive_hive_id' => $this->reproductive_hive_id,
             'hive_id' => $this->hive_id,
             'hive_time' => $this->hive_time,
