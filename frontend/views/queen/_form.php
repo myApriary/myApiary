@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'mark_disk_color')->dropDownList([ '0', '1', '2', '3', '4', ], ['prompt' => '']) ?>
 
-    <?= $form->field($model, 'marking_disk_number')->textInput() ?>
+    <?= $form->field($model, 'mark_disk_number')->textInput() ?>
 
     <?= $form->field($model, 'variety')->textInput(['maxlength' => true]) ?>
 
@@ -27,10 +27,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'matting_box_id')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'matting_box_time')->textInput() ?>
-
-    <?= $form->field($model, 'ts_insert')->textInput() ?>
-
-    <?= $form->field($model, 'ts_update')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

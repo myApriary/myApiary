@@ -25,12 +25,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
             'mark_disk_color',
-            'marking_disk_number',
+            'mark_disk_number',
             'variety',
-            'reproductive_hive_id',
+            'ApiaryAndHive',
+            'ApiaryAndReproductiveHive',
+            
+            //(empty('hive.name') ? 'hive.id':'hive.name'),
+
             // 'hive_id',
             // 'hive_time',
             // 'matting_box_id',
