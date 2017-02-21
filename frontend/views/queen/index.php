@@ -23,16 +23,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'formatter' => ['class' => 'yii\i18n\Formatter','nullDisplay' => ''],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'mark_disk_color',
+            'color0.labelT',
             'mark_disk_number',
             'variety',
             'ApiaryAndHive',
             'ApiaryAndReproductiveHive',
             
-            //(empty('hive.name') ? 'hive.id':'hive.name'),
-
             // 'hive_id',
             // 'hive_time',
             // 'matting_box_id',

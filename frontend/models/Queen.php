@@ -51,8 +51,8 @@ class Queen extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app_frontend', 'ID'),
-            'mark_disk_color' => Yii::t('app_frontend', 'Mark disk color'),
-            'mark_disk_number' => Yii::t('app_frontend', 'Mark disk number'),
+            //'mark_disk_color' => Yii::t('app_frontend', 'Mark disk color'),
+            'mark_disk_number' => ucfirst(Yii::t('app_frontend', 'number')),
             'variety' => Yii::t('app_frontend', 'Variety'),
             'reproductive_hive_id' => Yii::t('app_frontend', 'Reproductive hive'),
             'hive_id' => Yii::t('app_frontend', 'Hive'),
@@ -62,6 +62,7 @@ class Queen extends \yii\db\ActiveRecord
             'reproductiveHive.apiary.name' => Yii::t('app_frontend', 'Apiary'),
             'ApiaryAndHive' => Yii::t('app_frontend', 'Hive'),
             'ApiaryAndReproductiveHive' => Yii::t('app_frontend', 'Reproductive Hive'),
+            'color0.labelT' => ucfirst(Yii::t('app_frontend', 'color')),
         ];
     }
 
@@ -74,19 +75,23 @@ class Queen extends \yii\db\ActiveRecord
     }
 
     public function getApiaryAndHive(){
-        $haa = empty($this->getHive()->one()->name) ? $this->getHive()->one()->name : $this->getHive()->one()->id;
+        $r = $this->getHive()->one();
+        $haa = (empty($r->name) ? $r->id : $r->name);
         return ($this->getHive()->one()->apiary->name . ' ' .  $haa);
 
     }
 
     public function getApiaryAndReproductiveHive(){
         if(!empty($this->reproductive_hive_id)){
-            $haa = (empty($this->getReproductiveHive()->one()->name) ? $this->getReproductiveHive()->one()->name : $this->getReproductiveHive()->one()->id);
-            print_r('haa: ' . $haa);exit;
+            $r = $this->getReproductiveHive()->one();
+            $haa = (empty($r->name) ? $r->id : $r->name);
             return ($this->getReproductiveHive()->one()->apiary->name . ' ' .  $haa);
-            //return 'ss';
         }
 
+    }
+
+    public function getColor0() {
+        return $this->hasOne(Status::className(), ['id' => 'mark_disk_color']);
     }
 
 }

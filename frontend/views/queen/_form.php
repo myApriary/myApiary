@@ -1,7 +1,8 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+//use yii\widgets\ActiveForm;
+use kartik\form\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model frontend\models\Queen */
@@ -12,9 +13,19 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'mark_disk_color')->dropDownList([ '0', '1', '2', '3', '4', ], ['prompt' => '']) ?>
+    
+     <div class="row">
+        <div class="col-xs-6">
+            <?= $form->field($model, 'mark_disk_color')->dropDownList(frontend\models\Status::dropDown($model->tableName(),'mark_disk_color'),['maxlength' => true]) ?>
+        </div>
+        <div class="col-xs-6">
+            <?= $form->field($model, 'mark_disk_number')->textInput() ?>
+        </div>
+    </div> 
+        
 
-    <?= $form->field($model, 'mark_disk_number')->textInput() ?>
+
+    
 
     <?= $form->field($model, 'variety')->textInput(['maxlength' => true]) ?>
 

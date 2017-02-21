@@ -128,5 +128,3 @@ class Apiaries extends \yii\db\ActiveRecord
     }
 */
 }
-//ALTER TABLE apiaries ADD CHECK (end_date >= start_date);
-//ALTER TABLE apiaries ADD CONSTRAINT CK_end_date_vs_start_date CHECK CHECK (end_date >= start_date);
