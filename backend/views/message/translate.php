@@ -1,5 +1,5 @@
 <?php
-
+use yii\bootstrap\Modal;
 use yii\helpers\Html;
 //use yii\grid\GridView;
 use kartik\grid\GridView;
@@ -20,41 +20,45 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Message', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-
+    <?php 
+        Modal::begin([
+            'options' => [
+                'id' => 'kartik-modal',
+                'tabindex' => false // important for Select2 to work properly
+            ],
+            'header' => '<h4 style="margin:0; padding:0">Create new message</h4>',
+            'toggleButton' => ['label' => 'Create Message', 'class' => 'btn btn-success'],
+        ]);
+        echo $this->render('_form_translate', [
+            'model' => $model,
+            'modelSM' => $modelSM,
+        ]);
+        Modal::end();
+    ?>
+    
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        
         'pjax'=>true,
         'columns' => [
 
             [
                 'class'=>'kartik\grid\EditableColumn',
-                
-                'attribute'=>'message',
-                'pageSummary'=>false,
+                'editableOptions' => [
+                    'formOptions'=>['action' => ['/message/edittranslation']],
+                ],                
 
+                'pageSummary'=>false,
+				'attribute' => 'message',
             ],
+
             [
                 'class'=>'kartik\grid\EditableColumn',
 
-                'editableOptions' => function ($model, $key, $index, $widget) {
-                   // print_r($column);
-                    return [
-                        //'inputType'=>\kartik\editable\Editable::INPUT_TEXT,
-                        
-                        'inputFieldConfig' => [
-                            //'model' => $model->source,
-                            //'attribute' => 'category',
-                            'inputOptions' => ['name' => $model->source->formName().'['.$model->id.']['.$widget->attribute.']'],
-                        ],
-                        
-                        //'model' => $model->source,
-                        //'attribute' => 'category',
-                        'name'=>'sdfsdfs',
-
-                        'formOptions'=>['action' => ['/source-message/edittranslation']],
-                    ];
-                },
+                'editableOptions' => [
+                    'formOptions'=>['action' => ['/message/edittranslation']],
+                ],
                 'attribute' => 'category',
                 'pageSummary'=>false,
             ],

@@ -1,6 +1,6 @@
 <?php
 return [
-    'language' => 'pl-PL',
+    //'language' => 'pl-PL',
     'sourceLanguage' => 'en-US',
     'timeZone' => 'Europe/Warsaw',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',

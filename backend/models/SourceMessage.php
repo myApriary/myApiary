@@ -29,8 +29,11 @@ class SourceMessage extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['id'], 'integer'],
+            [['message', 'category',], 'required'],
             [['message'], 'string'],
             [['category'], 'string', 'max' => 32],
+            [['message', 'category'], 'unique', 'targetAttribute' => ['message', 'category']],
         ];
     }
 
@@ -52,5 +55,14 @@ class SourceMessage extends \yii\db\ActiveRecord
     public function getMessages()
     {
         return $this->hasMany(Message::className(), ['id' => 'id']);
+    }
+    
+    public function sourceList(){
+
+        return \yii\helpers\ArrayHelper::map(SourceMessage::find()->all(),'id', 'catMes');
+    }
+    
+    public function getCatMes() {
+        return $this->category.' - '.$this->message;
     }
 }

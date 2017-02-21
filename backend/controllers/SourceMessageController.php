@@ -34,21 +34,29 @@ class SourceMessageController extends Controller
     {
         return ArrayHelper::merge(parent::actions(), [
             'edittranslation' => [                               // identifier for your editable action
-                print_r('jhgjhg'); exit;
+                //print_r('jhgjhg'); exit;
                 'class' => \kartik\grid\EditableColumnAction::className(),     // action class name
                 'modelClass' => SourceMessage::className(),                // the update model class
-                
-                'outputValue' => function ($model, $attribute, $key, $index) {
+                /*
+                outputValue' => function ($model, $attribute, $key, $index) {
                     return 'bbb';                                   // empty is same as $value
                },
                'outputMessage' => function($model, $attribute, $key, $index) {
                      return 'aaa';                                  // any custom error after model save
-               },
+               },*/
                // 'showModelErrors' => true,                     // show model errors after save
                // 'errorOptions' => ['header' => '']             // error summary HTML options
                // 'postOnly' => true,
                // 'ajaxOnly' => true,
-               // 'findModel' => function($id, $action) {},
+               /*
+                'findModel' => function($id, $action) {
+                    if (($model = SourceMessage::findOne($id)) !== null) {
+                        return $model;
+                    } else {
+                        throw new NotFoundHttpException($id.' - The requested page does not exist.');
+                    }
+                },
+                */
                // 'checkAccess' => function($action, $model) {}
             ]
         ]);
@@ -146,4 +154,16 @@ class SourceMessageController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+    
+    public function actionSourceMessageAndTranslate()
+    {
+        $searchModel = new \backend\models\SourceMessageAndTranslateSearch;
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('surce-message-and-translate', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }   
+    
 }

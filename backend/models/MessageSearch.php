@@ -12,6 +12,8 @@ use backend\models\Message;
  */
 class MessageSearch extends Message
 {
+    
+  
     /**
      * @inheritdoc
      */
@@ -22,7 +24,7 @@ class MessageSearch extends Message
             [['language', 'translation', 'category', 'message'], 'safe'],
         ];
     }
-
+    
     /**
      * @inheritdoc
      */
@@ -43,8 +45,12 @@ class MessageSearch extends Message
     {
         $query = Message::find();
         //$query->rightJoin(['source' => function($query) { $query->from(['source' => 'SourceMessage']); }, 'SourceMessage.id = Message.id']);
-        $query->rightJoin('SourceMessage', 'SourceMessage.id = Message.id');
-       
+        //$query->rightJoin('SourceMessage', 'SourceMessage.id = Message.id');
+        
+        $query->select(['*'])
+            ->from('SourceMessage')
+	        ->join('LEFT OUTER JOIN', 'Message', 'SourceMessage.id = Message.id');
+        
         //$query->joinWith(['source' => function($query) { $query->from(['source' => 'SourceMessage']); }]);
         
         // add conditions that should always apply here
