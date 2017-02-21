@@ -64,10 +64,10 @@ class MessageController extends Controller
      * @param string $language
      * @return mixed
      */
-    public function actionView($index0)
+    public function actionView($id, $language)
     {
         return $this->render('view', [
-            'model' => $this->findModel($index0),
+            'model' => $this->findModel($id, $language),
         ]);
     }
 
@@ -96,12 +96,12 @@ class MessageController extends Controller
      * @param string $language
      * @return mixed
      */
-    public function actionUpdate($index0)
+    public function actionUpdate($id, $language)
     {
-        $model = $this->findModel($index0);
+        $model = $this->findModel($id, $language);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'index0' => $model->index0]);
+            return $this->redirect(['view', 'id' => $model->id, 'language' => $model->language]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -116,9 +116,9 @@ class MessageController extends Controller
      * @param string $language
      * @return mixed
      */
-    public function actionDelete($index0)
+    public function actionDelete($id, $language)
     {
-        $this->findModel($index0)->delete();
+        $this->findModel($id, $language)->delete();
 
         return $this->redirect(['index']);
     }
@@ -131,9 +131,9 @@ class MessageController extends Controller
      * @return Message the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($index0)
+    protected function findModel($id, $language)
     {
-        if (($model = Message::findOne(['index0' => $index0])) !== null) {
+        if (($model = Message::findOne(['id' => $id, 'language' => $language])) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
@@ -142,8 +142,10 @@ class MessageController extends Controller
     
     public function actionTranslate() {
         $searchModel = new MessageSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $model = new Message();
+        $modelSM = new SourceMessage();
         
         if (Yii::$app->request->post('hasEditable')) {
             // instantiate your book model for saving
@@ -192,7 +194,7 @@ class MessageController extends Controller
                 $out = Json::encode(['output'=>$output, 'message'=>'']);
                 }
                 // return ajax json encoded response and exit
-                echo $out;
+                echo $out; 
                 return;
             }
             else{
@@ -237,13 +239,57 @@ class MessageController extends Controller
                 $out = Json::encode(['output'=>$output, 'message'=>'']);
                 }
                 // return ajax json encoded response and exit
-                echo $out;
+                echo $out; 
                 return;
             }
-        }
+        } 
         return $this->render('translate', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'model' => $model,
+            'modelSM' => $modelSM,
         ]);
+    }
+    
+    public function actionCreateTranslate() {
+        
+        
+        if(empty(Yii::$app->request->post('SourceMessage')['category']) && empty(Yii::$app->request->post('SourceMessage')['category'])) {
+
+            $model = new Message();
+
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['translate']);
+            }
+            
+        } else {
+            return $this->redirect(['translate']);
+        }
+        /*
+        
+        $transaction = Yii::$app->db->beginTransaction();
+
+        try {
+
+            $user = new User();
+            $user->name = 'Name';
+            $user->save();
+
+            $ua = new UserAddress();
+            $ua->city = 'City';
+
+            $user->link('userAddress', $ua); // <-- it creates new record in UserAddress table with ua.user_id = user.id
+
+            $transaction->commit();
+
+        } catch (Exception $e) {
+
+            $transaction->rollBack();
+
+        }
+        
+        */
+        
+        return $this->actionTranslate();
     }
 }

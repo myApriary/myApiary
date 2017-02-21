@@ -74,7 +74,7 @@ AppAsset::register($this);
                             'url' => Url::to(['/source-message/']),
                             'label' => Icon::show('envelope-o',['style'=>'width:25px']) . 'sources',
                             //'icon' => 'glyphicon glyphicon-file',
-                            'active' => Yii::$app->controller->id==='source-message',
+                            'active' => Yii::$app->controller->action->id==='index' && Yii::$app->controller->id==='source-message',
                         ],
                         [
                             'url' => Url::to(['/message/']),
@@ -88,7 +88,12 @@ AppAsset::register($this);
                             //'icon' => 'glyphicon glyphicon-plus',
                             'active' => Yii::$app->controller->action->id==='translate' && Yii::$app->controller->id==='message',
                         ],
-  
+                        [
+                            'url' => Url::to(['/source-message/source-message-and-translate']),
+                            'label' => Icon::show('flag',['style'=>'width:25px']) . 'new translation',
+                            //'icon' => 'glyphicon glyphicon-plus',
+                            'active' => Yii::$app->controller->action->id==='source-message-and-translate' && Yii::$app->controller->id==='source-message',
+                        ],  
                       
                     ],
                 ]);}; ?>             

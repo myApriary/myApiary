@@ -24,7 +24,7 @@ class Message extends \yii\db\ActiveRecord
     {
         return 'Message';
     }
-
+ 
     /**
      * @inheritdoc
      */
@@ -33,6 +33,7 @@ class Message extends \yii\db\ActiveRecord
         return [
             [['id', 'language',], 'required'],
             [['id'], 'integer'],
+            [['id', 'language'], 'unique', 'targetAttribute' => ['id', 'language']],
             [['translation'], 'string'],
             [['language'], 'string', 'max' => 16],
             [['id'], 'exist', 'skipOnError' => true, 'targetClass' => SourceMessage::className(), 'targetAttribute' => ['id' => 'id']],
@@ -54,11 +55,12 @@ class Message extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
+     /*
     public function getId0()
     {
         return $this->hasOne(SourceMessage::className(), ['id' => 'id']);
     }
-
+*/
     public function sourceList(){
 
         return ArrayHelper::map(SourceMessage::find()->all(),'id', 'message');
@@ -71,16 +73,13 @@ class Message extends \yii\db\ActiveRecord
 
     public function getCategory()
     {
-        return $this->source->category;
+        return is_object($this->source)?$this->source->category:null;
     }
 
     public function getMessage()
     {
-        return $this->source->message;
+        return is_object($this->source)?$this->source->message:null;
+        //print_r($this); exit;
     }
-
-    public static function primaryKey()
-    {
-        return array('index0');
-    }
+ 
 }
