@@ -56,6 +56,11 @@ return [
                 'allow' => true,
             ],
             [
+                'actions' => ['index'],
+                'controllers' => ['site'],
+                'allow' => true,
+            ],
+            [
                 'actions' => ['logout'], // add all actions to take guest to login page
                 'allow' => true,
                 'roles' => ['@'],

@@ -75,6 +75,13 @@ return [
             'rules' => [
             ],
         ],
+        'view'=>[
+            'theme'=>[
+                'pathMap'=>[
+                    '@app/views'=>'@app/themes/agency'
+                ]
+            ]
+        ],
         
     ],
     'modules' => [
