@@ -56,7 +56,7 @@ return [
                 'allow' => true,
             ],
             [
-                'actions' => ['index'],
+                'actions' => ['index', 'contact'],
                 'controllers' => ['site'],
                 'allow' => true,
             ],
@@ -71,4 +71,5 @@ return [
             ],
         ],
     ],
+
 ];

@@ -70,7 +70,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        Yii::$app->layout = 'homepage';
+        
         return $this->render('index');
     }
 

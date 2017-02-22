@@ -5,7 +5,7 @@
    $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@dixonsatit/agencyTheme/dist');
    ?>
    <!-- Header -->
-    <header>
+    <header style="background-image: url('/frontend/web/images/bee2.jpg')">
         <div class="container">
             <div class="intro-text">
                 <div class="intro-lead-in">
@@ -15,7 +15,7 @@
                     <?= Yii::t('app_frontend', 'Could be easier?');  ?>
                 </div>
                 <a href="#services" class="page-scroll btn btn-xl">
-                    <?= Yii::t('app_frontend', 'Tell Me More');  ?>
+                    <?= Yii::t('app_frontend', 'Check it!');  ?>
                 </a>
             </div>
         </div>
