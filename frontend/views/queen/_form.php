@@ -24,9 +24,6 @@ use kartik\form\ActiveForm;
     </div> 
         
 
-
-    
-
     <?= $form->field($model, 'variety')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'reproductive_hive_id')->textInput() ?>
