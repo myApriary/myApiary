@@ -5,10 +5,15 @@ return [
     'timeZone' => 'Europe/Warsaw',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
-        'user' => [
+        /*'user' => [
             'identityClass' => 'dektrium\user\models\User',
             'loginUrl' => ['user/security/login'],
-        ],
+        ],*/
+        'user' => [
+            'identityClass' => 'common\models\User',
+            'enableAutoLogin' => true,
+            'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
+        ],        
         /*
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -27,7 +32,7 @@ return [
         ],
     ],
     'modules' => [
-        'user' => [
+        /*'user' => [
             'class' => 'dektrium\user\Module',
             'enableFlashMessages' => false,
             'enableRegistration' => false,
@@ -46,7 +51,7 @@ return [
             'urlPrefix' => 'user',
             'urlRules' => [], 
         ],
-        'rbac' => 'dektrium\rbac\RbacWebModule',
+        'rbac' => 'dektrium\rbac\RbacWebModule',*/
     ],
     'as access' => [
         'class' => \yii\filters\AccessControl::className(),//AccessControl::className(),

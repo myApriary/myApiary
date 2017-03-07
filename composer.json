@@ -35,7 +35,8 @@
         "kartik-v/yii2-mpdf": "*",
         "setasign/fpdi": "^1.6",
         "kartik-v/yii2-widgets": "*",
-        "dixonsatit/yii2-agency-theme": "^1.0"
+        "dixonsatit/yii2-agency-theme": "^1.0",
+        "lajax/yii2-translate-manager": "1.*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "*",
