@@ -21,6 +21,12 @@ return [
                     'class' => 'yii\i18n\DbMessageSource',
                     'messageTable' => 'Message',
                     'sourceMessageTable' => 'SourceMessage',
+                    //'db' => 'db',
+                    //'sourceLanguage' => 'en-US', // Developer language
+                    //'sourceMessageTable' => '{{%language_source}}',
+                    //'messageTable' => '{{%language_translate}}',
+                    //'cachingDuration' => 86400,
+                    //'enableCaching' => true,
                     //'sourceLanguage' => 'en',
                 ],
             ],
@@ -47,6 +53,9 @@ return [
             'urlRules' => [], 
         ],
         'rbac' => 'dektrium\rbac\RbacWebModule',
+        'translatemanager' => [
+            'class' => 'lajax\translatemanager\Module',
+        ],
     ],
     'as access' => [
         'class' => \yii\filters\AccessControl::className(),//AccessControl::className(),
