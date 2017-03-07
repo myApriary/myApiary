@@ -3191,7 +3191,7 @@
                 "constructor",
                 "instantiate"
             ],
-            "time": "2017-02-16 16:15:51"
+            "time": "2017-02-16T16:15:51+00:00"
         },
         {
             "name": "fzaninotto/faker",
@@ -3306,7 +3306,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-02-21 01:20:32"
+            "time": "2017-02-21T01:20:32+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -4450,7 +4450,7 @@
             ],
             "description": "Symfony BrowserKit Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 08:33:48"
+            "time": "2017-02-21T08:33:48+00:00"
         },
         {
             "name": "symfony/console",
@@ -4511,7 +4511,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 14:21:52"
+            "time": "2017-02-21T14:21:52+00:00"
         },
         {
             "name": "symfony/css-selector",
@@ -4564,7 +4564,7 @@
             ],
             "description": "Symfony CssSelector Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 08:33:48"
+            "time": "2017-02-21T08:33:48+00:00"
         },
         {
             "name": "symfony/debug",
@@ -4677,7 +4677,7 @@
             ],
             "description": "Symfony DomCrawler Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 08:33:48"
+            "time": "2017-02-21T08:33:48+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -4737,7 +4737,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 08:33:48"
+            "time": "2017-02-21T08:33:48+00:00"
         },
         {
             "name": "symfony/finder",
@@ -4786,7 +4786,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 08:33:48"
+            "time": "2017-02-21T08:33:48+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -4894,7 +4894,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-21 08:33:48"
+            "time": "2017-02-21T08:33:48+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -4991,7 +4991,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2017-02-22 13:47:31"
+            "time": "2017-02-22T13:47:31+00:00"
         },
         {
             "name": "yiisoft/yii2-faker",
