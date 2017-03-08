@@ -53,9 +53,6 @@ return [
             'urlRules' => [], 
         ],
         'rbac' => 'dektrium\rbac\RbacWebModule',
-        'translatemanager' => [
-            'class' => 'lajax\translatemanager\Module',
-        ],
     ],
     'as access' => [
         'class' => \yii\filters\AccessControl::className(),//AccessControl::className(),

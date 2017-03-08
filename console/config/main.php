@@ -12,7 +12,12 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'console\controllers',
     'components' => [
-        'log' => [
+        'user' => [
+            'class' => 'yii\web\User',
+            'identityClass' => 'dektrium\user\models\User',
+            //'enableAutoLogin' => TRUE,
+        ],
+       'log' => [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
@@ -20,12 +25,14 @@ return [
                 ],
             ],
         ],
+        'session' => [ 
+            'class' => 'yii\web\Session'
+        ],
     ],
     'modules' => [
-        'user' => [
-            'class' => 'dektrium\user\Module',
-        ],
-        'rbac' => 'dektrium\rbac\RbacConsoleModule',
+        'user' => null,
+        'rbac' => null,
     ],
+    
     'params' => $params,
 ];
