@@ -72,7 +72,7 @@ AppAsset::register($this);
                     'items' => [
                         [
                             'url' => Url::to(['locale/']),
-                            'label' => Icon::show('envelope-o',['style'=>'width:25px']) . 'Locale',
+                            'label' => Icon::show('globe',['style'=>'width:25px']) . 'Locale',
                             //'icon' => 'glyphicon glyphicon-file',
                             'active' => Yii::$app->controller->id==='locale',
                         ],
@@ -84,7 +84,7 @@ AppAsset::register($this);
                         ],
                         [
                             'url' => Url::to(['message/']),
-                            'label' => Icon::show('envelope-o',['style'=>'width:25px']) . 'Message',
+                            'label' => Icon::show('envelope',['style'=>'width:25px']) . 'Message',
                             //'icon' => 'glyphicon glyphicon-file',
                             'active' => Yii::$app->controller->id==='message',
                         ],                         
