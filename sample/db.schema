@@ -9,45 +9,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-DROP TABLE IF EXISTS `Message`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `Message` (
-  `id` int(11) NOT NULL DEFAULT '0',
-  `index0` int(11) NOT NULL DEFAULT '0',
-  `language` varchar(16) CHARACTER SET utf8 COLLATE utf8_polish_ci NOT NULL DEFAULT 'pl-PL',
-  `translation` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
-  PRIMARY KEY (`id`,`language`),
-  UNIQUE KEY `index0` (`index0`),
-  CONSTRAINT `FK_Message_SourceMessage` FOREIGN KEY (`id`) REFERENCES `SourceMessage` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = '' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER Message_ins_tr BEFORE INSERT ON Message
-FOR EACH ROW SET NEW.index0 = (select max(index0)+1 from Message) */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-DROP TABLE IF EXISTS `SourceMessage`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `SourceMessage` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `category` varchar(32) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT 'app_frontend',
-  `message` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `apiary`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -131,7 +92,7 @@ CREATE TABLE `cost` (
   `description` varchar(300) NOT NULL,
   `comment` varchar(300) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `ts_insert` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `ts_insert` timestamp NULL DEFAULT NULL,
   `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -170,7 +131,7 @@ CREATE TABLE `hive` (
   PRIMARY KEY (`id`),
   KEY `id_pasieki` (`apiary_id`),
   CONSTRAINT `hive_ibfk_1` FOREIGN KEY (`apiary_id`) REFERENCES `apiary` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `honeyharvest`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -180,7 +141,7 @@ CREATE TABLE `honeyharvest` (
   `honey_amount` decimal(6,2) NOT NULL,
   `kind_of_honey` varchar(60) NOT NULL,
   `hive_id` varchar(6) NOT NULL,
-  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `time` timestamp NULL DEFAULT NULL,
   `ts_insert` timestamp NULL DEFAULT NULL,
   `ts_update` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
@@ -197,6 +158,19 @@ CREATE TABLE `info` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `locale`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `locale` (
+  `language_id` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `language` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `country` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `name_ascii` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `status` smallint(6) NOT NULL,
+  PRIMARY KEY (`language_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci ROW_FORMAT=COMPACT;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `matting_box`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -211,6 +185,19 @@ CREATE TABLE `matting_box` (
   `ts_insert` timestamp NULL DEFAULT NULL,
   `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `message`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `message` (
+  `sourcemessage_id` int(11) NOT NULL,
+  `language_id` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `translation` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
+  PRIMARY KEY (`sourcemessage_id`,`language_id`),
+  KEY `language_id` (`language_id`),
+  CONSTRAINT `FK_Message_SourceMessage` FOREIGN KEY (`sourcemessage_id`) REFERENCES `sourcemessage` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `message_ibfk_1` FOREIGN KEY (`language_id`) REFERENCES `locale` (`language_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `migration`;
@@ -244,18 +231,18 @@ DROP TABLE IF EXISTS `queen`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `queen` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `mark_disk_color` enum('0','1','2','3','4') NOT NULL,
-  `marking_disk_number` int(11) DEFAULT NULL,
+  `mark_disk_color` int(11) DEFAULT NULL,
+  `mark_disk_number` int(11) DEFAULT NULL,
   `variety` varchar(45) NOT NULL,
   `reproductive_hive_id` int(11) DEFAULT NULL,
   `hive_id` int(11) DEFAULT NULL,
-  `hive_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `matting_box_id` varchar(6) NOT NULL,
-  `matting_box_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `hive_time` timestamp NULL DEFAULT NULL,
+  `matting_box_id` varchar(6) DEFAULT NULL,
+  `matting_box_time` timestamp NULL DEFAULT '0000-00-00 00:00:00',
   `ts_insert` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `sensor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -291,6 +278,16 @@ CREATE TABLE `social_account` (
   KEY `fk_user_account` (`user_id`),
   CONSTRAINT `fk_user_account` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `sourcemessage`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sourcemessage` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `category` varchar(32) CHARACTER SET utf8 COLLATE utf8_polish_ci DEFAULT 'app_frontend',
+  `message` text CHARACTER SET utf8 COLLATE utf8_polish_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `status`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -353,7 +350,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_unique_email` (`email`),
   UNIQUE KEY `user_unique_username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
