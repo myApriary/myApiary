@@ -74,10 +74,6 @@ return [
                 'forceTranslation' => true,
             ],
         ],
-        'translatemanager' => [
-            'class' => 'lajax\translatemanager\Module',
-            'allowedIPs' => ['127.0.0.1', '89.74.116.140',],
-        ],
     ],
     'params' => $params,
 ];

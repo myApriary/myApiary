@@ -21,13 +21,6 @@ return [
                     'class' => 'yii\i18n\DbMessageSource',
                     'messageTable' => 'Message',
                     'sourceMessageTable' => 'SourceMessage',
-                    //'db' => 'db',
-                    //'sourceLanguage' => 'en-US', // Developer language
-                    //'sourceMessageTable' => '{{%language_source}}',
-                    //'messageTable' => '{{%language_translate}}',
-                    //'cachingDuration' => 86400,
-                    //'enableCaching' => true,
-                    //'sourceLanguage' => 'en',
                 ],
             ],
         ],
