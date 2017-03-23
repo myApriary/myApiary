@@ -8,6 +8,7 @@ use backend\modules\translate\models\LocaleSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 
 /**
  * LocaleController implements the CRUD actions for Locale model.
@@ -49,48 +50,24 @@ class LocaleController extends Controller
      * @param string $id
      * @return mixed
      */
-    public function actionView($id)
+    public function actionView($id=null)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+       
+        if($id===null) {
+            $model = new Locale();
 
-    /**
-     * Creates a new Locale model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Locale();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->language_id]);
         } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+            $model=$this->findModel($id);
         }
-    }
-
-    /**
-     * Updates an existing Locale model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $id
-     * @return mixed
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
+        
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->language_id]);
+            Yii::$app->session->setFlash('kv-detail-success', 'Saved record successfully');
+            return $this->redirect(['view', 'id'=>$model->language_id]);
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            
+            return $this->render('view', ['model'=>$model]);
         }
+        
     }
 
     /**
@@ -101,9 +78,26 @@ class LocaleController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
+        $post = Yii::$app->request->post();
+        if (Yii::$app->request->isAjax && isset($post['custom_param'])) {
+            if ($this->findModel($id)->delete()) {
+                echo Json::encode([
+                    'success' => true,
+                    'messages' => [
+                        'kv-detail-info' => 'Record # ' . $id . ' was successfully deleted.'
+                    ]
+                ]);
+            } else {
+                echo Json::encode([
+                    'success' => false,
+                    'messages' => [
+                        'kv-detail-error' => 'Cannot delete record # ' . $id . '.'
+                    ]
+                ]);
+            }
+            return;
+        }
+        //throw new InvalidCallException("You are not allowed to do this operation. Contact the administrator.");
     }
 
     /**

@@ -1,7 +1,6 @@
 <?php
-
+use kartik\detail\DetailView;
 use yii\helpers\Html;
-use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model backend\modules\translate\models\Locale */
@@ -12,29 +11,47 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="locale-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $model->language_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->language_id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
-
     <?= DetailView::widget([
-        'model' => $model,
+        'model'=>$model,
+        'mode' => (empty($model->language_id)?'edit':'view'),
+        'bordered' => true,
+        'striped' => true,
+        'condensed' => true,
+        'responsive' => false,
+        'hover' => false,
+        'hAlign'=>'center',
+        'vAlign'=>'middle',
+        'fadeDelay'=>500,
+        'panel'=>[
+            'heading'=>'# '.$model->language_id,
+            //'type'=>DetailView::TYPE_INFO,
+        ],
         'attributes' => [
             'language_id',
             'language',
             'country',
             'name',
             'name_ascii',
-            'status',
+            [
+                'attribute'=>'status', 
+                'label'=>'Available?',
+                'format'=>'raw',
+                'value'=>$model->status ? 
+                    '<span class="label label-success">Yes</span>' : 
+                    '<span class="label label-danger">No</span>',
+                'type'=>DetailView::INPUT_SWITCH,
+                'widgetOptions'=>[
+                    'pluginOptions'=>[
+                        'onText'=>'Yes',
+                        'offText'=>'No',
+                    ]
+                ]
+            ],
         ],
-    ]) ?>
+        'deleteOptions'=>[
+            'params' => ['custom_param'=>true],
+            'url'=>['delete', 'id' => $model->language_id],
+        ]
+    ]); ?>
 
 </div>
