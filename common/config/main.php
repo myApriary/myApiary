@@ -26,7 +26,6 @@ return [
                     'class' => 'yii\i18n\DbMessageSource',
                     'messageTable' => 'Message',
                     'sourceMessageTable' => 'SourceMessage',
-                    //'sourceLanguage' => 'en',
                 ],
             ],
         ],

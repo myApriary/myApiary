@@ -43,6 +43,15 @@ AppAsset::register($this);
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Sign in', 'url' => ['/user/security/login']];
     } else {
+        
+        $menuItems[] = [
+            'label' => 'User admin', 
+            'url' => ['/user/admin'],
+        ];
+        $menuItems[] = [
+            'label' => 'Translate module', 
+            'url' => ['/translate'],
+        ];
         $menuItems[] = [
             'label' => 'Sign out (' . Yii::$app->user->identity->username . ')', 
             'url' => ['/user/security/logout'],

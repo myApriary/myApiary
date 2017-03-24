@@ -73,7 +73,10 @@ return [
                 'basePath' => '@kvgrid/messages',
                 'forceTranslation' => true,
             ],
-        ]
+        ],
+        'translate' => [
+            'class' => 'backend\modules\translate\Module',
+        ],
     ],
     'params' => $params,
 ];
