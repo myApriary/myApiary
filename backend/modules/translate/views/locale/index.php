@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use kartik\grid\GridView;;
+use kartik\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\translate\models\LocaleSearch */
@@ -12,10 +12,9 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="locale-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+    <?php Pjax::end(); ?>
   
     <?= GridView::widget([
         'id' => 'locale',

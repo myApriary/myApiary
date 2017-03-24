@@ -1,7 +1,7 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+use kartik\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\translate\models\SourcemessageSearch */
@@ -12,26 +12,56 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sourcemessage-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <p>
-        <?= Html::a(Yii::t('app', 'Create Sourcemessage'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
+    <?php Pjax::end(); ?>
+    
     <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+        'id' => 'sourcemessage',
+        'dataProvider'=>$dataProvider,
+        'filterModel'=>$searchModel,
+        'columns'=>[
             'category',
             'message:ntext',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => '\kartik\grid\ActionColumn',
+                'template' => '{view} {delete}'
+            ]  
         ],
+        'containerOptions'=>['style'=>'overflow: auto'], // only set when $responsive = false
+        'headerRowOptions'=>['class'=>'kartik-sheet-style'],
+        'filterRowOptions'=>['class'=>'kartik-sheet-style'],
+        'pjax'=>true,
+        'pjaxSettings'=>[
+            'neverTimeout'=>true,
+            //'beforeGrid'=>'My fancy content before.',
+            //'afterGrid'=>'My fancy content after.',
+        ],
+        'toolbar'=> [
+            ['content'=>
+                Html::a('<i class="glyphicon glyphicon-plus"></i>', ['view'], ['data-pjax'=>1, 'class'=>'btn btn-success', 'title'=>'New']) . ' '.
+                Html::a('<i class="glyphicon glyphicon-repeat"></i>', ['index'], ['data-pjax'=>1, 'class'=>'btn btn-default', 'title'=>'Reset Grid'])
+            ],
+            '{toggleData}',
+        ],
+        // set export properties
+        'export'=>false,
+        'exportConfig'=>false,
+        'bordered'=>true,
+        'striped'=>true,
+        'condensed'=>true,
+        'responsive'=>false,
+        'hover'=>false,
+        'showPageSummary'=>false,
+        'panel'=>[
+            'type'=>GridView::TYPE_PRIMARY,
+            'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-globe"></i> Source message</h3>',
+            'before'=>'',
+            'after'=>'',
+            'footer'=>false,
+        ],
+        'persistResize'=>false,
     ]); ?>
-    <?php Pjax::end(); ?>
+
+
 </div>
