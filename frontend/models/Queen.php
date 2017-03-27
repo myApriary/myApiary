@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "queen".
@@ -92,6 +93,12 @@ class Queen extends \yii\db\ActiveRecord
 
     public function getColor0() {
         return $this->hasOne(Status::className(), ['id' => 'mark_disk_color']);
+    }
+
+    public function hiveList()
+    {
+         return ArrayHelper::map(Hives::find()->all(),'id', 'number');
+
     }
 
 }
