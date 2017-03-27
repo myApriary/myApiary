@@ -36,7 +36,7 @@ class Queen extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mark_disk_color', 'variety'], 'required'],
+            [['mark_disk_color', 'variety', 'wherein'], 'required'],
             [['mark_disk_color'], 'string'],
             [['mark_disk_number', 'reproductive_hive_id', 'hive_id'], 'integer'],
             [['hive_time', 'matting_box_time', 'matting_box_id', 'ts_insert', 'ts_update'], 'safe'],
@@ -52,6 +52,7 @@ class Queen extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app_frontend', 'ID'),
+            'wherein' => Yii::t('app_frontend', 'Where'),
             'mark_disk_color' => Yii::t('app_frontend', 'Color'),
             'mark_disk_number' => ucfirst(Yii::t('app_frontend', 'number')),
             'variety' => Yii::t('app_frontend', 'Variety'),
@@ -95,9 +96,18 @@ class Queen extends \yii\db\ActiveRecord
         return $this->hasOne(Status::className(), ['id' => 'mark_disk_color']);
     }
 
-    public function hiveList()
+    public static function hiveList()
     {
          return ArrayHelper::map(Hives::find()->all(),'id', 'number');
+
+    }
+
+    public static function getWherein()
+    {
+        $w['hive'] = 'hive';
+        $w['matting'] = 'matting box';
+        return $w;
+         
 
     }
 
