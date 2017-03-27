@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'mark_disk_number',
             'variety',
             'hive.name' => [
-                'label' => Yii::t('app_frontend', 'hive'),
+                'label' => Yii::t('app_frontend', 'Hive'),
                 'attribute' => 'hive.number',
             ],
              'reproductiveHive.name' => [
