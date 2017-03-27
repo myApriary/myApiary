@@ -57,6 +57,8 @@ class Queen extends \yii\db\ActiveRecord
             'variety' => Yii::t('app_frontend', 'Variety'),
             'reproductive_hive_id' => Yii::t('app_frontend', 'Reproductive hive'),
             'hive_id' => Yii::t('app_frontend', 'Hive'),
+            'reproductive_hive' => Yii::t('app_frontend', 'Reproductive hive'),
+            'hive' => Yii::t('app_frontend', 'Hive'),
             'hive_time' => Yii::t('app_frontend', 'Time'),
             'matting_box_id' => Yii::t('app_frontend', 'Matting Box'),
             'matting_box_time' => Yii::t('app_frontend', 'Matting Box'),
