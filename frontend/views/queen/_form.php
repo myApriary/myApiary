@@ -13,9 +13,11 @@ use kartik\date\DatePicker;
 
 <?php 
 $this->registerJs( <<< EOT_JS_CODE
-$('.drop-down-show-hide').hide();
+
 $('#queen-wherein').change(function () {
-    $('.drop-down-show-hide').hide()    
+    $('.drop-down-show-hide').hide();
+    $('#queen-hive_id').empty();
+    $('#queen-matting_box_id').empty();
     $('#' + this.value).show();
 
 });
@@ -53,9 +55,9 @@ EOT_JS_CODE
     </div>         
 
 
-    <div class="row drop-down-show-hide" id="hive" style="display:none">
+    <div class="row drop-down-show-hide" id="hive">
          <div class="col-xs-4">
-                <?= $form->field($model, 'hive_id')->dropDownList($model->hiveList())->label(Yii::t('app_frontend','Hive')) ?>
+                <?= $form->field($model, 'hive_id')->dropDownList($model->hiveList())->label(Yii::t('app_frontend','In hive')) ?>
         </div>
         <div class="col-xs-4">
               <?=$form->field($model, 'hive_time')->widget(DatePicker::classname(), [
@@ -70,7 +72,7 @@ EOT_JS_CODE
 
      <div class="row drop-down-show-hide" id="matting" style="display:none">
         <div class="col-xs-4">
-           <?= $form->field($model, 'matting_box_id')->textInput(['maxlength' => true]) ?>
+           <?= $form->field($model, 'matting_box_id')->textInput(['maxlength' => true])->label(Yii::t('app_frontend','In matting box')) ?>
         </div>
         <div class="col-xs-4">
               <?=$form->field($model, 'matting_box_time')->widget(DatePicker::classname(), [
