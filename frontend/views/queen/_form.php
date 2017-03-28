@@ -50,7 +50,7 @@ EOT_JS_CODE
 
     <div class="row">
          <div class="col-xs-4">
-                <?= $form->field($model, 'wherein')->dropDownList($model->getWherein())->label(Yii::t('app_frontend','Where')) ?>
+                <?= $form->field($model, 'wherein')->dropDownList($model->getWherein())->label(Yii::t('app_frontend','In')) ?>
         </div>
     </div>         
 
@@ -83,8 +83,6 @@ EOT_JS_CODE
                 ]
             ]); ?>
         </div>
-
-        
     </div>         
 
     <div class="form-group">
