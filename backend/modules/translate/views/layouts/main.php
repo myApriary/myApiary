@@ -78,16 +78,10 @@ AppAsset::register($this);
                         ],
                         [
                             'url' => Url::to(['sourcemessage/']),
-                            'label' => Icon::show('envelope-o',['style'=>'width:25px']) . 'Source message',
+                            'label' => Icon::show('envelope-o',['style'=>'width:25px']) . 'Message',
                             //'icon' => 'glyphicon glyphicon-file',
                             'active' => Yii::$app->controller->id==='sourcemessage',
-                        ],
-                        [
-                            'url' => Url::to(['message/']),
-                            'label' => Icon::show('envelope',['style'=>'width:25px']) . 'Message',
-                            //'icon' => 'glyphicon glyphicon-file',
-                            'active' => Yii::$app->controller->id==='message',
-                        ],                         
+                        ],                       
                     ],
                 ]);}; ?>             
             </div>

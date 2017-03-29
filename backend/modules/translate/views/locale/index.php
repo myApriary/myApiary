@@ -66,7 +66,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-globe"></i>Locale</h3>',
             'before'=>'',
             'after'=>'',
-            'footer'=>false,
         ],
         'persistResize'=>false,
     ]); ?>

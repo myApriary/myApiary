@@ -7,8 +7,8 @@ use Yii;
 /**
  * This is the model class for table "message".
  *
- * @property int $sourcemessage_id
- * @property string $language_id
+ * @property int $id
+ * @property string $language
  * @property string $translation
  *
  * @property Sourcemessage $sourcemessage
@@ -30,12 +30,12 @@ class Message extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['sourcemessage_id', 'language_id'], 'required'],
-            [['sourcemessage_id'], 'integer'],
+            [['id', 'language'], 'required'],
+            [['id'], 'integer'],
             [['translation'], 'string'],
-            [['language_id'], 'string', 'max' => 5],
-            [['sourcemessage_id'], 'exist', 'skipOnError' => true, 'targetClass' => Sourcemessage::className(), 'targetAttribute' => ['sourcemessage_id' => 'id']],
-            [['language_id'], 'exist', 'skipOnError' => true, 'targetClass' => Locale::className(), 'targetAttribute' => ['language_id' => 'language_id']],
+            [['language'], 'string', 'max' => 5],
+            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => Sourcemessage::className(), 'targetAttribute' => ['id' => 'id']],
+            [['language'], 'exist', 'skipOnError' => true, 'targetClass' => Locale::className(), 'targetAttribute' => ['language' => 'language_id']],
         ];
     }
 
@@ -45,8 +45,8 @@ class Message extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'sourcemessage_id' => 'Sourcemessage ID',
-            'language_id' => 'Language ID',
+            'id' => 'Sourcemessage ID',
+            'language' => 'Language ID',
             'translation' => 'Translation',
         ];
     }
@@ -56,7 +56,7 @@ class Message extends \yii\db\ActiveRecord
      */
     public function getSourcemessage()
     {
-        return $this->hasOne(Sourcemessage::className(), ['id' => 'sourcemessage_id']);
+        return $this->hasOne(Sourcemessage::className(), ['id' => 'id']);
     }
 
     /**
@@ -64,6 +64,6 @@ class Message extends \yii\db\ActiveRecord
      */
     public function getLanguage()
     {
-        return $this->hasOne(Locale::className(), ['language_id' => 'language_id']);
+        return $this->hasOne(Locale::className(), ['language' => 'language']);
     }
 }

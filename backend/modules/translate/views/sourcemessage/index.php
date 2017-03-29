@@ -1,5 +1,6 @@
 <?php
-
+use kartik\widgets\Select2;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use kartik\grid\GridView;
 use yii\widgets\Pjax;
@@ -24,6 +25,18 @@ $this->params['breadcrumbs'][] = $this->title;
             'category',
             'message:ntext',
             [
+                'class'=>'kartik\grid\EditableColumn',
+                'attribute'=>'translation',
+                'format'=>'ntext',
+                'editableOptions' => function ($model, $key, $index) {
+                    return [
+                        'inputType' => 'textArea',
+                        'editableValueOptions' => ['style'=>(empty($model->translation)?'color:#F00':''),],
+                    ];
+                },
+                //'pageSummary'=>false,
+            ],
+            [
                 'class' => '\kartik\grid\ActionColumn',
                 'template' => '{view} {delete}'
             ]  
@@ -31,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'containerOptions'=>['style'=>'overflow: auto'], // only set when $responsive = false
         'headerRowOptions'=>['class'=>'kartik-sheet-style'],
         'filterRowOptions'=>['class'=>'kartik-sheet-style'],
-        'pjax'=>true,
+        'pjax'=>false,
         'pjaxSettings'=>[
             'neverTimeout'=>true,
             //'beforeGrid'=>'My fancy content before.',
@@ -56,9 +69,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'panel'=>[
             'type'=>GridView::TYPE_PRIMARY,
             'heading'=>'<h3 class="panel-title"><i class="glyphicon glyphicon-globe"></i> Source message</h3>',
-            'before'=>'',
-            'after'=>'',
-            'footer'=>false,
+            'before'=>'<div class="row"><div class="col-md-4"><form>'.Select2::widget([
+                'model' => $searchModel,
+                //'value' => $locale_model->language_id,
+                'size' => 'sm',
+                'attribute' => 'language',
+                'data' => ArrayHelper::map(backend\modules\translate\models\Locale::find()->asArray()->all(), 'language_id', 'name'),
+                'options' => ['placeholder' => 'Select a locale ...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+                'pluginEvents' => [
+                     "change" => "function() { this.form.submit(); }",
+                ],
+            ]).'</form></div></div>',
         ],
         'persistResize'=>false,
     ]); ?>
