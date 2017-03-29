@@ -24,8 +24,8 @@ return [
             'translations' => [
                 'app*' => [
                     'class' => 'yii\i18n\DbMessageSource',
-                    'messageTable' => 'Message',
-                    'sourceMessageTable' => 'SourceMessage',
+                    'messageTable' => 'message',
+                    'sourceMessageTable' => 'sourcemessage',
                 ],
             ],
         ],

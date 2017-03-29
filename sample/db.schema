@@ -191,13 +191,13 @@ DROP TABLE IF EXISTS `message`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `message` (
-  `sourcemessage_id` int(11) NOT NULL,
-  `language_id` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL,
+  `language` varchar(5) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `translation` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`sourcemessage_id`,`language_id`),
-  KEY `language_id` (`language_id`),
-  CONSTRAINT `FK_Message_SourceMessage` FOREIGN KEY (`sourcemessage_id`) REFERENCES `sourcemessage` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `message_ibfk_1` FOREIGN KEY (`language_id`) REFERENCES `locale` (`language_id`)
+  PRIMARY KEY (`id`,`language`),
+  KEY `language_id` (`language`),
+  CONSTRAINT `FK_Message_SourceMessage` FOREIGN KEY (`id`) REFERENCES `sourcemessage` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `message_ibfk_1` FOREIGN KEY (`language`) REFERENCES `locale` (`language_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `migration`;

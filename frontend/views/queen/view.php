@@ -32,8 +32,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'mark_disk_color',
             'mark_disk_number',
             'variety',
-            'reproductive_hive_id',
-            'hive_id',
+            'hive.name' => [
+                'label' => Yii::t('app_frontend', 'Hive'),
+                'attribute' => 'hive.number',
+            ],
+             'reproductiveHive.name' => [
+                'label' => Yii::t('app_frontend', 'Reproductive hive'),
+                'attribute' => 'reproductiveHive.number',
+            ],
             'hive_time',
             'matting_box_id',
             'matting_box_time',

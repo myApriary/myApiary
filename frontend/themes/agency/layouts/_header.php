@@ -41,6 +41,10 @@
             ['label' => 'Home', 'url' => ['/site/index']],
         ];
         $menuItems[] = [
+            'label' => Yii::t('app_frontend', 'manage'), 
+            'url' => ['/apiaries'],
+        ];
+        $menuItems[] = [
             'label' => Yii::t('app_frontend', 'Logout') . ' (' . Yii::$app->user->identity->username . ')', 
             'url' => ['/user/security/logout'],
             'linkOptions' => ['data-method' => 'post']

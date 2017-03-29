@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc8333992b259870406d462b5cb45ddd",
+    "content-hash": "85521838df0a65945b836e02a5379c87",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -420,16 +420,16 @@
         },
         {
             "name": "codemix/yii2-localeurls",
-            "version": "1.4.9",
+            "version": "1.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/codemix/yii2-localeurls.git",
-                "reference": "84c08d6ba1bc499c2d54ce066add9a8362f8efbe"
+                "reference": "9afafc5a660f10a4e9f7d7254a0779222c71323e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codemix/yii2-localeurls/zipball/84c08d6ba1bc499c2d54ce066add9a8362f8efbe",
-                "reference": "84c08d6ba1bc499c2d54ce066add9a8362f8efbe",
+                "url": "https://api.github.com/repos/codemix/yii2-localeurls/zipball/9afafc5a660f10a4e9f7d7254a0779222c71323e",
+                "reference": "9afafc5a660f10a4e9f7d7254a0779222c71323e",
                 "shasum": ""
             },
             "require": {
@@ -457,7 +457,7 @@
                 "locale",
                 "yii2"
             ],
-            "time": "2017-03-07T18:41:22+00:00"
+            "time": "2017-03-23T18:56:49+00:00"
         },
         {
             "name": "components/flag-icon-css",
@@ -750,12 +750,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "71df6d8f73057ba97799ed8a2fcf550e63607446"
+                "reference": "99bba6cfcef21b6ce33d906ad080b862abca6e1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/71df6d8f73057ba97799ed8a2fcf550e63607446",
-                "reference": "71df6d8f73057ba97799ed8a2fcf550e63607446",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/99bba6cfcef21b6ce33d906ad080b862abca6e1a",
+                "reference": "99bba6cfcef21b6ce33d906ad080b862abca6e1a",
                 "shasum": ""
             },
             "type": "library",
@@ -795,7 +795,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2017-03-19 16:08:27"
+            "time": "2017-03-25 17:14:29"
         },
         {
             "name": "kartik-v/bootstrap-popover-x",
@@ -2718,12 +2718,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "23cf55b0f941272e8dbefa85c024769533806ed2"
+                "reference": "ec2697bbdd0447a1b16be8e2c25f19a405e68d0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/23cf55b0f941272e8dbefa85c024769533806ed2",
-                "reference": "23cf55b0f941272e8dbefa85c024769533806ed2",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/ec2697bbdd0447a1b16be8e2c25f19a405e68d0d",
+                "reference": "ec2697bbdd0447a1b16be8e2c25f19a405e68d0d",
                 "shasum": ""
             },
             "require": {
@@ -2810,7 +2810,7 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2017-03-22 22:56:26"
+            "time": "2017-03-24 11:18:05"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -3312,12 +3312,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "489dec479a089af0beaaa54b255d507ec34b21e3"
+                "reference": "3860fbe35dff991f39640a38f51807e2594c9783"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/489dec479a089af0beaaa54b255d507ec34b21e3",
-                "reference": "489dec479a089af0beaaa54b255d507ec34b21e3",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/3860fbe35dff991f39640a38f51807e2594c9783",
+                "reference": "3860fbe35dff991f39640a38f51807e2594c9783",
                 "shasum": ""
             },
             "require": {
@@ -3354,7 +3354,11 @@
                 "faker",
                 "fixtures"
             ],
+<<<<<<< HEAD
             "time": "2017-03-22T22:23:34+00:00"
+=======
+            "time": "2017-03-26T20:10:46+00:00"
+>>>>>>> translationPACK
         },
         {
             "name": "guzzlehttp/psr7",
@@ -3914,7 +3918,11 @@
             "keywords": [
                 "tokenizer"
             ],
+<<<<<<< HEAD
             "time": "2017-03-07T07:36:57+00:00"
+=======
+            "time": "2017-03-07T08:21:50+00:00"
+>>>>>>> translationPACK
         },
         {
             "name": "phpunit/phpunit",

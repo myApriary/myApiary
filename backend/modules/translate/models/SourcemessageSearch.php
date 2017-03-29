@@ -12,6 +12,9 @@ use backend\modules\translate\models\Sourcemessage;
  */
 class SourcemessageSearch extends Sourcemessage
 {
+    
+    public $language;
+    
     /**
      * @inheritdoc
      */
@@ -19,7 +22,7 @@ class SourcemessageSearch extends Sourcemessage
     {
         return [
             [['id'], 'integer'],
-            [['category', 'message'], 'safe'],
+            [['category', 'message', 'language', 'translation'], 'safe'],
         ];
     }
 
@@ -44,10 +47,17 @@ class SourcemessageSearch extends Sourcemessage
         $query = Sourcemessage::find();
 
         // add conditions that should always apply here
+        
+        
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        
+        $dataProvider->sort->attributes['translation'] = [
+            'asc' => ['message.translation' => SORT_ASC],
+            'desc' => ['message.translation' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -57,14 +67,30 @@ class SourcemessageSearch extends Sourcemessage
             return $dataProvider;
         }
 
-        // grid filtering conditions
+        Yii::$app->session->set('u_lang', $this->language);
+
+        
+        $query->joinWith(['translations']);
+        
+        
+        //$query->andOnCondition('message.language = :language', [':language' => $this->language]);
+        
+        
+        
         $query->andFilterWhere([
             'id' => $this->id,
         ]);
 
         $query->andFilterWhere(['like', 'category', $this->category])
-            ->andFilterWhere(['like', 'message', $this->message]);
+            ->andFilterWhere(['like', 'message', $this->message])
+            ->andFilterWhere(['like', 'message.translation', $this->translation]);
 
         return $dataProvider;
+    }
+    
+    public function attributes()
+    {
+        // add related fields to searchable attributes
+        return array_merge(parent::attributes(), ['translation']);
     }
 }
