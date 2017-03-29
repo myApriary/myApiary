@@ -16,8 +16,6 @@ $this->registerJs( <<< EOT_JS_CODE
 
 $('#queen-wherein').change(function () {
     $('.drop-down-show-hide').hide();
-    $('#queen-hive_id').empty();
-    $('#queen-matting_box_id').empty();
     $('#' + this.value).show();
 
 });
