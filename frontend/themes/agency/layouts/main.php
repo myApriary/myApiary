@@ -28,7 +28,8 @@ use frontend\assets\AppAsset;
                     'encodeLabels' => false,
                     'activateItems' => true,
                     'heading' => false,
-                    'itemOptions' => [],
+                    'itemOptions' => [
+                    ],
                     'items' => [
                         [
                             'url' => '/',
