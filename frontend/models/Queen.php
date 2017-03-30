@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "queen".
@@ -35,7 +36,7 @@ class Queen extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['mark_disk_color', 'variety'], 'required'],
+            [['mark_disk_color', 'variety', 'wherein'], 'required'],
             [['mark_disk_color'], 'string'],
             [['mark_disk_number', 'reproductive_hive_id', 'hive_id'], 'integer'],
             [['hive_time', 'matting_box_time', 'matting_box_id', 'ts_insert', 'ts_update'], 'safe'],
@@ -51,14 +52,15 @@ class Queen extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app_frontend', 'ID'),
-            //'mark_disk_color' => Yii::t('app_frontend', 'Mark disk color'),
+            'wherein' => Yii::t('app_frontend', 'Where'),
+            'mark_disk_color' => Yii::t('app_frontend', 'Color'),
             'mark_disk_number' => ucfirst(Yii::t('app_frontend', 'number')),
             'variety' => Yii::t('app_frontend', 'Variety'),
             'reproductive_hive_id' => Yii::t('app_frontend', 'Reproductive hive'),
             'hive_id' => Yii::t('app_frontend', 'Hive'),
-            'hive_time' => Yii::t('app_frontend', 'Time'),
+            'hive_time' => Yii::t('app_frontend', 'since'),
             'matting_box_id' => Yii::t('app_frontend', 'Matting Box'),
-            'matting_box_time' => Yii::t('app_frontend', 'Matting Box'),
+            'matting_box_time' => Yii::t('app_frontend', 'since'),
             'reproductiveHive.apiary.name' => Yii::t('app_frontend', 'Apiary'),
             'ApiaryAndHive' => Yii::t('app_frontend', 'Hive'),
             'ApiaryAndReproductiveHive' => Yii::t('app_frontend', 'Reproductive Hive'),
@@ -92,6 +94,21 @@ class Queen extends \yii\db\ActiveRecord
 
     public function getColor0() {
         return $this->hasOne(Status::className(), ['id' => 'mark_disk_color']);
+    }
+
+    public static function hiveList()
+    {
+         return ArrayHelper::map(Hives::find()->all(),'id', 'number');
+
+    }
+
+    public static function getWherein()
+    {
+        $w['hive'] = 'hive';
+        $w['matting'] = 'matting box';
+        return $w;
+         
+
     }
 
 }
