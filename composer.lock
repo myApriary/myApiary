@@ -750,12 +750,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "99bba6cfcef21b6ce33d906ad080b862abca6e1a"
+                "reference": "0339b66c763b75326270528173e289914336151d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/99bba6cfcef21b6ce33d906ad080b862abca6e1a",
-                "reference": "99bba6cfcef21b6ce33d906ad080b862abca6e1a",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/0339b66c763b75326270528173e289914336151d",
+                "reference": "0339b66c763b75326270528173e289914336151d",
                 "shasum": ""
             },
             "type": "library",
@@ -795,7 +795,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2017-03-25 17:14:29"
+            "time": "2017-03-28 17:38:28"
         },
         {
             "name": "kartik-v/bootstrap-popover-x",
@@ -1150,12 +1150,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-helpers.git",
-                "reference": "d3c90fffa1989d875f718d5e4bd503749d894e2c"
+                "reference": "36cc905538ab599103b1e4fc1b7c7fc06d277fdc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-helpers/zipball/d3c90fffa1989d875f718d5e4bd503749d894e2c",
-                "reference": "d3c90fffa1989d875f718d5e4bd503749d894e2c",
+                "url": "https://api.github.com/repos/kartik-v/yii2-helpers/zipball/36cc905538ab599103b1e4fc1b7c7fc06d277fdc",
+                "reference": "36cc905538ab599103b1e4fc1b7c7fc06d277fdc",
                 "shasum": ""
             },
             "require": {
@@ -1193,7 +1193,7 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2016-12-03 05:09:33"
+            "time": "2017-03-27 15:49:34"
         },
         {
             "name": "kartik-v/yii2-icons",
@@ -3312,12 +3312,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "3860fbe35dff991f39640a38f51807e2594c9783"
+                "reference": "0e3e900e97a6f781dedc45ca8759dd84a1f2cfc1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/3860fbe35dff991f39640a38f51807e2594c9783",
-                "reference": "3860fbe35dff991f39640a38f51807e2594c9783",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/0e3e900e97a6f781dedc45ca8759dd84a1f2cfc1",
+                "reference": "0e3e900e97a6f781dedc45ca8759dd84a1f2cfc1",
                 "shasum": ""
             },
             "require": {
@@ -3354,7 +3354,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2017-03-26T20:10:46+00:00"
+            "time": "2017-03-29T09:42:14+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -3914,7 +3914,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2017-03-07T08:21:50+00:00"
+            "time": "2017-03-07 08:21:50"
         },
         {
             "name": "phpunit/phpunit",
@@ -4576,12 +4576,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "7f956e001b29dd9a2478ef7aac7f0f695368889b"
+                "reference": "3e0b0cb5d669a7d39dd85050910af6ee77e40e7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/7f956e001b29dd9a2478ef7aac7f0f695368889b",
-                "reference": "7f956e001b29dd9a2478ef7aac7f0f695368889b",
+                "url": "https://api.github.com/repos/symfony/console/zipball/3e0b0cb5d669a7d39dd85050910af6ee77e40e7e",
+                "reference": "3e0b0cb5d669a7d39dd85050910af6ee77e40e7e",
                 "shasum": ""
             },
             "require": {
@@ -4629,7 +4629,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-03-22 20:13:18"
+            "time": "2017-03-27T14:49:15+00:00"
         },
         {
             "name": "symfony/css-selector",
