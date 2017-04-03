@@ -78,7 +78,7 @@ return [
         'view'=>[
             'theme'=>[
                 'pathMap'=>[
-                    '@app/views'=>'@app/themes/agency'
+                    '@frontend/views'=>'@frontend/themes/agency/views'
                 ]
             ]
         ],
