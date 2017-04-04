@@ -11,7 +11,7 @@ use frontend\assets\AppAsset;
 
 ?>
 
-<?php $this->beginContent('@frontend/themes/agency/views/layouts/_base'); ?>
+<?php $this->beginContent('@frontend/themes/agency/views/layouts/_base.php'); ?>
 <?= $this->render('_header',['class'=>'navbar-shrink']) ?>
 
  <section class="pages" >
