@@ -22,14 +22,15 @@
    ?>
 
 <?php
-    $options = ['navbar','navbar-default','navbar-fixed-top'];
+    $options = ['navbar','navbar-default','navbar-fixed-top', 'navbar-custom'];
     NavBar::begin([
-      'brandLabel' => Html::img('@web/images/logo.png', ['alt'=>'myApiary', 'class'=>'pull-left']) . '<span>&nbsp;&nbsp myApiary</span>' ,
+        'id'=>'mainNav',
+        'brandLabel' => Html::img('@web/images/logo.png', ['alt'=>'myApiary', 'class'=>'pull-left']) . '<span>&nbsp;&nbsp myApiary</span>' ,
         'brandUrl' => Yii::$app->homeUrl,    'brandOptions'=>[
             'class'=>'navbar-header page-scroll'
         ],
         'options' => [
-            'class' => 'navbar navbar-default navbar-fixed-top '.$class,
+            'class' => 'navbar navbar-default navbar-fixed-top navbar-custom '.$class,
         ],
     ]);
     

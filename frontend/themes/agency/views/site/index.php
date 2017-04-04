@@ -20,7 +20,8 @@
             </div>
         </div>
     </header>
-
+<?php
+/*
     <?= $this->render('_service.php',['directoryAsset'=>$directoryAsset ]) ?>
     <?= $this->render('_portfolio.php',['directoryAsset'=>$directoryAsset ]) ?>
     <?= $this->render('_about.php',['directoryAsset'=>$directoryAsset ]) ?>
@@ -28,3 +29,23 @@
     <?= $this->render('_client.php',['directoryAsset'=>$directoryAsset ]) ?>
     <?= $this->render('_contact.php',['directoryAsset'=>$directoryAsset ]) ?>
     
+*/
+?>
+
+<?php
+$script = <<< JS
+(function($) {
+    "use strict"; // Start of use strict
+
+    // Offset for Main Navigation
+    $('#mainNav').affix({
+        offset: {
+            top: 100
+        }
+    })
+
+})(jQuery);;
+JS;
+$this->registerJs($script);
+?>
+?>

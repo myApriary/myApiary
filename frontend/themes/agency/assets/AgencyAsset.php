@@ -19,9 +19,9 @@ class AgencyAsset extends AssetBundle
 
     public $js = [
         '//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js',
-        'js/jquery-scrollspy.js',
-        'js/cbpAnimatedHeader.min.js',
-        'js/classie.js',
+        //'js/jquery-scrollspy.js',
+        //'js/cbpAnimatedHeader.min.js',
+        //'js/classie.js',
         //'js/contact_me.js',
         'js/jqBootstrapValidation.js',
         'js/agency.js',

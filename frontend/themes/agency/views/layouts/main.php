@@ -12,7 +12,7 @@ use frontend\assets\AppAsset;
 ?>
 
 <?php $this->beginContent('@frontend/themes/agency/views/layouts/_base.php'); ?>
-<?= $this->render('_header',['class'=>'navbar-shrink']) ?>
+<?= $this->render('_header',['class'=>'affix']) ?>
 
  <section class="pages" >
         <div class="container">
