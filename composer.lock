@@ -750,12 +750,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "ddedb30398af31e8b7635e1bcf3a57a417987cac"
+                "reference": "2dc539a32bd12e4ca0c300022059b71093bf6fb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/ddedb30398af31e8b7635e1bcf3a57a417987cac",
-                "reference": "ddedb30398af31e8b7635e1bcf3a57a417987cac",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/2dc539a32bd12e4ca0c300022059b71093bf6fb7",
+                "reference": "2dc539a32bd12e4ca0c300022059b71093bf6fb7",
                 "shasum": ""
             },
             "type": "library",
@@ -795,7 +795,7 @@
                 "progress",
                 "upload"
             ],
-            "time": "2017-04-05 04:00:37"
+            "time": "2017-04-05 17:43:09"
         },
         {
             "name": "kartik-v/bootstrap-popover-x",
@@ -3312,12 +3312,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "0e3e900e97a6f781dedc45ca8759dd84a1f2cfc1"
+                "reference": "5e71e74abf072c3c708099a304c4ff14b1e75b55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/0e3e900e97a6f781dedc45ca8759dd84a1f2cfc1",
-                "reference": "0e3e900e97a6f781dedc45ca8759dd84a1f2cfc1",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/5e71e74abf072c3c708099a304c4ff14b1e75b55",
+                "reference": "5e71e74abf072c3c708099a304c4ff14b1e75b55",
                 "shasum": ""
             },
             "require": {
@@ -3354,7 +3354,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2017-03-29 09:42:14"
+            "time": "2017-04-06T20:52:54+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -4629,7 +4629,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-03T20:37:06+00:00"
+            "time": "2017-04-03 20:37:06"
         },
         {
             "name": "symfony/css-selector",
@@ -4855,7 +4855,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-04-03T20:37:06+00:00"
+            "time": "2017-04-03 20:37:06"
         },
         {
             "name": "symfony/finder",
