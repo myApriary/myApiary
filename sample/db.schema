@@ -231,6 +231,28 @@ DROP TABLE IF EXISTS `queen`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `queen` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ts_update` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `ts_insert` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `queen_emerges_date` date DEFAULT NULL COMMENT 'Czas wygyzienia',
+  `reproductive_hive_id` int(11) DEFAULT NULL COMMENT 'rodzina z której pobrano materiał genetyczny',
+  `upbringing_hive_id` int(11) NOT NULL COMMENT 'rodzina wychowująca',
+  `mark_disk_color` enum('white [1,6]','yellow [2,7]','red [3,8]','green [4,9]','blue [5,0]') DEFAULT NULL,
+  `mark_disk_number` tinyint(3) unsigned DEFAULT NULL,
+  `current_hive_id` int(11) DEFAULT NULL COMMENT 'Matka przebywa obecnie w ulu',
+  `variety` varchar(45) NOT NULL,
+  `date_change_status` date DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT '1' COMMENT '1-żyje, 0 - nie żyje wymiana planowana, -1 - nie żyje, brak danych o śmierci, -2 - nie żyje - śmierć z przepracowania :) wymiana naturalna, -3 - śmierć z powodu choroby',
+  PRIMARY KEY (`id`),
+  KEY `current_hive_id` (`current_hive_id`),
+  KEY `upbringing_hive_id` (`upbringing_hive_id`),
+  KEY `reproductive_hive_id` (`reproductive_hive_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `queen_bak`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `queen_bak` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `mark_disk_color` int(11) DEFAULT NULL,
   `mark_disk_number` int(11) DEFAULT NULL,
   `variety` varchar(45) NOT NULL,
@@ -242,7 +264,25 @@ CREATE TABLE `queen` (
   `ts_insert` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `ts_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
+/*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `queen_life_cycle`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `queen_life_cycle` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ts_insert` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ts_update` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `queen_id` int(11) NOT NULL,
+  `hive_id` int(11) NOT NULL,
+  `event_time` date NOT NULL COMMENT 'czas zdazenia, czas umieszcenia w ulu, etc',
+  `note` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `queen_id` (`queen_id`),
+  KEY `hive_id` (`hive_id`),
+  CONSTRAINT `queen_life_cycle_ibfk_1` FOREIGN KEY (`queen_id`) REFERENCES `queen_bak` (`id`),
+  CONSTRAINT `queen_life_cycle_ibfk_2` FOREIGN KEY (`hive_id`) REFERENCES `hive` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `sensor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
